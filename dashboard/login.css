@@ -1,0 +1,71 @@
+body{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	background:url("images/micro_carbon.png");
+	color:#586A79;
+}
+.loginContainer{
+	width:313px;
+	padding:10px;
+	margin:5% auto;
+	border:1px solid #71A2C6;
+	background:#fff;
+	box-shadow:0px 20px 85px rgba(0,0,0,.9);
+}
+.loginContainer h1{
+	font-size:35px;
+	font-weight:bold;
+	color:#586A79;
+	font-family:"Arial Narrow",Arial, Helvetica, sans-serif;
+}
+
+.loginContainer input[type=text],
+.loginContainer input[type=password]{
+	padding:5px;
+	font-size:15px;
+	width:300px;
+	border:1px solid #7F9DB9;
+	border-radius:2px;
+}
+.loginContainer input[type=text]:focus,
+.loginContainer input[type=password]:focus{
+	background-color:#FEFFE8;
+}
+.invalidPass{
+	background-color:#FF9FBA !important;
+}
+.goodPass{
+	background-color:#FFCC86 !important;
+}
+
+div.passsss,
+div.short,
+div.bad,
+div.good,
+div.strong,
+div.mismatch
+{
+	padding:10px;
+	background:#C6E8FF;
+	border-radius:0 0 5px 5px;
+	width:292px;
+	display:none;
+	color:#426379;
+	font-weight:bold;
+	text-shadow:1px 1px 0px #FFF;
+}
+span.error{
+	color:#A12004;
+	font-weight:bold;
+	margin-left:10px;
+}
+
+#amenitiesListing{
+	border-top:1px solid #CDCABB;
+	margin-top:10px;
+	padding-top:10px;
+}
+img.loader{
+	margin-left:10px;
+	margin-top:2px;
+}

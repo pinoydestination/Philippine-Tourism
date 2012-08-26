@@ -1,0 +1,46 @@
+<div class="maincontent" id="maincontent">
+						<div class="topbar">
+							<ul class="topbarmenu">
+								<li><small id="todayis">Tweets:</small></li>
+								<li class="floatRight"><a href="">Sitemap</a></li>
+								<li class="floatRight"><a href="">Privacy Policy</a></li>
+								<li class="floatRight"><a href="">Contact Us</a></li>
+								<br clear="all" />
+							</ul>
+						</div>
+						<div class="headerMenu">
+							<ul id="headerMenuList">
+								<li><a href="" class="active">Home</a></li>
+								<li><a href="">Top Destinations</a></li>
+								<li><a href="">Travel Tips</a></li>
+								<li><a href="">About Us</a></li>
+								<li><a href="">Submit Destinations</a></li>
+								<li class="floatRight">
+									<div class="searchBoxContainer">
+										<span id="searchTextOverlay">Search Here...</span>
+										<input type="text" name="s" class="searchTextBox borderRadius3" />
+									</div>
+ 								</li>
+								<br clear="all" />
+							</ul>
+						</div>
+						
+						<!--//Billboard//-->
+						<div class="billboardContainer">
+							<div class="billboard">
+								<div class="destinationSearch">
+									
+									<input type="text" class="largeSearchBox" />
+								</div>
+							</div>
+						</div>
+						<!--//End of Billboard//-->
+						
+						
+						
+						<!--//Footer//-->
+						<div class="footer">
+							
+						</div>
+						
+					</div>

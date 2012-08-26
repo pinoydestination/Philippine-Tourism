@@ -1,0 +1,5 @@
+[10-Aug-2012 17:31:28] PHP Warning:  Invalid argument supplied for foreach() in /home3/cutsandp/public_html/site.pinoydestination.com/dashboard/articles.php on line 43
+[10-Aug-2012 17:39:11] WordPress database error Table 'cutsandp_destination.wp_destination_user_posts' doesn't exist for query SELECT * FROM wp_destination_user_posts WHERE user_id = '2' made by Dashboard->getUserPosts
+[10-Aug-2012 17:39:11] PHP Warning:  Invalid argument supplied for foreach() in /home3/cutsandp/public_html/site.pinoydestination.com/dashboard/articles.php on line 43
+[10-Aug-2012 18:09:23] WordPress database error Table 'cutsandp_destination.wp_destination_user_posts' doesn't exist for query SELECT * FROM wp_destination_user_posts WHERE user_id = '2' made by Dashboard->getUserPosts
+[10-Aug-2012 18:09:23] PHP Warning:  Invalid argument supplied for foreach() in /home3/cutsandp/public_html/site.pinoydestination.com/dashboard/articles.php on line 43
