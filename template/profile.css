@@ -1,0 +1,48 @@
+div.profileThumbnail{
+	float:left !important;
+	width:115px;
+	height:115px;
+	margin-right:10px;
+}
+div.profileThumbnail img{
+	padding:1px;
+	border:1px solid #3c97cb;
+	width:113px;
+	height:113px;
+}
+.profileInfoTop{
+	float:left;
+	width:455px;
+}
+.profileHeader{
+	font-size:30px;
+	color:#4c708f;
+	font-family:"Arial Narrow", Arial, Helvetica, sans-serif;
+	text-shadow:1px 1px 0px silver;
+}
+.profileToolBar{
+	background:#3c97cb;
+	padding:10px;
+	font-size:14px;
+	font-family:"Arial Narrow", Arial, Helvetica, sans-serif;
+	color:#fff;
+	border-bottom:1px dashed #cee9f8;
+}
+.reviewBox{
+	background:#cee9f8;
+	min-height:100px;
+	border-bottom:1px solid #fff;
+	border-radius:0px 0px 3px 3px;
+}
+.profileDetails{
+	min-height:300px;
+	margin-bottom:50px;
+}
+.reviewContainer{
+	width:100%;
+	padding:10px;
+}
+.reviewTitle{
+	font-size:15px;
+	font-weight:bold;
+}

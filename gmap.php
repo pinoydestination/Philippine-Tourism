@@ -1,4 +1,22 @@
 <?php
+$allowedAddress = array("www.pinoydestination.com","test.pinoydestination.com","localhost","localhost:8080","localhost:8082");
+if(isset($_SERVER['HTTP_REFERER'])){
+	$ref = $_SERVER['HTTP_REFERER'];
+}
+$allowed = false;
+if($ref){
+	$ref = explode("/",$ref);
+	foreach($allowedAddress as $address){
+		if(in_array($address,$ref)){
+			$allowed = true;
+		}
+	}
+
+	if(!$allowed){
+		die("<style>font-family:Arial, Helvetica, sans-serif; font-size:11px;</style>You are not allowed to access this page. Visit <a href='http://www.pinoydestination.com/'>www.PinoyDestination.com</a> to view content.");
+	}
+
+}
 if(!isset($_GET['address'])){
 	echo "missing parameter"; die();
 }
@@ -57,6 +75,7 @@ if(isset($_GET['zoom'])){
             map.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
                 map: map,
+                zoom:6,
                 position: results[0].geometry.location
             });
           } else {

@@ -16,13 +16,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'pinoydestination');
+define('DB_NAME', 'cutsandp_destination');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'cutsandp_dest');
 
 /** MySQL database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'Chamba2012!!!');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -42,14 +42,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         '`!^7|<Jm!icM+D=]LAzd[LA.{-Rc?D{]ZAf__; y~)MmRHl+j_pHl,%RCfHskc:^');
-define('SECURE_AUTH_KEY',  '=I[?9us0V  B+/DAmmEe>dvIMA#Of} q.(^Q^W1UH(P[_z1;2C=gJ@rS!9/JZ{UF');
-define('LOGGED_IN_KEY',    '|p%P}4zGf?>z.#Lo1t=[8)yCXReYZ#sav`E]wPiPXGK7C^*Vb2w2u-K4/a%6K]9E');
-define('NONCE_KEY',        'Ut]sk:2EO7 ~lip7 hP)3D4;iWXLaW<i$QPd@A7T:ZZ@h7kN<&8AG3F{|5P7>rm2');
-define('AUTH_SALT',        '/9i,It8d5mY)zGFuS11HLui9Hn_)C:7#s_v~VHmfz)gP<s3MU_d0.Pa`&&fS}mmk');
-define('SECURE_AUTH_SALT', 'tYLJ=?!?&rBR1B_gaRCRdmBnX-<Rw#(sGKZi%f7=kh&{4.qVN{{D)I^?^O]e/D*`');
-define('LOGGED_IN_SALT',   'JfurAVMcs]?nEGcF[ 4ww,gG>.-KUo<ksn&Mz?-g1}}vzExjoChKyHO*67L _,@u');
-define('NONCE_SALT',       '&]Gtih$@mA<a41z]JuP?NHjK%mIUDz9fblYtGKA,&_24C.VZF/{Sk ixoI;#5{*v');
+define('AUTH_KEY',         'D93{DsFq[Y?s/UN*JDyWP,rjG}Ze@hd*X>84CT)1;AZ~.|S(w|ijXa>v[=`E|2Hz');
+define('SECURE_AUTH_KEY',  '0T6sIyl}5*c;]kdJ3pbKZ9VpY5/n=RP!?6^(a[KBR]s?c`J$!`P]j0HMh&Bw>y1O');
+define('LOGGED_IN_KEY',    'SAH +YI==4}>lUM5D|-z|]%LA Dd#.hWXCCkaZ=9}Y#A7x6pWqalPM$0@RB.:mUT');
+define('NONCE_KEY',        ']04,{qX SBvc[_@D<uqF#mw-$]@i4Q+BMS{MBEKk~7@zkAhI>F[}>a+BrR[c7Qt(');
+define('AUTH_SALT',        'gYRGoc&5A*N6-[;_4]DvZTRa&XveL)MK01D0%F1U@]2,BEqfQ3IGYi8sY{{ZgV[z');
+define('SECURE_AUTH_SALT', '5xEmFnrvW`z%TcY5WTfKDH+te]pO.SquTT_2B#xX$p8Po<I}-aA~BzA;oGtS7>_t');
+define('LOGGED_IN_SALT',   '0X:Cj%cb6}Dt7dhR*kH99w&4,jU-cA{i<eLNg+?E_:H?3L5>QV1<^j-[Gtm@+7]+');
+define('NONCE_SALT',       'oa+Ao!H1y5qO?UPRfx.Hb~C#HzR8l7Iw:L/X@>,M)zM|NQt(d?n.J$Aq^Gi4~}x>');
 
 /**#@-*/
 
@@ -90,12 +90,18 @@ if ( !defined('ABSPATH') )
 require_once(ABSPATH . 'wp-settings.php');
 
 
-$sql = "SELECT * FROM " . $table_prefix . "options WHERE option_name = 'category_base'";
-$resCat = $wpdb->get_row($sql);
-$category_base  = $resCat->option_value;
-$sql = "SELECT * FROM " . $table_prefix . "options WHERE option_name = 'tag_base'";
-$resTag = $wpdb->get_row($sql);
-$tag_base  = $resTag->option_value;
+$sql = "SELECT option_name, option_value FROM ".$table_prefix."options WHERE option_name='category_base'";
+$category_base = $wpdb->get_row($sql);
+$category_base = $category_base->option_value;
 
-DEFINE("CATEGORY_BASE",$category_base);
-DEFINE("TAG_BASE", $tag_base);
+
+global $currentIsland;
+	
+$currentIsland  = "Philippines";
+
+$arrCatCountry = array("Philippines");
+$arrCatIsland  = array("Luzon", "Visayas", "Mindanao");
+$arrCatType    = array("Hotel", "Beach", "Resort", "Restaurant", "Destination");
+
+$arrCatAll     = array_merge($arrCatCountry, $arrCatIsland, $arrCatType);
+

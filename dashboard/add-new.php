@@ -1,6 +1,7 @@
 <?php
 include("../wp-load.php");
 include("dashboard.class.php");
+require( '../resizer.php' );
 $dashboard = new Dashboard($wpdb,$table_prefix,$current_user);
 $amenities = $dashboard->getAmenity();
 if($_POST){
@@ -11,6 +12,8 @@ if($_POST){
 	$directory_self = str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']); 
 	$uploadsDirectory = $_SERVER['DOCUMENT_ROOT'] . $directory_self . 'destinations/'; 
 	$uploadsDirectory = str_replace("dashboard","uploads",$uploadsDirectory);
+	$uploadsDirectoryThumb = $_SERVER['DOCUMENT_ROOT'] . $directory_self . 'thumbs/';
+	$uploadsDirectoryThumb = str_replace("dashboard","uploads",$uploadsDirectoryThumb);
 	
 	
 	if(is_array($_FILES["file"]["error"])){
@@ -24,6 +27,15 @@ if($_POST){
 				
 			}
 		}
+	}
+	
+	$image = new SimpleImage();
+	foreach($uploadedFiles as $upFiles){
+		//resizeImage
+		$image->load($uploadsDirectory.$upFiles);
+		$image->resizeToWidth(133);
+		$image->resizeToHeight(110);
+		$image->save($uploadsDirectoryThumb.$upFiles);
 	}
 	
 	$category = explode(",", $_POST['inputCategory']);

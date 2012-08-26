@@ -29,8 +29,7 @@ nocache_headers();
 	$directory_self        = str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']); 
 	$uploadsDirectory      = $_SERVER['DOCUMENT_ROOT'] . $directory_self . 'uploads/destinations/';
 	$uploadsDirectoryThumb = $_SERVER['DOCUMENT_ROOT'] . $directory_self . 'uploads/thumbs/';
-	$uploadsDirectory 	   = str_replace("dashboard","uploads",$uploadsDirectory);
-	$uploadsDirectoryThumb = str_replace("dashboard","uploads",$uploadsDirectoryThumb);
+	$uploadsDirectory = str_replace("dashboard","uploads",$uploadsDirectory);
 	$uploadedFiles = null;
 	if(isset($_FILES)){
 	
@@ -39,7 +38,7 @@ nocache_headers();
 				if ($error == UPLOAD_ERR_OK) {
 					$tmp_name = $_FILES["file"]["tmp_name"][$key];
 					$name = $_FILES["file"]["name"][$key];
-					$name = str_replace(" ", "_", $name);
+					$name = str_replace(" ", "-", $name);
 					move_uploaded_file($tmp_name, $uploadsDirectory.$hashtag.'-'.$name);
 					
 					$uploadedFiles[] = $hashtag.'-'.$name;
@@ -49,7 +48,6 @@ nocache_headers();
 		}else{
 			$tmp_name = $_FILES["file"]["tmp_name"];
 			$name = $_FILES["file"]["name"];
-			$name = str_replace(" ", "_", $name);
 			move_uploaded_file($tmp_name, $uploadsDirectory.$hashtag.'-'.$name);
 			
 			
@@ -65,6 +63,7 @@ nocache_headers();
 		}
 		
 	}
+
 
 $comment_post_ID = isset($_POST['comment_post_ID']) ? (int) $_POST['comment_post_ID'] : 0;
 
