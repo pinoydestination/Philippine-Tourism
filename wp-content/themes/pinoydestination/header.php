@@ -112,7 +112,6 @@
 						<ul class="menulinks floatleft">
 							<li class="tobehide"><a href="#">Plan Your Visit</a></li>
 							<li class="tobehide"><a href="<?php bloginfo('url'); ?>/vacation/blog">Blog</a></li>
-							<li class="tobehide"><a href="#">Contacts</a></li>
 							<li class="tobehide"><a href="#" id="showmyitinerary">My Itinerary</a></li>
 							
 							<li class="floatright" style="float:right !important; display:inline-block;">
