@@ -45,6 +45,7 @@ $(document).ready(function(){
 	
 	
 	$("#addthistomyitinerary").live("click",function(){
+		$(this).slideUp();
 		var data = $(this).attr("inline-data");
 		$.ajax({
 			url:"/off-page/itinerary.php",
@@ -81,7 +82,7 @@ $(document).ready(function(){
 		});
 		var href = "http://www.pinoydestination.com/gmapleg.php?waypoints="+stringAddress;
 		$(this).attr("href",href);
-		return true;
+		return false;
 	});
 	$("a#showmyitinerary").live('click',function(){
 		$("div#itihead").toggle();

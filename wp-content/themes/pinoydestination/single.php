@@ -96,16 +96,16 @@
 											$sha1Title = sha1(get_the_title());
 											if(isset($_SESSION['myItinerary'][$sha1Title]) && is_array($_SESSION['myItinerary'][$sha1Title])){
 												?>
-												<!--//<li class="nomarginright"><span class="gallerySpanHead additinerarybutton" id="addthistomyitinerary" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink;?>|">Remove this in your itinerary<span>&times;</span></span></li>//-->
+												<!--//<li class="nomarginright"><span class="gallerySpanHead additinerarybutton" id="addthistomyitinerary" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink();?>">Remove this in your itinerary<span>&times;</span></span></li>//-->
 												<?php
 											}else{
 												?>
-												<li class="nomarginright"><span class="gallerySpanHead additinerarybutton" id="addthistomyitinerary" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink;?>|">Add to Itinerary</span></li>
+												<li class="nomarginright"><span class="gallerySpanHead additinerarybutton" id="addthistomyitinerary" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink();?>">Add to Itinerary</span></li>
 												<?php
 											}
 										}else{
 										?>
-											<li class="nomarginright"><span class="gallerySpanHead additinerarybutton" id="addthistomyitinerary" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink;?>|">Add to Itinerary</span></li>
+											<li class="nomarginright"><span class="gallerySpanHead additinerarybutton" id="addthistomyitinerary" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink();?>">Add to Itinerary</span></li>
 										<?php
 										}
 									?>

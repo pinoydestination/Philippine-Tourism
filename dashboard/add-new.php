@@ -78,16 +78,40 @@ if($_POST){
 		
 		
 		
-		<script type="text/javascript" src="scripts/wysiwyg.js"></script>
-		<script type="text/javascript" src="scripts/wysiwyg-settings.js"></script>
-		
+		<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+		<link rel="stylesheet" href="ckeditor/sample.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
+		<script type="text/javascript" src="ckeditor/sample.js"></script>
 		
 		<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/js/jquery.js"></script>
 		<script type="text/javascript" src="scripts/category.js"></script>
 		
 		<?php if(!$_POST) { ?>
 		<script type="text/javascript">
-			WYSIWYG.attach('postcontent', small);
+			//<![CDATA[
+
+			var editor;
+
+			function changeEnter()
+			{
+				// If we already have an editor, let's destroy it first.
+				if ( editor )
+					editor.destroy( true );
+
+				// Create the editor again, with the appropriate settings.
+				editor = CKEDITOR.replace( 'postcontent',
+					{
+						enterMode		: Number( 1 ),
+						shiftEnterMode	: Number( 2 ),
+						extraPlugins : 'autogrow',
+						autoGrow_maxHeight : 800,
+						// Remove the Resize plugin as it does not make sense to use it in conjunction with the AutoGrow plugin.
+						removePlugins : 'resize'
+					});
+			}
+
+			window.onload = changeEnter;
+
+				//]]>
 		</script>
 		<?php }?>
 </head>

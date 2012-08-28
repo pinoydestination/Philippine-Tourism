@@ -102,7 +102,7 @@
 								</ul>
 							</li>
 							<li><a href="<?php bloginfo('url'); ?>">Home</a></li>
-							<li class="weathercentralhead"><a href="<?php bloginfo('url'); ?>/weather/"><span id="weatherdegrees"></span></a></li>
+							<li class="weathercentralhead"><a href="javascript:;"><span id="weatherdegrees"></span></a></li>
 						</ul>
 					</div>
 					<div class="logo">
