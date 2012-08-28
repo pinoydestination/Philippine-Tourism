@@ -1,0 +1,68 @@
+.weathercontainer{
+	width:920px;
+	min-height:400px;
+	background:silver;
+	background: rgb(181,189,200); /* Old browsers */
+	background: -moz-linear-gradient(-45deg,  rgba(181,189,200,1) 0%, rgba(130,140,149,1) 36%, rgba(40,52,59,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(181,189,200,1)), color-stop(36%,rgba(130,140,149,1)), color-stop(100%,rgba(40,52,59,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg,  rgba(181,189,200,1) 0%,rgba(130,140,149,1) 36%,rgba(40,52,59,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg,  rgba(181,189,200,1) 0%,rgba(130,140,149,1) 36%,rgba(40,52,59,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg,  rgba(181,189,200,1) 0%,rgba(130,140,149,1) 36%,rgba(40,52,59,1) 100%); /* IE10+ */
+	background: linear-gradient(135deg,  rgba(181,189,200,1) 0%,rgba(130,140,149,1) 36%,rgba(40,52,59,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8', endColorstr='#28343b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	border-radius:5px;
+	border-bottom:3px solid #7C868F;
+	padding:10px;
+	text-shadow:1px 1px 0px rgba(0,0,0,.2);
+}
+
+.floatweather.center{
+	text-align:center;
+}
+.floatweather{
+	float:left;
+	width:185px;
+	min-height:250px;
+	padding:20px;
+}
+.details{
+	padding-top:40px;
+	font-size:25px;
+	font-family:"Arial Narrow", Arial, Helvetica, sans-serif;
+	color:#fff;
+	width:655px;
+}
+.floatweather h1{
+	font-size:130px;
+	font-family:"Arial Narrow", Arial, Helvetica, sans-serif;
+	color:#fff;
+	padding:0;
+	margin:0;
+	display:block;
+	font-weight:bold;
+	text-shadow:0px 1px 10px rgba(0,0,0,.2);
+} 
+.floatweather span.cond{
+	font-size:23px;
+	font-family:"Arial Narrow", Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	text-shadow:0px 1px 10px rgba(0,0,0,.2);
+	color:#fff;
+	text-shadow:0px 1px 10px rgba(0,0,0,.2);
+}
+.locationid{
+	font-size:45px;
+	display:block;
+	border-bottom:1px solid #fff;
+	padding-bottom:10px;
+}
+span.sundial{
+	margin-right:0px;
+	margin-left:5px;
+	background:#fff;
+	padding:12px;
+	font-size:11px;
+	margin-top:0px;
+	color:#8F98A2;
+	text-shadow:0px 0px 0px rgba(0,0,0,.0);
+}
