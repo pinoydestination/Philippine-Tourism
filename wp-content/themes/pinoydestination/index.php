@@ -93,6 +93,27 @@
 						<div class="homepageothers">
 							<div class="homepageothersleft">
 								<h1 class="myriad_pro_bold_condensed wheretostay">Recent Reviews</h1>
+								<div class="commentlist">
+									<ul class="commentlistul">
+									<?php 
+									$comments = getRecentComments(4);
+									if(is_array($comments)){
+										foreach($comments as $comment){
+										?>
+											<li>
+												<a href="/profile/<?php echo $comment->user_id; ?>/<?php echo $comment->comment_author; ?>"><?php echo $comment->comment_author; ?></a> on <a href="<?php echo $comment->guid; ?>#review-<?php echo $comment->comment_ID; ?>"><strong><?php echo $comment->post_title; ?></strong></a>
+												<p>
+													&ldquo;<?php echo $comment->comment_content; ?>&rdquo;
+												</p>
+											</li>
+										<?php
+										}
+									}else{
+										echo "No user reviews yet";
+									}
+									?>
+									</ul>
+								</div>
 							</div>
 							
 							<div class="homepageothersleft norightmargin">

@@ -51,6 +51,7 @@
 	$newCat = rearrangeCategory($newCat,$arrCatAll);
 	
 	$GLOBALS['Current_City'] = $finalCat;
+	global $finalCat;
 	
 	if($activateDestinationCss){
 		?>
@@ -220,7 +221,9 @@
 							
 							<div class="commenthead">
 								<div class="floatleft">
-									<h1 class="comment"><?php comments_number('No Reviews Yet', 'One Review', '% Reviews from our users'); ?> </h1>
+									<a name="reviews">
+										<h1 class="comment" name="reviews"><?php comments_number('No Reviews Yet', 'One Review', '% Reviews from our users'); ?> </h1>
+									</a>
 								</div>
 								<div class="floatright2">
 									<?php
@@ -329,32 +332,8 @@
 								<img class="staticgmap" width="300" height="400" border="0" src="http://www.pinoydestination.com/gstatic.php?address=<?php echo $GLOBALS['Current_Location']; ?>&zoom=13&size=292x400" />
 							</div>
 							
-													
-							<span class="myriad_pro_bold_condensed sidebarheader"><?php echo get_the_title(); ?> Side Trips</span>
-							<div class="sidetrip">
-								<?php for($x=0;$x<=3;$x++){ ?>
-								<div class="sidetripcontent">
-									<div class="leftcont">
-										
-									</div>
-									<div class="rightcont">
-										<div class="sidetriptitle">
-											<span class="title">Boracay Island</span>
-											<span class="loc">Boracay Island, Aklan</span>
-										</div>
-										<div>
-											<div class="star">
-												<div class="star2" style="width:75%;">&nbsp;</div>
-											</div>
-											<span class="readmoresidetrip"><a href="#" class="sidetriphref">257 reviews</a></span>
-											<br clear="all" />
-										</div>
-									</div>
-									<br clear="all" />
-								</div>
-								<?php } ?>
-								<div class="sidefoot">&nbsp;</div>
-							</div>
+							<?php include("sidetrip_sidebar.php"); ?>
+							
 						</div>
 					</div>
 					<br clear="all" />

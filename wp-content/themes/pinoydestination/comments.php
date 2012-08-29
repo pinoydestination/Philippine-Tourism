@@ -49,7 +49,7 @@
 	<div class="divreviewcontainer" name="comment-<?php comment_ID(); ?>" id="comment-<?php comment_ID(); ?>">
 		<div class="divreviewinfo">
 			<?php echo get_avatar(get_comment_author_email(), "75", null); ?>
-			<span><a href="/profile/<?php comment_author(); ?>/"><?php comment_author_link(); ?></a></span>
+			<span><a name="review-<?php comment_ID(); ?>" href="/profile/<?php comment_author(); ?>/"><?php comment_author_link(); ?></a></span>
 			<span>Singapore, Singapore</span>
 			<span class="usertype">Reviewer</span>
 			<div class="otherinfo">

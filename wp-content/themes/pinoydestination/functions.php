@@ -1,4 +1,138 @@
 <?php
+function getRecentComments($limit=5){
+	global $wpdb;
+	global $table_prefix;
+	global $thumbdir;
+	global $blogurl;
+	
+	$sql = "SELECT 
+				posts.post_title,
+				posts.guid,
+				comments.comment_author,
+				comments.comment_author_email,
+				comments.comment_author_url,
+				comments.comment_date,
+				comments.comment_date_gmt,
+				comments.comment_content,
+				comments.user_id,
+				comments.comment_ID
+			FROM
+				".$table_prefix."comments AS comments
+			INNER JOIN
+				".$table_prefix."posts AS posts ON comments.comment_post_ID = posts.ID
+				
+			ORDER BY comments.comment_ID DESC
+
+			LIMIT ".$limit;
+	$rows = $wpdb->get_results( $sql );
+	return $rows;
+}
+
+function getSideTrips($location,$limit=5){
+	global $wpdb;
+	global $table_prefix;
+	global $thumbdir;
+	global $blogurl;
+	
+	$sql = 'SELECT 
+				"" AS thumb,
+				/*SUM(rates.ratings) AS totalRate, */
+				"" AS ratings,
+				locInfo.*,
+				posts.guid,
+				posts.post_name,
+				posts.post_title,
+				posts.post_content,
+				"thumb"
+			FROM
+				'.$table_prefix.'other_info AS locInfo
+
+			/*INNER JOIN
+				'.$table_prefix.'ratings AS rates ON locInfo.post_id = rates.post_id*/
+			INNER JOIN
+				'.$table_prefix.'posts AS posts ON locInfo.post_id = posts.ID ';
+				
+	if(isset($location)){
+		$sql .= 'WHERE
+					  locInfo.location_address LIKe "%'.$location.'%"
+					AND posts.post_status="publish" ';
+	}else{
+		$sql .= 'WHERE posts.post_status="publish" ';
+	}
+				
+	$sql .= 'GROUP BY locInfo.post_id
+			 ORDER BY posts.ID DESC
+			/* ORDER BY totalRate DESC*/';
+			
+			
+			 
+	if(isset($limit)){
+		$sql .= ' LIMIT '.$limit;
+	}
+	$result = $wpdb->get_results( $sql );
+	
+	$finalResult = Array();
+	foreach($result as $res){
+		$rating = getUserRate($res->post_id);
+		$img = getImage($res->post_id);
+		
+		$img = $img->thumb;
+		$img2= $blogurl.$thumbdir.$img;
+		if(file_exists($img2)){
+			$img = $thumbdir.$img;
+		}else{
+			$img = "/gray.jpg";
+		}
+		
+		$res->thumb = $img;
+		$tmpTotal = (($rating->total_respondents)*100);
+		$tmpTotalResp = $rating->total_respondents;
+		if($tmpTotalResp <= 0){
+			$resp = 0;
+		}else{
+			$resp = $tmpTotalResp;
+		}
+		if($tmpTotal <=0){
+			$rate = 0;
+		}else{
+			$rate = floor((($rating->total_rate/$tmpTotal)*50)+50);
+		}
+		$res->ratings = array("total"=>$resp,
+							  "rate"=>$rate);
+	}
+	return $result;
+}
+
+function getUserRate($post_id){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = "SELECT 
+				post_id,
+				COUNT(id) AS total_respondents,
+				SUM(ratings) AS total_rate 
+			FROM
+			".$table_prefix."ratings
+			WHERE post_id = '".$post_id."'
+			GROUP BY post_id";
+
+	$result = $wpdb->get_row( $sql );
+	return $result;
+}
+
+function getImage($post_id,$limit=1){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = "SELECT * FROM ".$table_prefix."images WHERE post_id='".$post_id."'";
+	if(isset($limit)){
+		$sql .= ' LIMIT '.$limit;
+	}	
+	$result = $wpdb->get_row( $sql );
+	return $result;
+}
+
+
 function rearrangeCategory($arrcat, $arrArrangement){
 	$tmpCat = Array();
 	$tmpCatNotInList = Array();
@@ -65,11 +199,6 @@ function wplogin_filter( $url, $path, $orig_scheme )
 
 add_action('admin_init', 'restrict_admin_with_redirect');
 add_filter('site_url',  'wplogin_filter', 10, 3);
-
-
-function getImages($post_id,$wpdb){
-	
-}
 
 function QueryParent($catID,$wpdb){
 	$tablePrefix = $wpdb->prefix;
