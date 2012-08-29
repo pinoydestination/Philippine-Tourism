@@ -5,10 +5,11 @@
 					<div class="right">
 						<strong class="footertitle">2012 &copy; Pinoy Destination. All Rights Reserved.</strong>
 						<p>
-							Managed and maintained by Pinoy Destination, City of Dasmarinas, Cavite. All images, media and other digital content are property of Pinoy Destination. For other information please refer to our <a href="#">legal</a> section.
+							Managed and maintained by Pinoy Destination, City of Dasmarinas, Cavite. All images, media and other digital content are property of Pinoy Destination. For other information please refer to our <a href="<?php bloginfo("url"); ?>/company/legal">legal</a> section.
 						</p>
+						
 						<p>
-							<a href="javascript:void(0);">Sitemap</a> | <a href="javascript:void(0);">Privacy</a> | <a href="javascript:void(0);">Disclaimer Notice</a> | <a href="javascript:void(0);">Contact Us</a> | <a href="javascript:void(0);">Thanks</a> 
+							<a href="<?php bloginfo("url"); ?>/company/sitemap">Sitemap</a> | <a href="<?php bloginfo("url"); ?>/company/privacy-policy">Privacy</a> | <a href="<?php bloginfo("url"); ?>/company/disclaimer">Disclaimer Notice</a> | <a href="<?php bloginfo("url"); ?>/company/contacts">Contact Us</a> | <a href="<?php bloginfo("url"); ?>/company/special-thanks">Thanks</a> 
 						</p>
 						
 						<p>

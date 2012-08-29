@@ -14,7 +14,7 @@ foreach($events as $event){
 		<strong class="calendartitle"><?php echo $event->titleOfActivity; ?></strong>
 		<?php echo $event->activityTags; ?>
 		<div class="desc">
-			<?php echo ($event->descriptionOfActivity); ?>
+			<?php echo stripcslashes($event->descriptionOfActivity); ?>
 		</div>
 		<p class="readmore">
 			<a href="/calendar-of-events">Show Event Calendar</a>

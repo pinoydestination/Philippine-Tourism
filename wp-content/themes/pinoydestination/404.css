@@ -1,3 +1,16 @@
+
+.mainbodycontent.style404 div.404search{
+	margin:10px 0px;
+	padding:20px 0px;
+	display:block;
+}
+
+.mainbodycontent.style404 div.404search form input[type=text]{
+	padding:5px;
+	width:400px;
+	display:block;
+}
+
 .style404{
 	text-align:center;
 	font-family:Arial, Helvetica, sans-serif;
@@ -50,6 +63,7 @@
 	text-align:left;
 	float:none !important;
 	padding-top:30px;
+	min-height:0px !important;
 }
 
 .style404 .left ul{
