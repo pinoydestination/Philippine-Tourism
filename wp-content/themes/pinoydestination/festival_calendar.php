@@ -1,19 +1,26 @@
+<?php
+$events = getEvents(1);
+foreach($events as $event){
+	$month = date("F",$event->eventDateInt);
+	$day = date("d",$event->eventDateInt);
+?>
 <span class="myriad_pro_bold_condensed sidebarheader">Philippine Festival</span>
 <div class="calendar">
 	<div class="calendarbg">
-		<span class="month myriad_pro_bold_condensed">October</span>
-		<span class="date myriad_pro_bold_condensed">19</span>
+		<span class="month myriad_pro_bold_condensed"><?php echo $month; ?></span>
+		<span class="date myriad_pro_bold_condensed"><?php echo $day; ?></span>
 	</div>
 	<div class="calendardetails">
-		<strong class="calendartitle">MassKara Festival</strong>
-		Bacolod City
+		<strong class="calendartitle"><?php echo $event->titleOfActivity; ?></strong>
+		<?php echo $event->activityTags; ?>
 		<div class="desc">
-			The MassKara Festival is a festival held each year in Bacolod City, the capital of Negros Occidental province in the Philippines every third weekend of October nearest October 19, the city's Charter Inauguration Anniversary.
+			<?php echo ($event->descriptionOfActivity); ?>
 		</div>
 		<p class="readmore">
-			<a href="#">Read More</a>
+			<a href="/calendar-of-events">Show Event Calendar</a>
 		</p>
 	</div>
 	<br clear="all" />
 </div>
+<?php } ?>
 <div class="sidebarshadow">&nbsp;</div>

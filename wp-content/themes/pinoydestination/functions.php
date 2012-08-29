@@ -1,4 +1,24 @@
 <?php
+function getEvents($limit){
+	global $wpdb;
+	global $table_prefix;
+	
+	$date = date("Y-m-d 00:00:00");
+	
+	$sql = "SELECT * FROM
+				".$table_prefix."calendar
+			WHERE
+				dateOfActivity >= '".$date."'
+			ORDER BY dateOfActivity ASC	
+			";
+	if($limit != ""){
+		$sql .= " LIMIT ".$limit;
+	}
+			
+	$results = $wpdb->get_results( $sql );
+	return $results;
+}
+
 function getRecentComments($limit=5){
 	global $wpdb;
 	global $table_prefix;
