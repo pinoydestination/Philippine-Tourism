@@ -1,4 +1,35 @@
 <?php
+function getMenu($type="destination"){
+	global $wpdb;
+	global $table_prefix;
+	$sql = 'SELECT
+				terms.term_id AS parent_id,
+				terms.slug AS parent_slug,
+				terms.name AS category_location,
+				terms2.name AS category_type,
+				terms2.slug,
+				terms2.term_id AS cat_id
+			FROM
+				'.$table_prefix.'terms AS terms
+				
+			INNER JOIN
+				'.$table_prefix.'term_taxonomy AS taxonomy ON terms.term_id = taxonomy.term_id
+			INNER JOIN
+				'.$table_prefix.'term_taxonomy AS taxonomy2  ON taxonomy2.parent = terms.term_id
+			INNER JOIN
+				'.$table_prefix.'terms AS terms2 ON taxonomy2.term_id = terms2.term_id
+				
+			WHERE
+				taxonomy.taxonomy = "category"
+				
+				AND terms2.name LIKE "%'.$type.'%"
+				
+				ORDER BY terms.term_id ASC';
+				
+	$results = $wpdb->get_results( $sql );
+	return $results;
+}
+
 function getEvents($limit){
 	global $wpdb;
 	global $table_prefix;

@@ -85,40 +85,20 @@
 						
 						<div class="homepageothers">
 							<div class="homepageothersleft">
-								<h1 class="myriad_pro_bold_condensed wheretostay">Recent Reviews</h1>
-								<div class="commentlist">
-									<ul class="commentlistul">
-									<?php 
-									$comments = getRecentComments(4);
-									if(is_array($comments)){
-										foreach($comments as $comment){
-										?>
-											<li>
-												<a href="/profile/<?php echo $comment->user_id; ?>/<?php echo $comment->comment_author; ?>"><?php echo $comment->comment_author; ?></a> on <a href="<?php echo $comment->guid; ?>#review-<?php echo $comment->comment_ID; ?>"><strong><?php echo $comment->post_title; ?></strong></a>
-												<p>
-													&ldquo;<?php echo $comment->comment_content; ?>&rdquo;
-												</p>
-											</li>
-										<?php
-										}
-									}else{
-										echo "No user reviews yet";
-									}
-									?>
-									</ul>
-								</div>
+								<h1 class="myriad_pro_bold_condensed wheretostay">Pinoy Destination Blog</h1>
+								
 							</div>
 							
 							<div class="homepageothersleft norightmargin">
-								<h1 class="myriad_pro_bold_condensed wheretostay">Tourism News</h1>
+								<h1 class="myriad_pro_bold_condensed wheretostay">Philippine Tourism News</h1>
 							</div>
 							<br clear="all" />
 						</div>
 						
 						<div class="blogsection">
-							<h1 class="myriad_pro_bold_condensed wheretostay">Our Blog</h1>
-							<div>
-								
+							<h1 class="myriad_pro_bold_condensed wheretostay">Recent Reviews</h1>
+							<div class="commentlist">
+								<?php include("index_reviews.php"); ?>
 							</div>
 						</div>
 						

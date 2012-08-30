@@ -229,11 +229,11 @@
 									<?php
 									if($current_user->ID == 0 || $current_user->ID <=0){
 										?>
-										<a id="submitreview" href="/login/?redirect_to=<?php echo urlencode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); ?>" class="reviewbutton">Login to Submit Review</a>
+										<a id="submitreview" href="/login/?redirect_to=<?php echo urlencode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); ?>" class="reviewbutton">Login to Share your Experience!</a>
 										<?php
 									}else{
 										?>
-										<a id="submitreview" href="javascript:void(0);" class="reviewbutton">Submit a Review</a>
+										<a id="submitreview" href="javascript:void(0);" class="reviewbutton">Share Your Experience</a>
 										<?php	
 									}?>
 									

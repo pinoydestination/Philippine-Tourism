@@ -16,9 +16,11 @@ foreach($events as $event){
 		<div class="desc">
 			<?php echo stripcslashes($event->descriptionOfActivity); ?>
 		</div>
+		<?php /*
 		<p class="readmore">
 			<a href="/calendar-of-events">Show Event Calendar</a>
 		</p>
+		*/ ?>
 	</div>
 	<br clear="all" />
 </div>

@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start(); 
+global $category_base;
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" > 
 <head>
@@ -70,35 +72,38 @@
 						<ul class="menulinks">
 							<li class="haschild"><a href="#">Restaurants</a>
 								<ul>
-									<li><a href="#">Baguio</a></li>
-									<li><a href="#">Manila</a></li>
-									<li><a href="#">Cebu</a></li>
-									<li><a href="#">Davao</a></li>
-									<li><a href="#">Luzon</a></li>
-									<li><a href="#">Visayas</a></li>
-									<li><a href="#">Mindanao</a></li>
+									<?php
+										$menu = getMenu( "restaurant" );
+										foreach($menu as $m){
+										?>
+											<li><a href="<?php echo $category_base."/philippines/".$m->parent_slug."/".$m->slug; ?>"><?php echo $m->category_location; ?></a></li>
+										<?php
+										}
+									?>
 								</ul>
 							</li>
 							<li class="haschild"><a href="#">Hotels</a>
 								<ul>
-									<li><a href="#">Baguio</a></li>
-									<li><a href="#">Manila</a></li>
-									<li><a href="#">Cebu</a></li>
-									<li><a href="#">Davao</a></li>
-									<li><a href="#">Luzon</a></li>
-									<li><a href="#">Visayas</a></li>
-									<li><a href="#">Mindanao</a></li>
+									<?php
+										$menu = getMenu( "hotel" );
+										foreach($menu as $m){
+										?>
+											<li><a href="<?php echo $category_base."/philippines/".$m->parent_slug."/".$m->slug; ?>"><?php echo $m->category_location; ?></a></li>
+										<?php
+										}
+									?>
 								</ul>
 							</li>
 							<li class="haschild"><a href="#">Destinations</a>
 								<ul>
-									<li><a href="#">Baguio</a></li>
-									<li><a href="#">Boracay</a></li>
-									<li><a href="#">Bohol</a></li>
-									<li><a href="#">Manila</a></li>
-									<li><a href="#">Luzon</a></li>
-									<li><a href="#">Visayas</a></li>
-									<li><a href="#">Mindanao</a></li>
+									<?php
+										$menu = getMenu( "destination" );
+										foreach($menu as $m){
+										?>
+											<li><a href="<?php echo $category_base."/philippines/".$m->parent_slug."/".$m->slug; ?>"><?php echo $m->category_location; ?></a></li>
+										<?php
+										}
+									?>
 								</ul>
 							</li>
 							<li><a href="<?php bloginfo('url'); ?>">Home</a></li>

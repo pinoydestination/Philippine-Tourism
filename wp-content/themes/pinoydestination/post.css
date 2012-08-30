@@ -143,7 +143,7 @@ h1.comment{
 	font-family:"Arial Narrow",Arial,Helvetica, sans-serif;
 }
 .floatleft{
-	width:360px;
+	width:390px;
 	height:auto;
 	float:left;
 }
@@ -152,7 +152,7 @@ h1.comment{
 	margin:0;
 }
 .floatright2{
-	width:160px;
+	width:auto;
 	height:auto;
 	float:right;
 	text-align:right;
