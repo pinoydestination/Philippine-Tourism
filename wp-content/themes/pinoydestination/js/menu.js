@@ -88,7 +88,7 @@ $(document).ready(function(){
 	});
 	
 	$("#submitreview").die().click(function(){
-		if($(this).html() == "Submit a Review"){
+		if($(this).html() == "Share Your Experience"){
 			$("#write-a-review").fadeIn({duration: 1500, easing: 'easeOutExpo' });
 			return false;
 		}else{
