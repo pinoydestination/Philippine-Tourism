@@ -70,7 +70,7 @@ global $category_base;
 				<div class="menucontainer">
 					<div class="menu curveleft noleftmargin">
 						<ul class="menulinks">
-							<li class="haschild"><a href="#">Restaurants</a>
+							<li class="haschild"><a href="/landing/restaurant">Restaurants</a>
 								<ul>
 									<?php
 										$menu = getMenu( "restaurant" );
@@ -82,7 +82,7 @@ global $category_base;
 									?>
 								</ul>
 							</li>
-							<li class="haschild"><a href="#">Hotels</a>
+							<li class="haschild"><a href="/landing/hotel">Hotels</a>
 								<ul>
 									<?php
 										$menu = getMenu( "hotel" );
@@ -94,7 +94,7 @@ global $category_base;
 									?>
 								</ul>
 							</li>
-							<li class="haschild"><a href="#">Destinations</a>
+							<li class="haschild"><a href="/landing/destination">Destinations</a>
 								<ul>
 									<?php
 										$menu = getMenu( "destination" );

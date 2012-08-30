@@ -2,6 +2,8 @@
 RewriteEngine On
 RewriteBase /
 
+RewriteRule ^landing/(.*)$ /off-page/landing.php?category=$1 [L]
+
 RewriteRule ^dashboard-login /wp-login.php [L]
 RewriteRule ^dashboard-login/ /wp-login.php [L]
 

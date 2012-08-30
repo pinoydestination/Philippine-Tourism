@@ -1,4 +1,54 @@
 <?php
+function getAllPostUnder($category_type="destination"){
+	
+}
+
+function getPostUnder($category_id){
+	global $wpdb;
+	global $table_prefix;
+}
+
+function getOtherInfo($post_id){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = 'SELECT * FROM
+				cutsandp_destination_other_info
+			WHERE
+				post_id="'.$post_id.'"';
+	$result = $wpdb->get_row( $sql );
+	return $result;
+}
+
+function categorySpecific($category_type="destination"){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = 'SELECT
+				terms.term_id AS parent_id,
+				terms.slug AS parent_slug,
+				terms.name AS category_location,
+				terms2.name AS category_type,
+				terms2.slug,
+				terms2.term_id AS cat_id
+			FROM
+				'.$table_prefix.'terms AS terms
+				
+			INNER JOIN
+				'.$table_prefix.'term_taxonomy AS taxonomy ON terms.term_id = taxonomy.term_id
+			INNER JOIN
+				'.$table_prefix.'term_taxonomy AS taxonomy2  ON taxonomy2.parent = terms.term_id
+			INNER JOIN
+				'.$table_prefix.'terms AS terms2 ON taxonomy2.term_id = terms2.term_id
+				
+			WHERE
+				taxonomy.taxonomy = "category"
+				
+				AND terms2.slug LIKE "%'.$category_type.'%"';
+				
+	$results = $wpdb->get_results( $sql );
+	return $results;
+}
 function getMenu($type="destination"){
 	global $wpdb;
 	global $table_prefix;
@@ -123,6 +173,7 @@ function getSideTrips($location,$limit=5){
 	$result = $wpdb->get_results( $sql );
 	
 	$finalResult = Array();
+	
 	foreach($result as $res){
 		$rating = getUserRate($res->post_id);
 		$img = getImage($res->post_id);
@@ -178,8 +229,12 @@ function getImage($post_id,$limit=1){
 	$sql = "SELECT * FROM ".$table_prefix."images WHERE post_id='".$post_id."'";
 	if(isset($limit)){
 		$sql .= ' LIMIT '.$limit;
-	}	
-	$result = $wpdb->get_row( $sql );
+	}
+	if($limit <= 1){
+		$result = $wpdb->get_row( $sql );
+	}else{
+		$result = $wpdb->get_results( $sql );
+	}
 	return $result;
 }
 

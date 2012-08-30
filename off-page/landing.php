@@ -1,11 +1,16 @@
-<?php get_header();
+<?php
+/** Sets up the WordPress Environment. */
+require( '../wp-load.php' );
+get_header();
 ?>
+<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory');?>/category.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
+<link type="text/css" rel="stylesheet" href="<?php bloginfo('stylesheet_directory');?>/landingpage.css" />
 <link href="<?php bloginfo('stylesheet_directory'); ?>/post.css" rel="stylesheet" />
-<link href="<?php bloginfo('stylesheet_directory'); ?>/blue.css" rel="stylesheet" />
+<link href="<?php bloginfo('stylesheet_directory');?>/hotelpost.css" rel="stylesheet" />
 
 <div class="mainbodycontent" id="mainDocument">
 	<div class="left" id="leftSidePanel">
-
+		
 		<div class="postBread">
 			<ul class="breadList">
 			<?php
@@ -37,47 +42,26 @@
 			</ul>
 		</div>
 		<div class="postTitle greenbgnew">
-			<h1 class="title"><?php
-			printf( __( '%s', 'twentyeleven' ), '' . ucfirst(single_cat_title( '', false )) . '' );
-			?></h1>
+			<h1 class="title">Philippines: <?php echo ucwords($_GET['category']); ?></h1>
 			
 		</div>
 		<div class="homepageshadow">&nbsp;</div>
 		
 		<div>
-			<?php 
-			if ( have_posts() ) : 
-			?>
-			<?php while ( have_posts() ) : the_post(); 
-				
-				$postID = get_the_ID();
-				
-				
-				$allCat = null;
+		<?php
+		$catPost = categorySpecific($_GET['category']);
+		foreach($catPost as $cat){
+			$arrCat[] = $cat->cat_id;
 			
-				//Get Star Ratings
-				$sql = "SELECT * FROM ". $wpdb->prefix . "ratings WHERE post_id='".$postID."'";
-				$starRating = $wpdb->get_results($sql);
-				
-				if(count($starRating) > 0){
-					$totalStarRate = count($starRating);
-					$currentRating = 0;
-					foreach($starRating as $ratings){
-						$currentRating = ($currentRating)+($ratings->ratings);
-					}
-					$starRate = $currentRating;
-					$overAllTotal = $totalStarRate*100;
-					$starComputeFinal = floor((($starRate/$overAllTotal)*50)+50);
-				}else{
-					$starComputeFinal = 0;
-				}
-				
-				/*Get Special Info*/
+			
+		}
+		$the_query = new WP_Query( array('category__in' => $arrCat) );
+		if ( $the_query->have_posts() ) : 
+			// The Loop
+			while ( $the_query->have_posts() ) : $the_query->the_post();
+				$images = getImage(get_the_id(),"15");
 				$otherInfoData = getOtherInfo(get_the_id());
-				$imageListing = getImage(get_the_id(),"999");
-
-			?>
-
+				?>
 				<div class="searchresultBox">
 					<div class="searchResultTitle">
 						<div style="float:left;">
@@ -93,25 +77,27 @@
 						<?php
 						$showmore=false;
 						$x=1;
-						foreach($imageListing as $img){
-							if($x<=10){
-						?>
+						if(is_array($images) && count($images) >=1){
+							foreach($images as $img){
+								if($x<=10){
+							?>
 
-						<a data-fancybox-group="gallery<?php echo get_the_ID(); ?>" href="/uploads/destinations/<?php echo $img->original; ?>" class="imageset fancybox">
-								<img src="<?php bloginfo('stylesheet_directory'); ?>/images/gray.jpg" data-original="/uploads/thumbs/<?php echo $img->original; ?>" border="0" />
-							</a>
-						
-						<?php 
-								$x++;
-							}else{
-								$showmore = true;
-							} 
-						}
+							<a data-fancybox-group="gallery<?php echo get_the_ID(); ?>" href="/uploads/destinations/<?php echo $img->original; ?>" class="imageset fancybox">
+									<img src="<?php bloginfo('stylesheet_directory'); ?>/images/gray.jpg" data-original="/uploads/thumbs/<?php echo $img->original; ?>" border="0" />
+								</a>
+							
+							<?php 
+									$x++;
+								}else{
+									$showmore = true;
+								} 
+							}
 
-						if($showmore){
-						?>
-						<a href="<?php the_permalink();?>?gallery=show" class="catviewgallery">View Gallery</a>
-						<?php
+							if($showmore){
+							?>
+							<a href="<?php the_permalink();?>?gallery=show" class="catviewgallery">View Gallery</a>
+							<?php
+							}
 						}
 
 						?>
@@ -134,26 +120,30 @@
 						 <?php } ?>
 					</div>
 				</div>
-
-			<?php 
-			endwhile; 
-			else: ?>
-			No result found
-			<?php endif; ?>							
-		</div>
+				<?php
+			endwhile;
+			
+			// Reset Post Data
+			wp_reset_postdata();
+		else:
+			echo "no post found";
+		endif;
+		?>
 		
+		</div>
 	</div>
-					
 	<?php
-					
+
 	/**
 	 * Sidebar
 	 */
 	get_sidebar();
 	
 	?>
-					
+	
 	<br clear="all" />
+
 </div>
-				
-	<?php get_footer(); ?>
+<?php
+get_footer();
+?>

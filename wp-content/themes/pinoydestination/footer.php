@@ -13,7 +13,7 @@
 						</p>
 						
 						<p>
-							<strong>In God We Trust</strong>
+							<strong>To God Be The Glory!</strong>
 						</p>
 					</div>
 					<br clear="all" />
