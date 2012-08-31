@@ -15,7 +15,7 @@ global $category_base;
 			<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/category.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
 		<?php } ?>
 		
-		<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/borabeach.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
+		<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/palawan.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
 		
 		<script src="<?php bloginfo("stylesheet_directory"); ?>/js/jquery.js" type="text/javascript"></script>
 		<script src="<?php bloginfo("stylesheet_directory"); ?>/js/menu.js" type="text/javascript"></script>

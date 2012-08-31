@@ -29,6 +29,9 @@
 	display:block;
 	color:#fff;
 }
+.postTitle span.phonenumber a{
+	color:#fff;
+}
 .postBread{
 	width:600px;
 	height:auto;

@@ -53,6 +53,11 @@ $(document).ready(function(){
 			success: function(data){
 				$("#olListIti").append(data);
 				$("div#itihead").show();
+				if($("#showmyitinerary").hasClass("activemenu")){
+					/*$("#showmyitinerary").removeClass("activemenu");*/
+				}else{
+					$("#showmyitinerary").addClass("activemenu");
+				}
 				myItineraryReposition();
 			}
 		});
@@ -85,6 +90,11 @@ $(document).ready(function(){
 		return false;
 	});
 	$("a#showmyitinerary").live('click',function(){
+		if($(this).hasClass("activemenu")){
+			$(this).removeClass("activemenu");
+		}else{
+			$(this).addClass("activemenu");
+		}
 		$("div#itihead").toggle();
 		myItineraryReposition();
 		return false;

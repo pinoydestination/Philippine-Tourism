@@ -45,7 +45,7 @@ a{
 	float:left;
 	border-radius:5px;
 	background: #fff;
-	background: rgba(255,255,255,.8);
+	background: rgba(255,255,255,.9);
 	box-shadow:0 5px 5px rgba(0,0,0,.2);
 }
 .norightmargin{
@@ -140,10 +140,20 @@ ul.sub{
 	display:block;
 	text-transform:uppercase;
 	text-decoration:none;
-	padding:9px;
+	padding:10px;
 }
 .menulinks li a:hover{
 	text-decoration:underline;
+}
+.menulinks li a.activemenu{
+	background: none repeat scroll 0 0 #E1E1E1;
+    border-radius: 5px 5px 0 0;
+    color: #313131;
+    margin-top: 2px;
+    padding: 8px 10px;
+    text-shadow: 1px 1px 0 #FFFFFF;
+	font-weight:bold;
+	border:1px solid #FFF;
 }
 .menulinks li ul{
 	background:#000;
@@ -799,6 +809,7 @@ img.staticgmap{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
 	display:none;
 	box-shadow:0 5px 15px rgba(0,0,0,.3);
+	border-top:0 none;
 }
 .itihead h1{
 	color:#514E4E;
@@ -901,9 +912,9 @@ ul.commentlistul{
 ul.commentlistul li{
 	padding-top:10px;
 	display:block;
-	padding:1px 0px;
+	padding:0px 0px;
 	color:#7FB1C3;
-	margin-bottom:10px;
+	margin-bottom:5px;
 }
 ul.commentlistul li a{
 	color:#74939E;
@@ -914,7 +925,7 @@ ul.commentlistul li p.speech{
 	position: relative;
 	width: 576px;
 	height: auto;
-	text-align: center;
+	text-align: left;
 	padding:10px;
 	color:#848484;
 	background: rgb(255,255,255); /* Old browsers */
@@ -930,15 +941,7 @@ ul.commentlistul li p.speech{
 		-webkit-border-radius: 5px;
 		-moz-border-radius: 5px;
 	border-radius: 5px;
-}
-
-ul.commentlistul li p.speech:before{
-	content: ' ';
-	position: absolute;
-	width: 0;
-	height: 0;
-	left: 560px;
-	top: 36px;
-	border: 9px solid transparent;
-	border-color: #EAE8E8  #EAE8E8 transparent transparent;
+	
+	margin:0;
+	border-bottom:2px solid #B0E0E6;
 }

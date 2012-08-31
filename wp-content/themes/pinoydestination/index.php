@@ -83,6 +83,7 @@
 							
 						</div>
 						
+						<?php /*
 						<div class="homepageothers">
 							<div class="homepageothersleft">
 								<h1 class="myriad_pro_bold_condensed wheretostay">Pinoy Destination Blog</h1>
@@ -94,6 +95,7 @@
 							</div>
 							<br clear="all" />
 						</div>
+						*/ ?>
 						
 						<div class="blogsection">
 							<h1 class="myriad_pro_bold_condensed wheretostay">Recent Reviews</h1>

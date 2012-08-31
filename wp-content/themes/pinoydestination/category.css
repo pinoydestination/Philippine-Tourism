@@ -10,7 +10,6 @@ h1.categoryTitle{
 
 .searchresultBox{
     background: none repeat scroll 0 0 red;
-    display: none;
     margin: 20px 20px;
     padding: 10px;
     width: 542px;
@@ -77,6 +76,9 @@ a.imageset img{
     padding: 2px;
     width: 30px;
     background:#fff;
+}
+div.locationaddress a{
+	color:#59788A;
 }
 div.locationaddress{
     background:#fff;

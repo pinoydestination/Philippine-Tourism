@@ -7,11 +7,11 @@ if(is_array($comments)){
 		<li>
 			<p class="speech">
 				&ldquo;<?php echo wp_trim_excerpt( $comment->comment_content ); ?>&rdquo;
-			</p>
-			<br clear="all" />
-			<div style="float:right">
+				<br />
+				&nbsp;
+				<br />
 				<a href="/profile/<?php echo $comment->user_id; ?>/<?php echo $comment->comment_author; ?>"><?php echo $comment->comment_author; ?></a> on <a href="<?php echo $comment->guid; ?>"><strong><?php echo $comment->post_title; ?></strong></a>&nbsp;<a href="<?php echo $comment->guid; ?>#review-<?php echo $comment->comment_ID; ?>">&sharp;<?php echo $comment->comment_ID; ?></a>
-			</div>
+			</p>
 		</li>
 	<?php
 	}

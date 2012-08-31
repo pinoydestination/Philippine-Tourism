@@ -35,4 +35,6 @@
 	display:block;
 	color:#FFF;
 }
-
+.postTitle span.phonenumber a{
+	color:#fff;
+}

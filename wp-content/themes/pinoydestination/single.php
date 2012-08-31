@@ -117,6 +117,9 @@
 								<?php if($otherInfoData->contact_number != ""){ ?>
 									<span class="phonenumber">Phone Number: <?php echo $otherInfoData->contact_number; ?></span>
 								<?php } ?>
+								<?php if($otherInfoData->website != ""){ ?>
+									<span class="phonenumber">Website: <a href="/external/<?php echo $otherInfoData->website; ?>"><?php echo $otherInfoData->website; ?></a></span>
+								<?php } ?>
 							</div>
 							<div class="homepageshadow">&nbsp;</div>
 							
