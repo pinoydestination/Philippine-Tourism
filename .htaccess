@@ -10,6 +10,8 @@ RewriteBase /
 RewriteRule ^landing/(.*)$ /off-page/landing.php?category=$1 [L]
 RewriteRule ^external/(.*)$ /off-page/external.php?url=$1 [L]
 
+RewriteRule ^helpful-vote/(.*)/(.*)/(.*)$ /off-page/helpful-vote.php?comment_id=$1&comment_vote=$2&action_type=$3 [L]
+
 RewriteRule ^dashboard-login /wp-login.php [L]
 RewriteRule ^dashboard-login/ /wp-login.php [L]
 

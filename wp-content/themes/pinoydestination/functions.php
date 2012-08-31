@@ -2,6 +2,160 @@
 function getAllPostUnder($category_type="destination"){
 	
 }
+function alterUserVote($user_id,$comment_id,$vote){
+	global $wpdb;
+	global $table_prefix;
+	
+	$newVote = $vote;
+	$data = array("current_vote"=>$newVote);
+	$where = array("comment_id"=>$comment_id, "user_id"=>$user_id);
+	$result = $wpdb->update($table_prefix."comment_vote",$data ,$where);
+	return $result;
+}
+function addUserVote($user_id,$comment_id,$vote){
+	global $wpdb;
+	global $table_prefix;
+	
+	$data = array("comment_id"=>$comment_id,
+				  "user_id"=>$user_id,
+				  "current_vote"=>$vote);
+	$table = $table_prefix."comment_vote";
+	
+	$result = $wpdb->insert($table, $data);
+	return $result;
+}
+function checkCommentVoteStatus($user_id,$comment_id){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = "SELECT * FROM
+			".$table_prefix."comment_vote
+			WHERE
+				user_id = '".$user_id."'
+				
+				AND
+				comment_id='".$comment_id."'";
+
+	$result = $wpdb->get_row( $sql );
+	return $result;
+}
+
+function helpfulVote($comment_id,$comment_vote, $action_type="normal"){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = "SELECT 
+				comment_id,
+				comment_title,
+				likes,
+				dislikes
+			FROM
+			".$table_prefix."ratings
+
+			WHERE 
+				comment_id='".$comment_id."' LIMIT 1";
+				
+	$result = $wpdb->get_row( $sql );
+	
+	switch($comment_vote){
+		case "yes":
+			if($action_type == "change"){
+				$newYesVote = ($result->likes)+1;
+				$newNoVote = ($result->dislikes)-1;
+				$data = array("likes"=>$newYesVote,"dislikes"=>$newNoVote);
+				$where = array("comment_id"=>$comment_id);
+				$result = $wpdb->update($table_prefix."ratings",$data ,$where);
+			}else{
+				$newYesVote = ($result->likes)+1;
+				$data = array("likes"=>$newYesVote);
+				$where = array("comment_id"=>$comment_id);
+				$result = $wpdb->update($table_prefix."ratings",$data ,$where);
+			}
+		break;
+		
+		case "no":
+			if($action_type == "change"){
+				$newYesVote = ($result->likes)-1;
+				$newNoVote = ($result->dislikes)+1;
+				$data = array("likes"=>$newYesVote,"dislikes"=>$newNoVote);
+				$where = array("comment_id"=>$comment_id);
+				$result = $wpdb->update($table_prefix."ratings",$data ,$where);
+			}else{
+				$newNoVote = ($result->dislikes)+1;
+				$data = array("dislikes"=>$newNoVote);
+				$where = array("comment_id"=>$comment_id);
+				$result = $wpdb->update($table_prefix."ratings",$data ,$where);
+			}
+		break;
+	}
+	return $result;
+}
+
+function getUserCommentSummary($user_id){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = "SELECT 
+				COUNT(id) AS total_comments,
+				SUM(likes) AS total_likes,
+				SUM(dislikes) AS total_dislikes,
+				author_id 
+
+			FROM
+			".$table_prefix."ratings
+
+			WHERE author_id = 4";
+	$result = $wpdb->get_row( $sql );
+	return $result;
+}
+
+function getCommentRating($comment_id){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = "SELECT 
+				COUNT(id) AS total,
+				COUNT(id)*100 AS overAllTotal,
+				SUM(ratings) AS sumRate,
+				FLOOR((SUM(ratings)/COUNT(id))*20) AS overAllRatings,
+				comment_title
+			FROM
+			".$table_prefix."ratings
+
+			WHERE 
+				comment_id='".$comment_id."' LIMIT 1";
+				
+	$result = $wpdb->get_row( $sql );
+	if($result->total <=0){
+		$result->overAllTotal = 0;
+		$result->sumRate = 0;
+		$result->overAllRatings = 0;
+	}
+	return $result;
+}
+
+function getPostRatings($post_id){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = "SELECT 
+				COUNT(id) AS total,
+				COUNT(id)*100 AS overAllTotal,
+				SUM(ratings) AS sumRate,
+				FLOOR((SUM(ratings)/COUNT(id))*20) AS overAllRatings
+			FROM
+				".$table_prefix."ratings AS ratings
+				
+			WHERE
+				post_id='".$post_id."'";
+	$result = $wpdb->get_row( $sql );
+	if($result->total <=0){
+		$result->overAllTotal = 0;
+		$result->sumRate = 0;
+		$result->overAllRatings = 0;
+	}
+	return $result;
+}
 
 function getPostUnder($category_id){
 	global $wpdb;
@@ -13,7 +167,7 @@ function getOtherInfo($post_id){
 	global $table_prefix;
 	
 	$sql = 'SELECT * FROM
-				cutsandp_destination_other_info
+				'.$table_prefix.'other_info
 			WHERE
 				post_id="'.$post_id.'"';
 	$result = $wpdb->get_row( $sql );
@@ -175,7 +329,7 @@ function getSideTrips($location,$limit=5){
 	$finalResult = Array();
 	
 	foreach($result as $res){
-		$rating = getUserRate($res->post_id);
+		$rating = getPostRatings($res->post_id);
 		$img = getImage($res->post_id);
 		
 		$img = $img->thumb;
@@ -187,20 +341,9 @@ function getSideTrips($location,$limit=5){
 		}
 		
 		$res->thumb = $img;
-		$tmpTotal = (($rating->total_respondents)*100);
-		$tmpTotalResp = $rating->total_respondents;
-		if($tmpTotalResp <= 0){
-			$resp = 0;
-		}else{
-			$resp = $tmpTotalResp;
-		}
-		if($tmpTotal <=0){
-			$rate = 0;
-		}else{
-			$rate = floor((($rating->total_rate/$tmpTotal)*50)+50);
-		}
-		$res->ratings = array("total"=>$resp,
-							  "rate"=>$rate);
+		
+		$res->ratings = array("total"=>$rating->total,
+							  "rate"=>$rating->overAllRatings);
 	}
 	return $result;
 }

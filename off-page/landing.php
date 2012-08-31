@@ -61,13 +61,15 @@ get_header();
 			while ( $the_query->have_posts() ) : $the_query->the_post();
 				$images = getImage(get_the_id(),"15");
 				$otherInfoData = getOtherInfo(get_the_id());
+				//Get Star Ratings
+				$starComputeFinal = getPostRatings(get_the_ID());
 				?>
 				<div class="searchresultBox">
 					<div class="searchResultTitle">
 						<div style="float:left;">
 							<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 						</div>
-						<div class="star" style="float:right; margin-top:5px;"><div class="star_w2" style="width:<?php echo $starComputeFinal; ?>%;">&nbsp;</div></div>
+						<div class="star" style="float:right; margin-top:5px;"><div class="star_w2" style="width:<?php echo $starComputeFinal->overAllRatings; ?>%;">&nbsp;</div></div>
 						<br clear="all" />
 					</div>
 					<div>

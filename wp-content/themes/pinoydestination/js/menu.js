@@ -8,6 +8,42 @@ $(document).ready(function(){
 	});
 	*/
 	
+	$(".wasthishelpfulbutton").live('click',function(){
+		var arrDat = $(this).attr("id");
+		    arrDat = arrDat.split("-");
+		var action_type = arrDat[0];
+		var comment_vote = arrDat[1];
+		var comment_id = arrDat[2];
+		
+		var parentObject = $(this).parent();
+		var loaderObject = $(this).parent().siblings("div");
+		
+		$.ajax({
+			url: "/helpful-vote/"+comment_id+"/"+comment_vote+"/"+action_type,
+			beforeSend: function(){
+				loaderObject.children("img").fadeIn();
+			},
+			success: function(data){
+				if(data == "error"){
+					str = '<span>Was this post helpful?</span> <span class="errorhelpful">Error, please try again after a little while.</span>';
+				}else if( data == "notlogin"){
+					str = '<span class="errorhelpful">Please login first!</span>';
+				}else{
+					var dataArray = data.split("-");
+					if(dataArray[0] == "yes"){
+						str = '<span>Was this post helpful?</span> <span class="selectedhelpful">Yes</span> or <a class="wasthishelpfulbutton" href="javascript:void(0);" id="changehelpful-no-'+comment_id+'">No</a>';
+					}else if(dataArray[0] == "no"){
+						str = '<span>Was this post helpful?</span> <a href="javascript:void(0);" id="changehelpful-yes-'+comment_id+'" class="wasthishelpfulbutton">Yes</a> or <span class="selectedhelpful">No</span>';
+					}
+				}
+				
+				loaderObject.children("img").hide();
+				parentObject.html(str);
+				
+			}
+		});
+	});
+	
 	$('#searchbutton').click(function(){
 		if($("#searchframe:visible").length <= 0){
 			  

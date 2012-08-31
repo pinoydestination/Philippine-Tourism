@@ -4,23 +4,10 @@
 	$postID = get_the_ID();
 	$activateDestinationCss = false;
 	
-	/*Get Star Ratings*/
+	/*Get Star Ratings*/	
+	$starComputeFinal = getPostRatings(get_the_ID());
 	
-	//Get Author Info
-	$sql = "SELECT * FROM ". $wpdb->prefix . "ratings WHERE post_id='".get_the_ID()."'";
-	$starRating = $wpdb->get_results($sql);
-	if(count($starRating) > 0){
-		$totalStarRate = count($starRating);
-		$currentRating = 0;
-		foreach($starRating as $ratings){
-			$currentRating = ($currentRating)+($ratings->ratings);
-		}
-		$starRate = $currentRating;
-		$overAllTotal = $totalStarRate*100;
-		$starComputeFinal = floor((($starRate/$overAllTotal)*50)+50);
-	}else{
-		$starComputeFinal = 0;
-	}
+	print_r($starComputedFinal);
 	
 	/*Get Special Info*/
 	$sql = "SELECT * FROM ".$wpdb->prefix."other_info WHERE post_id='".$postID."'";
@@ -115,7 +102,7 @@
 								<br clear="all" />
 								</ul>
 								
-								<div class="star_w star_w_white" style="float:right; margin-top:6px;"><div class="star_w2 star_w2_white" style="width:<?php echo $starComputeFinal; ?>%;">&nbsp;</div></div>
+								<div class="star_w star_w_white" style="float:right; margin-top:6px;"><div class="star_w2 star_w2_white" style="width:<?php echo $starComputeFinal->overAllRatings; ?>%;">&nbsp;</div></div>
 							</div>
 							<div class="postTitle greenbgnew">
 								<?php if(isset($_GET['gallery']) && $_GET['gallery'] == "show"){ ?>
@@ -272,11 +259,11 @@
 														<input type="hidden" name="author" id="author" value="<?php echo $userName; ?>" size="22" tabindex="1" />
 														<span class="spanLabel">Rate This Place:</span>
 														<select name="rating" class="dropdownselect">
-															<option value="20">Terrible</option>
-															<option value="40">Good</option>
-															<option value="60">Beyond Expectation</option>
-															<option value="80">Best</option>
-															<option value="100">Excellent</option>
+															<option value="1">Terrible</option>
+															<option value="2">Good</option>
+															<option value="3">Beyond Expectation</option>
+															<option value="4">Best</option>
+															<option value="5">Excellent</option>
 														</select>
 													</p>
 													<p>

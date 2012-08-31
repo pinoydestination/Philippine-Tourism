@@ -56,21 +56,7 @@
 				$allCat = null;
 			
 				//Get Star Ratings
-				$sql = "SELECT * FROM ". $wpdb->prefix . "ratings WHERE post_id='".$postID."'";
-				$starRating = $wpdb->get_results($sql);
-				
-				if(count($starRating) > 0){
-					$totalStarRate = count($starRating);
-					$currentRating = 0;
-					foreach($starRating as $ratings){
-						$currentRating = ($currentRating)+($ratings->ratings);
-					}
-					$starRate = $currentRating;
-					$overAllTotal = $totalStarRate*100;
-					$starComputeFinal = floor((($starRate/$overAllTotal)*50)+50);
-				}else{
-					$starComputeFinal = 0;
-				}
+				$starComputeFinal = getPostRatings(get_the_ID());
 				
 				/*Get Special Info*/
 				$otherInfoData = getOtherInfo(get_the_id());
@@ -83,7 +69,7 @@
 						<div style="float:left;">
 							<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 						</div>
-						<div class="star" style="float:right; margin-top:5px;"><div class="star_w2" style="width:<?php echo $starComputeFinal; ?>%;">&nbsp;</div></div>
+						<div class="star" style="float:right; margin-top:5px;"><div class="star_w2" style="width:<?php echo $starComputeFinal->overAllRatings; ?>%;">&nbsp;</div></div>
 						<br clear="all" />
 					</div>
 					<div>
