@@ -35,11 +35,9 @@
 						<ul>
 							<li><strong>Other Reasons to Visit</strong></li>
 							<li><a href="#">Festivals</a></li>
-							<li><a href="#">Resorts and Beaches</a></li>
-							<li><a href="#">Tourist Attractions</a></li>
-							<li><a href="#">The Nightlife</a></li>
-							<li><a href="#">Our Food</a></li>
-							<li><a href="#">The People</a></li>
+							<li><a href="/landing/beach">Resorts and Beaches</a></li>
+							<li><a href="/landing/destination">Tourist Attractions</a></li>
+							<li><a href="/landing/restaurant">Our Food</a></li>
 						</ul>
 						<br clear="all" />
 					</div>

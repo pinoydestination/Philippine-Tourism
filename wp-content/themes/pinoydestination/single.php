@@ -295,7 +295,7 @@
 												</div>
 												<div class="formform formbuttons">
 													
-													<input type="submit" value="Submit Review For Approval" class="reviewbutton" /> 
+													<input type="submit" value="Submit Your Review!" class="reviewbutton" /> 
 												</div>
 											<?php
 											/**

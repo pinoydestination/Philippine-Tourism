@@ -1,8 +1,14 @@
+<IfModule headers_module>
+Header always append X-Frame-Options SAMEORIGIN
+SetEnvIfNoCase User-Agent "^TurnitinBot" badbot
+</IfModule>
+
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
 
 RewriteRule ^landing/(.*)$ /off-page/landing.php?category=$1 [L]
+RewriteRule ^external/(.*)$ /off-page/external.php?url=$1 [L]
 
 RewriteRule ^dashboard-login /wp-login.php [L]
 RewriteRule ^dashboard-login/ /wp-login.php [L]

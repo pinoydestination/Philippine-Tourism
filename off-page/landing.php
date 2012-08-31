@@ -116,7 +116,7 @@ get_header();
 						 <?php } ?>
 						 
 						 <?php if(isset($otherInfoData->website) && $otherInfoData->website != ""){?>
-							<span><a href="/external/<?php echo urldecode("http://".$otherInfoData->website); ?>"><?php echo $otherInfoData->website; ?></a></span>
+							<span><a href="/external/<?php echo urldecode($otherInfoData->website); ?>"><?php echo $otherInfoData->website; ?></a></span>
 						 <?php } ?>
 					</div>
 				</div>

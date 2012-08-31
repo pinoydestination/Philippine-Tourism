@@ -43,6 +43,10 @@ a{
 	width:202px;
 	height:88px;
 	float:left;
+	border-radius:5px;
+	background: #fff;
+	background: rgba(255,255,255,.8);
+	box-shadow:0 5px 5px rgba(0,0,0,.2);
 }
 .norightmargin{
 	margin-right:0px !important;
