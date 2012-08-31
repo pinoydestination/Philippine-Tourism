@@ -19,7 +19,7 @@ if(isset($_REQUEST['data']) && $_REQUEST['data'] != ""){
 			?>
 			<li>
 				<span class="xicon">&times;</span>
-				<a href=""><?php echo $tmpData[1]; ?></a>
+				<a href="a"><?php echo $tmpData[1]; ?></a>
 				<span class="itilocationaddress">
 					<?php echo $tmpData[0]; ?>
 				</span>
@@ -40,7 +40,7 @@ if(isset($_REQUEST['data']) && $_REQUEST['data'] != ""){
 			?>
 			<li>
 				<span class="xicon">&times;</span>
-				<a href=""><?php echo $tmpData[1]; ?></a>
+				<a href="b"><?php echo $tmpData[1]; ?></a>
 				<span class="itilocationaddress">
 					<?php echo $tmpData[0]; ?>
 				</span>

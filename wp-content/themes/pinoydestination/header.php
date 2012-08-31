@@ -26,9 +26,7 @@ global $category_base;
 		<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/js/scrolltotop.js"></script>
 		
 		<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/js/ui.js"></script>
-		<?php
-		if(!is_home()){
-		?>
+		
 		<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/fancyboxjs/jquery.fancybox.pack.js"></script>
 		<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/fancyboxjs/mousewheel.js"></script>
 		<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/fancyboxjs/helpers/jquery.fancybox-buttons.js"></script>
@@ -45,9 +43,6 @@ global $category_base;
 		});
 		</script>
 		
-		<?php
-		}
-		?>
 		
 		<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/js/lazyload.js"></script>
 		<script>
@@ -145,7 +140,7 @@ global $category_base;
 										?>
 										<li>
 											<span class="xicon">&times;</span>
-											<a href=""><?php echo $iti['location_title']; ?></a>
+											<a href="<?php echo $iti["location_url"]	; ?>"><?php echo $iti['location_title']; ?></a>
 											<span class="itilocationaddress">
 												<?php echo $iti['location_address']; ?>
 											</span>
