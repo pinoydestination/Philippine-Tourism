@@ -31,6 +31,7 @@ nocache_headers();
 	$uploadsDirectoryThumb = $_SERVER['DOCUMENT_ROOT'] . $directory_self . 'uploads/thumbs/';
 	$uploadsDirectory = str_replace("dashboard","uploads",$uploadsDirectory);
 	$uploadedFiles = null;
+	$imageerror = false;
 	if(isset($_FILES)){
 	
 		if(is_array($_FILES["file"]["error"])){
@@ -43,22 +44,28 @@ nocache_headers();
 					
 					$uploadedFiles[] = $hashtag.'-'.$name;
 					
+				}else{
+					$imageerror = true;
 				}
 			}
 		}else{
-			$tmp_name = $_FILES["file"]["tmp_name"];
-			$name = $_FILES["file"]["name"];
-			move_uploaded_file($tmp_name, $uploadsDirectory.$hashtag.'-'.$name);
-			
-			
-			//resizeImage
-			$image = new SimpleImage();
-			$image->load($uploadsDirectory.$hashtag.'-'.$name);
-			$image->resizeToWidth(133);
-			$image->resizeToHeight(110);
-			$image->save($uploadsDirectoryThumb.$hashtag.'-'.$name);
-			
-			$uploadedFiles[] = $hashtag.'-'.$name;
+			$fileError = $_FILES['file']['error'];
+			if($fileError == UPLOAD_ERR_OK){
+				$tmp_name = $_FILES["file"]["tmp_name"];
+				$name = $_FILES["file"]["name"];
+				move_uploaded_file($tmp_name, $uploadsDirectory.$hashtag.'-'.$name);
+				
+				//resizeImage
+				$image = new SimpleImage();
+				$image->load($uploadsDirectory.$hashtag.'-'.$name);
+				$image->resizeToWidth(133);
+				$image->resizeToHeight(110);
+				$image->save($uploadsDirectoryThumb.$hashtag.'-'.$name);
+				
+				$uploadedFiles[] = $hashtag.'-'.$name;
+			}else{
+				$imageerror = true;
+			}
 			
 		}
 		
@@ -140,15 +147,20 @@ $comment_id = wp_new_comment( $commentdata );
 $comment = get_comment($comment_id);
 do_action('set_comment_cookies', $comment, $user);
 
-	$imagePosts = $wpdb->prefix . "images";
-	/*Move uploaded files into database*/
-	foreach($uploadedFiles as $imgfiles){
-		$imagePostData = array("post_id"=>$_POST['comment_post_ID'],
-							   "thumb"=>$imgfiles,
-						       "original"=>$imgfiles);
-		$imageID = $wpdb->insert( $imagePosts, $imagePostData );
-		unset($imagePostData);
+
+
+	if(!$imageerror){
+		$imagePosts = $wpdb->prefix . "images";
+		/*Move uploaded files into database*/
+		foreach($uploadedFiles as $imgfiles){
+			$imagePostData = array("post_id"=>$_POST['comment_post_ID'],
+								   "thumb"=>$imgfiles,
+							       "original"=>$imgfiles);
+			$imageID = $wpdb->insert( $imagePosts, $imagePostData );
+			unset($imagePostData);
+		}
 	}
+
 	$lastAttachmentID = $wpdb->insert_id;
 /**
  * Process other functions
