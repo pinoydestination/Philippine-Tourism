@@ -135,9 +135,11 @@ class Dashboard{
 	}
 	
 	private function getPostDetails($post_id){
-		$postTable = $this->table_prefix."posts";
-		$sql = "SELECT * FROM cutsandp_destination_posts WHERE ID=".$post_id." AND post_type='post'";
-		$result = $this->wpdb->get_row( $this->wpdb->prepare( $sql ) );
+		global $table_prefix;
+		global $wpdb;
+		
+		$sql = "SELECT * FROM ".$table_prefix."posts WHERE ID=".$post_id." AND post_type='post'";
+		$result = $wpdb->get_row( $this->wpdb->prepare( $sql ) );
 		return($result);
 	}
 	
