@@ -177,6 +177,7 @@ function getOtherInfo($post_id){
 function categorySpecific($category_type="destination"){
 	global $wpdb;
 	global $table_prefix;
+	global $wp_query;
 	
 	$sql = 'SELECT
 				terms.term_id AS parent_id,
@@ -201,6 +202,7 @@ function categorySpecific($category_type="destination"){
 				AND terms2.slug LIKE "%'.$category_type.'%"';
 				
 	$results = $wpdb->get_results( $sql );
+	$wpdb = $wpdb;
 	return $results;
 }
 function getMenu($type="destination"){
@@ -488,8 +490,18 @@ function getParentCat($catID,$wpdb){
 	}	
 }
 
-function pagination($pages = '', $range = 4)
+function PinoyPagination($wp_query_obj="", $pages = '', $range = 4)
 { 
+	
+	global $wpdb;
+	global $wp_query;
+	
+	if($wp_query_obj == ""){
+		global $wp_query;
+	}else{
+		$wp_query = $wp_query_obj;
+	}
+
      $showitems = ($range * 2)+1; 
  
      global $paged;
@@ -521,7 +533,7 @@ function pagination($pages = '', $range = 4)
  
          if ($paged < $pages && $showitems < $pages) echo "<a href=\"".get_pagenum_link($paged + 1)."\">Next &rsaquo;</a>"; 
          if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>Last &raquo;</a>";
-         echo "</div>\n";
+         echo "<br clear='all' /></div>\n";
      }
 }
 

@@ -31,6 +31,13 @@
 				<?php
 				}
 			}
+			
+			$currentPage = get_query_var('paged');
+
+			$catPost = categorySpecific($_REQUEST['cat']);
+			foreach($catPost as $cat){
+				$arrCat[] = $cat->cat_id;
+			}
 			?>
 
 			<br clear="all" />
@@ -39,16 +46,22 @@
 		<div class="postTitle greenbgnew">
 			<h1 class="title"><?php
 			printf( __( '%s', 'twentyeleven' ), '' . ucfirst(single_cat_title( '', false )) . '' );
+			if(isset($_GET['cat']) && $_GET['cat'] != ""){
+				echo ": ".ucwords($_GET['cat']);
+			}
 			?></h1>
 			
 		</div>
 		<div class="homepageshadow">&nbsp;</div>
 		
 		<div>
+			
 			<?php 
-			if ( have_posts() ) : 
+			$the_query = new WP_Query( array('category__in' => $arrCat, "paged"=>$currentPage) );
+			if ( $the_query->have_posts() ) : 
 			?>
-			<?php while ( have_posts() ) : the_post(); 
+			<div>
+			<?php while ($the_query->have_posts() ) : $the_query->the_post(); 
 				
 				$postID = get_the_ID();
 				
@@ -120,12 +133,23 @@
 						 <?php } ?>
 					</div>
 				</div>
-
-			<?php 
-			endwhile; 
-			else: ?>
-			No result found
-			<?php endif; ?>							
+			
+				<?php 
+				endwhile; 
+				?>
+			</div>
+			<div class="navimargin">
+				<?php
+				PinoyPagination($the_query);
+				?>
+			</div>
+			<?php else: ?>
+				<div>
+					<p>
+						Sorry, no post found for this specific term.
+					</p>
+				</div>
+			<?php endif; ?>					
 		</div>
 		
 	</div>

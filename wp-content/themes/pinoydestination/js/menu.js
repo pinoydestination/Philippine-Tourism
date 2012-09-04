@@ -198,5 +198,17 @@ $(document).ready(function(){
 		});
     	
     });
+	
+	$("#locationfilter").live("change",function(){
+		var thisvalue = $(this).val();
+		var filtercat = $("#filtercat").val();
+		console.log(thisvalue);
+		$(this).parent("form").attr("action",'/landing/'+filtercat+'/'+thisvalue);
+		$("#filtercat").attr("name",'');
+		$(this).attr("name",'');
+		$(this).val("");
+		$("#filtercat").val("");
+		$(this).parent("form").submit();
+	});
 
 });
