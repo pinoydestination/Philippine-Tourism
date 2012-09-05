@@ -7,6 +7,8 @@ SetEnvIfNoCase User-Agent "^TurnitinBot" badbot
 RewriteEngine On
 RewriteBase /
 
+RewriteRule ^search/(.*)$ /off-page/search.php?s=$1 [L]
+
 RewriteRule ^landing/(.*)/(.*)$ /off-page/landing.php?category=$1&filter=$2 [L]
 RewriteRule ^landing/(.*)$ /off-page/landing.php?category=$1 [L]
 RewriteRule ^external/(.*)$ /off-page/external.php?url=$1 [L]

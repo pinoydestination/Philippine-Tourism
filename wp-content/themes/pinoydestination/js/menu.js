@@ -210,5 +210,27 @@ $(document).ready(function(){
 		$("#filtercat").val("");
 		$(this).parent("form").submit();
 	});
+	
+	$("#searchform").live("submit",function(){
+		var myval = $("#searchinputbox").val();
+		if($.trim(myval) == ""){
+			alert("Please enter search term");
+			return false;
+		}else{
+			return true;
+		}
+	});
+	
+	$("#searchinputbox").keyup(function(e){
+		if(e.keyCode == 13){
+			//submit search form
+			var myval = $(this).val();
+			if($.trim(myval) == ""){
+				return false;
+			}else{
+				return true;
+			}
+		}
+	});
 
 });

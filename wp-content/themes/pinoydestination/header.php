@@ -58,6 +58,24 @@ global $category_base;
 <link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/itinerary.css" type="text/css" media="all" title="Itinerary Style" charset="utf-8"/>
 		<?php } ?>
 		
+		
+		<?php
+		if(is_search()){
+		?>
+			<!-- Put the following javascript before the closing </head> tag. -->
+			<script>
+			  (function() {
+				var cx = '002465766118692481817:ap6gu8gmyfi';
+				var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+				gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					'//www.google.com/cse/cse.js?cx=' + cx;
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+			  })();
+			</script>
+		<?php
+		}
+		?>
+		
 </head>
 	<body>
 		<div class="firstBackground">
@@ -120,7 +138,9 @@ global $category_base;
 							<br clear="all" />
 						</ul>
 						<div class="searchframe" id="searchframe">
-							<input type="text" name="s" placeholder="What are you looking for?" />
+							<form method="get" action="/search/" id="searchform">
+								<input type="text" name="s" placeholder="What are you looking for?" id="searchinputbox" />
+							</form>
 						</div>
 						
 						<div class="itihead" id="itihead">
