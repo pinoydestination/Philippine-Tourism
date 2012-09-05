@@ -13,8 +13,8 @@ global $category_base;
 		
 		<?php if(is_category() || is_tag()){ ?>
 			<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/category.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
-		<?php } ?>
 		
+		<?php } ?>
 		<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/palawan.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
 		
 		<script src="<?php bloginfo("stylesheet_directory"); ?>/js/jquery.js" type="text/javascript"></script>
@@ -131,7 +131,7 @@ global $category_base;
 					</div>
 					<div class="menu curveright norightmargin">
 						<ul class="menulinks floatleft">
-							<li class="tobehide"><a href="#">Plan Your Visit</a></li>
+							<li class="tobehide"><a href="/company/suggest-places">Suggest Places</a></li>
 							<li class="tobehide"><a href="<?php bloginfo('url'); ?>/vacation/blog">Blog</a></li>
 							<li class="tobehide"><a href="#" id="showmyitinerary">My Itinerary</a></li>
 							
