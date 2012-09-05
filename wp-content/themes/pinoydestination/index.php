@@ -6,32 +6,7 @@
 							<h1 class="myriad_pro_bold_condensed">Where to Go? Explore Philippines!</h1>
 							
 							<div class="tabcontainer">
-								
-								<div class="homepagetilecontainergreen <?php echo $style; ?>">
-									<a class="homepagetilelink" href="<?php echo $category_base;?>/philippines?cat=destination">
-										<img class="indexgreenimages" src="<?php bloginfo("stylesheet_directory"); ?>/images/home/banaue.jpg" border="0" />
-										<span>Tourist Destinations</span>
-									</a>
-								</div>
-								
-								<div class="homepagetilecontainergreen">
-									<a class="homepagetilelink" href="<?php echo $category_base;?>/philippines?cat=beach">
-										<img class="indexgreenimages" src="<?php bloginfo("stylesheet_directory"); ?>/images/home/bora.jpg" border="0" />
-										<span>Beach &amp; Resorts</span>
-									</a>
-								</div>
-								<div class="homepagetilecontainergreen">
-									<a class="homepagetilelink" href="<?php echo $category_base;?>/philippines?cat=restaurant">
-										<img class="indexgreenimages" src="<?php bloginfo("stylesheet_directory"); ?>/images/home/resto.jpg" border="0" />
-										<span>Clubs &amp; Resto</span>
-									</a>
-								</div>
-								<div class="homepagetilecontainergreen norightmargin">
-									<a class="homepagetilelink" href="<?php echo $category_base;?>/philippines?cat=fun-activities">
-										<img class="indexgreenimages" src="<?php bloginfo("stylesheet_directory"); ?>/images/home/zipline.jpg" border="0" />
-										<span>Fun Activities</span>
-									</a>
-								</div>
+								<?php include("index_destination_links.php"); ?>
 								<br clear="all" />
 							</div>
 							<div class="homepageshadow">&nbsp;</div>
@@ -39,48 +14,9 @@
 						<div class="homelistcontainer">
 							<h1 class="myriad_pro_bold_condensed wheretostay">Where to Stay</h1>
 							<div class="newloationcontainer">
-								
-								<div class="homepagetilecontainer">
-									<a href="<?php echo $category_base;?>/philippines?cat=hotel-manila">
-										<div class="insetcontent">
-											<img class="indexhotelimages" src="<?php bloginfo("stylesheet_directory"); ?>/images/home/manilahotel.jpg" border="0" />
-										</div>
-										Hotels in Manila
-									</a>
-								</div>
-								
-								<div class="homepagetilecontainer">
-									<a href="<?php echo $category_base;?>/philippines/luzon/hotel-luzon">
-										<div class="insetcontent">
-											<img class="indexhotelimages" src="<?php bloginfo("stylesheet_directory"); ?>/images/home/luzonhotel.jpg" border="0" />
-										</div>
-										Hotels in Luzon
-									</a>
-								</div>
-								
-								<div class="homepagetilecontainer">
-									<a href="<?php echo $category_base;?>/philippines/visayas/hotel-visayas">
-										<div class="insetcontent">
-											<img class="indexhotelimages" src="<?php bloginfo("stylesheet_directory"); ?>/images/home/visayashotel.jpg" border="0" />
-										</div>
-										Hotels in Visayas
-									</a>
-								</div>
-								
-								<div class="homepagetilecontainer norightmargin">
-									<a href="<?php echo $category_base;?>/philippines/mindanao/hotel-mindanao">
-										<div class="insetcontent">
-											<img class="indexhotelimages" src="<?php bloginfo("stylesheet_directory"); ?>/images/home/mindanaohotel.jpg" border="0" />
-										</div>
-										Hotels in Mindanao
-									</a>
-								</div>
-								
-								
-								
+								<?php include("index_hotel_links.php"); ?>
 								<br clear="all" />
 							</div>
-							
 						</div>
 						
 						<?php /*

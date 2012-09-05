@@ -291,7 +291,7 @@ function getSideTrips($location,$limit=5){
 	global $thumbdir;
 	global $blogurl;
 	
-	$sql = 'SELECT 
+	echo $sql = 'SELECT 
 				"" AS thumb,
 				/*SUM(rates.ratings) AS totalRate, */
 				"" AS ratings,
