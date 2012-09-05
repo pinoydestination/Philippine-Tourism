@@ -11,7 +11,7 @@ global $category_base;
 			<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/post.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
 		<?php } ?>
 		
-		<?php if(is_category()){ ?>
+		<?php if(is_category() || is_tag()){ ?>
 			<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/category.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
 		<?php } ?>
 		
