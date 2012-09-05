@@ -74,6 +74,9 @@ global $category_base;
 			</script>
 		<?php
 		}
+		
+		
+		include("analytics.php");
 		?>
 		
 </head>
