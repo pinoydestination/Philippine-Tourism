@@ -1,4 +1,6 @@
 <?php get_header();
+global $globalCatType;
+$globalCatType = "";
  while ( have_posts() ) : the_post(); 
 						
 	$postID = get_the_ID();
@@ -59,6 +61,9 @@
 								<?php
 								$prevCat = "";
 								foreach($newCat as $category){
+									if(in_array($category->name,$arrCatType)){
+										$globalCatType = $category->name;
+									}
 									$totalCounter++;
 									if($totalCounter >= $totalCat){
 										$breadStyle = " class='xnomarginright'";

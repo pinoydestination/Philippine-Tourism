@@ -1,4 +1,7 @@
-<?php get_header();
+<?php
+get_header();
+global $globalCatType;
+global $selectedCat;
 ?>
 <link href="<?php bloginfo('stylesheet_directory'); ?>/post.css" rel="stylesheet" />
 <link href="<?php bloginfo('stylesheet_directory'); ?>/blue.css" rel="stylesheet" />
@@ -13,14 +16,16 @@
 				$cat = get_query_var('cat');
 				$yourcat = get_category ($cat);
 			}
-			
+			$globalCatType = "";
 			$idObj = get_category_by_slug($yourcat->slug); 
 			$parentCat = getParentCat($idObj->cat_ID, $wpdb);
 			
 			
 			if( is_array($parentCat) && count($parentCat)>=1 ){
 				$parentCat = rearrangeCategory($parentCat,$arrCatAll);
+				global $parentCat;
 				$prevCat = "";
+				$selectedCat = "";
 				foreach($parentCat as $category){
 					if(in_array($category->name, $arrCatIsland)){
 						$currentIsland = $category->name . ", Philippines";
@@ -31,12 +36,14 @@
 				<?php
 				}
 			}
-			
-			$currentPage = get_query_var('paged');
+			if(isset($_GET['cat']) && $_GET['cat'] != ""){
+				$globalCatType = $_GET['cat'];
+				$currentPage = get_query_var('paged');
 
-			$catPost = categorySpecific($_REQUEST['cat']);
-			foreach($catPost as $cat){
-				$arrCat[] = $cat->cat_id;
+				$catPost = categorySpecific($_REQUEST['cat']);
+				foreach($catPost as $cat){
+					$arrCat[] = $cat->cat_id;
+				}
 			}
 			?>
 
@@ -45,6 +52,7 @@
 		</div>
 		<div class="postTitle greenbgnew">
 			<h1 class="title"><?php
+			$selectedCat = (single_cat_title( '', false ));
 			printf( __( '%s', 'twentyeleven' ), '' . ucfirst(single_cat_title( '', false )) . '' );
 			if(isset($_GET['cat']) && $_GET['cat'] != ""){
 				echo ": ".ucwords($_GET['cat']);
@@ -55,17 +63,32 @@
 		<div class="homepageshadow">&nbsp;</div>
 		
 		<div>
-			
-			<?php 
-			$the_query = new WP_Query( array('category__in' => $arrCat, "paged"=>$currentPage) );
+			<?php
+			$original_post_query = $wp_query;
+			if(isset($_GET['cat']) && $_GET['cat'] != ""){
+				/**
+				 * DO A CUSTOM QUERY
+				 */
+				wp_reset_query();
+				$the_query = new WP_Query( array('category__in' => $arrCat, "paged"=>$currentPage) );
+			}else{
+				/**
+				 * RESET TO THE ORIGINAL QUERY VALUES
+				 */
+				$the_query = null;
+				$the_query = $original_post_query;
+				wp_reset_query();
+				wp_reset_postdata();
+			}			
 			if ( $the_query->have_posts() ) : 
+			
 			?>
 			<div>
-			<?php while ($the_query->have_posts() ) : $the_query->the_post(); 
+			<?php
+				
+				while ($the_query->have_posts() ) : $the_query->the_post(); 
 				
 				$postID = get_the_ID();
-				
-				
 				$allCat = null;
 			
 				//Get Star Ratings
@@ -80,14 +103,32 @@
 				<div class="searchresultBox">
 					<div class="searchResultTitle">
 						<div style="float:left;">
-							<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+							<a href="<?php the_permalink(); ?>" title="Visit <?php echo get_the_title(); ?>"><?php the_title(); ?></a>
 						</div>
 						<div class="star" style="float:right; margin-top:5px;"><div class="star_w2" style="width:<?php echo $starComputeFinal->overAllRatings; ?>%;">&nbsp;</div></div>
 						<br clear="all" />
 					</div>
-					<div>
-						<span class="showreview arrow_go">Show Reviews</span><span class="showmap globe_go" addresslocation="<?php echo urlencode($otherInfoData->location_address); ?>"><a class="fancybox fancybox.iframe" href="http://www.pinoydestination.com/gmap.php?address=<?php echo urlencode($otherInfoData->location_address); ?>&zoom=13">Reveal in Map</a></span>
+					<div class="locationaddress">
+						 <?php if(isset($otherInfoData->location_address) && trim($otherInfoData->location_address) !== NULL){ ?>
+							<span><?php echo $otherInfoData->location_address; ?></span>
+						 <?php } ?>
+						 
+						 <?php if(isset($otherInfoData->contact_number) && $otherInfoData->contact_number != ""){?>
+							<span><?php echo $otherInfoData->contact_number; ?></span>
+						 <?php } ?>
+						 
+						 <?php if(isset($otherInfoData->email) && $otherInfoData->email != ""){?>
+							<span><?php echo $otherInfoData->email; ?></span>
+						 <?php } ?>
+						 
+						 <?php if(isset($otherInfoData->website) && $otherInfoData->website != ""){?>
+							<span><a href="/external/<?php echo urldecode($otherInfoData->website); ?>"><?php echo $otherInfoData->website; ?></a></span>
+						 <?php } ?>
 					</div>
+					<div>
+						<span class="showreview arrow_go"><a href="<?php the_permalink(); ?>#reviews">Show Reviews</a></span><span class="showmap globe_go" addresslocation="<?php echo urlencode($otherInfoData->location_address); ?>"><a class="fancybox fancybox.iframe" href="http://www.pinoydestination.com/gmap.php?address=<?php echo urlencode($otherInfoData->location_address); ?>&zoom=13" rel="nofollow">Reveal in Map</a></span>
+					</div>
+					
 					<div class="searchResultDetails">
 						<?php
 						$showmore=false;
@@ -115,23 +156,20 @@
 
 						?>
 					</div>
-					<div class="locationaddress">
-						 <?php if(isset($otherInfoData->location_address) && trim($otherInfoData->location_address) !== NULL){ ?>
-							<span><?php echo $otherInfoData->location_address; ?></span>
-						 <?php } ?>
-						 
-						 <?php if(isset($otherInfoData->contact_number) && $otherInfoData->contact_number != ""){?>
-							<span><?php echo $otherInfoData->contact_number; ?></span>
-						 <?php } ?>
-						 
-						 <?php if(isset($otherInfoData->email) && $otherInfoData->email != ""){?>
-							<span><?php echo $otherInfoData->email; ?></span>
-						 <?php } ?>
-						 
-						 <?php if(isset($otherInfoData->website) && $otherInfoData->website != ""){?>
-							<span><a href="/external/<?php echo urldecode($otherInfoData->website); ?>"><?php echo $otherInfoData->website; ?></a></span>
-						 <?php } ?>
-					</div>
+					
+					
+					<?php
+					$recentComment = getRecentComments(1, get_the_ID());
+					if(count($recentComment) > 0){
+						?>
+						<div class="reviewcorner">
+						<?php
+						echo "<p><em class='em'>".$recentComment[0]->comment_content."</em></p><p class='textalignright'><strong>".$recentComment[0]->comment_author."</strong></p>";
+						?>
+						</div>
+						<?php
+					}
+					?>
 				</div>
 			
 				<?php 

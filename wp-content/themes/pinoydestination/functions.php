@@ -256,7 +256,7 @@ function getEvents($limit){
 	return $results;
 }
 
-function getRecentComments($limit=5){
+function getRecentComments($limit=5,$post_id=""){
 	global $wpdb;
 	global $table_prefix;
 	global $thumbdir;
@@ -276,13 +276,57 @@ function getRecentComments($limit=5){
 			FROM
 				".$table_prefix."comments AS comments
 			INNER JOIN
-				".$table_prefix."posts AS posts ON comments.comment_post_ID = posts.ID
+				".$table_prefix."posts AS posts ON comments.comment_post_ID = posts.ID";
 				
-			ORDER BY comments.comment_ID DESC
-
-			LIMIT ".$limit;
+	if($post_id != ""){
+		$sql .= " WHERE posts.ID = '".$post_id."' ";
+	}
+	$sql .=	" ORDER BY comments.comment_ID DESC 	LIMIT ".$limit;
 	$rows = $wpdb->get_results( $sql );
 	return $rows;
+}
+
+function sideTripFilter($category_type="",$category_location=""){
+	global $wpdb;
+	global $table_prefix;
+	
+	$isSingle = explode("|",$category_location);
+	
+	$sql = "SELECT
+				*
+			FROM
+				".$table_prefix."terms AS terms
+
+			INNER JOIN
+				".$table_prefix."term_taxonomy AS taxonomy ON terms.term_id = taxonomy.term_id
+
+
+			WHERE
+				
+				taxonomy.taxonomy = 'category'";
+				
+	if(in_array("single",$isSingle)){			
+		if($category_type != ""){			
+			$sql .= " AND terms.slug LIKE '%".trim($category_type)."%'";
+		}
+	}else{
+		if($category_type != ""){			
+			$sql .= " AND terms.name LIKE '%".trim($category_type)."%'";
+		}
+	}
+	
+	
+	if(in_array("single",$isSingle)){
+		$sql .= "AND terms.slug LIKE '%".trim($isSingle[0])."%'";
+	}else{
+		
+		if($category_location != ""){
+			$sql .= "AND terms.name LIKE '%".trim($isSingle[0])."%'";
+		}
+		
+	}
+	$result = $wpdb->get_results( $sql );
+	return $result;
 }
 
 function getSideTrips($location,$limit=5){

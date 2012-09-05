@@ -945,3 +945,6 @@ ul.commentlistul li p.speech{
 	margin:0;
 	border-bottom:2px solid #B0E0E6;
 }
+.floatright{
+	float:right;
+}
