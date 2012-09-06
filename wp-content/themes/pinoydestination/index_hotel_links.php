@@ -8,7 +8,7 @@
 </div>
 
 <div class="homepagetilecontainer">
-	<a href="<?php echo $category_base;?>/philippines/luzon/hotel-luzon">
+	<a href="<?php echo $category_base;?>/philippines/luzon/hotel">
 		<div class="insetcontent">
 			<img class="indexhotelimages" src="<?php bloginfo("stylesheet_directory"); ?>/images/home/luzonhotel.jpg" border="0" />
 		</div>
