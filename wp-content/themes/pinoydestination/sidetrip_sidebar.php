@@ -7,10 +7,12 @@ global $selectedCat;
 if($globalCatType == ""){
 	$globalCatType = $selectedCat;
 }
-$island = "";
-foreach($parentCat as $pcat){
-	if(in_array(ucwords($pcat->slug),$arrCatIsland)){
-		$island = $pcat->slug;
+$island = "Philippines";
+if(isset($parentCat) && is_array($parentCat)){
+	foreach($parentCat as $pcat){
+		if(in_array(ucwords($pcat->slug),$arrCatIsland)){
+			$island = $pcat->slug;
+		}
 	}
 }
 if(is_home()){ ?>

@@ -8,6 +8,10 @@ $(document).ready(function(){
 	});
 	*/
 	
+	$("#changelocationbutton").live("click",function(){
+		$(".categoryfilter").toggle();
+	});
+	
 	$(".wasthishelpfulbutton").live('click',function(){
 		var arrDat = $(this).attr("id");
 		    arrDat = arrDat.split("-");

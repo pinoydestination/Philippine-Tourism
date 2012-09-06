@@ -664,7 +664,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
 	margin-bottom:0 !important;
 }
 .breadList{
-	display:inline-block;
+	/*display:inline-block;*/
 	margin:0;
 	padding:0;
 	list-style:none;

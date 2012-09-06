@@ -6,6 +6,9 @@ global $category_base;
 <head>
     	<meta charset="utf-8">
 		<title>Pinoy Destination - Experience Philippines - Travel. Destinations. Adventures. 100% Pinoy.</title>
+		
+		<?php include("meta.php"); ?>
+		
 		<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/style.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
 		<?php if(is_single()){ ?>
 			<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/post.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>

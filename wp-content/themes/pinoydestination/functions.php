@@ -2,6 +2,88 @@
 function getAllPostUnder($category_type="destination"){
 	
 }
+function getChildCategory($parent_id){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = 'SELECT 
+				terms.term_id,
+				terms.name,
+				terms.slug,
+				taxonomy.term_taxonomy_id,
+				taxonomy.taxonomy,
+				taxonomy.parent AS primary_parent
+			FROM
+				'.$table_prefix.'terms AS terms
+			INNER JOIN
+				'.$table_prefix.'term_taxonomy AS taxonomy ON terms.term_id = taxonomy.term_id
+			WHERE
+				taxonomy.taxonomy = "category" AND
+				taxonomy.parent = "'.$parent_id.'"';
+	
+	$result = $wpdb->get_results($sql);
+	return $result;
+}
+function getParentCatUnder($parent_id){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = "SELECT 
+					terms.term_id,
+					terms.name,
+					terms.slug,
+					taxonomy.term_taxonomy_id,
+					taxonomy.taxonomy,
+					taxonomy.parent AS primary_parent";
+		if($parent_id >= 1){
+			$sql .= ",
+					taxonomy2.parent AS secondary_parent";
+		}else{
+			$sql .= ", '0' as secondary_parent";
+		}
+		
+		$sql .=	" FROM
+					".$table_prefix."terms AS terms
+				INNER JOIN
+					".$table_prefix."term_taxonomy AS taxonomy ON terms.term_id = taxonomy.term_id";
+					
+		if($parent_id >= 1){
+			$sql .=	" INNER JOIN 
+					".$table_prefix."term_taxonomy AS taxonomy2 ON taxonomy.parent = taxonomy2.term_id";
+		}
+		$sql .= " WHERE
+					taxonomy.taxonomy = 'category' AND
+					taxonomy.parent = '".$parent_id."'";
+					
+	$result = $wpdb->get_results($sql);
+	
+	return $result;
+}
+function getAllCategoriesUnder($parent_id){
+	$categories = Array();
+	
+	$result = getParentCatUnder($parent_id);
+	$categories[] = $result;
+	$current = (int)$result[0]->secondary_parent;
+	
+	$x=$current;
+	
+	while($x>0){
+		
+		$result = getParentCatUnder($current);
+		$categories[] = $result;
+		$current = (int)$result[0]->secondary_parent;
+		$x = $current;
+		if($x == 0){
+			/*$result = getParentCatUnder("0");
+			$categories[] = $result;
+			$current = (int)$result[0]->secondary_parent;*/
+			break;
+		}
+	}
+	return $categories;
+}
+
 function alterUserVote($user_id,$comment_id,$vote){
 	global $wpdb;
 	global $table_prefix;

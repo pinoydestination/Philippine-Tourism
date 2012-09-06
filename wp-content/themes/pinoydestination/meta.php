@@ -1,0 +1,2 @@
+<meta name="keywords" content="pinoy destination, philippine tourism, department of tourism philippines, philippine destination, philippine travel, travel in philippines, philippine travel destination, hotels philippines,filipino travel, travel philippines , philippines beach resorts" />
+<meta name="description" content="Pinoy Destination - Explore Philippines, Travel Philippines! - Featuring the most wonderful destinations, beaches, resorts in the Philippines." />
