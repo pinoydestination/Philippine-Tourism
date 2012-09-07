@@ -5,7 +5,22 @@ global $category_base;
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" > 
 <head>
     	<meta charset="utf-8">
-		<title>Pinoy Destination - Experience Philippines - Travel. Destinations. Adventures. 100% Pinoy.</title>
+		
+		<?php
+		if(!is_category()){
+		?>
+		<title>Pinoy Destination - Explore Philippines, Travel Philippines! | Tourist Spots, Destinations, Beach, Resorts, Restaurants</title>
+		<?php
+		}else{
+			$cat = get_query_var('cat');
+			$yourcat = get_category ($cat);
+			$idObj = get_category_by_slug($yourcat->slug);
+			$catname = titleMaker($idObj,$_GET['cat']);
+		?>
+			<title><?php echo $catname; ?> | Pinoy Destination - Explore Philippines, Travel Philippines! | Tourist Spots, Destinations, Beach, Resorts, Restaurants</title>
+		<?php
+		}
+		?>
 		
 		<?php include("meta.php"); ?>
 		

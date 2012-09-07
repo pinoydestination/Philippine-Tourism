@@ -2,6 +2,95 @@
 function getAllPostUnder($category_type="destination"){
 	
 }
+function getCatInfo($term_id){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = "SELECT * FROM ".$table_prefix."terms as terms WHERE terms.term_id='".$term_id."'";
+	$result = $wpdb->get_row($sql);
+	return $result;
+}
+function titleMaker($obj,$req=""){
+	global $arrCatType;
+	
+	if(isset($req) && $req!= ""){
+		switch($req){
+			case "destination":
+				$catname = "Tourist Spots in the ";
+			break;
+			case "hotel":
+				$catname = "Hotels in the ";
+			break;
+			case "restaurant":
+				$catname = "Restaurants in the ";
+			break;
+			case "beach":
+				$catname = "Beaches in the ";
+			break;
+			case "resort":
+				$catname = "Resorts in the ";
+			break;
+			case "festival":
+				$catname = "Festivals in the ";
+			break;
+			case "beach resort":
+				$catname = "Beach Resorts in the ";
+			break;
+		}
+	}else{
+		$childcat = getCatInfo($obj->parent);
+		if(in_array($childcat->name,$arrCatType)){
+			$ccname = $childcat->name;
+		}else{
+			$ccname = $obj->name;
+		}
+		switch(strtolower($ccname)){
+			case "destination":
+				$catname = "Tourist Spots in ";
+			break;
+			case "hotel":
+				$catname = "Hotels in ";
+			break;
+			case "restaurant":
+				$catname = "Restaurants in ";
+			break;
+			case "beach":
+				$catname = "Beaches in ";
+			break;
+			case "resort":
+				$catname = "Resorts in ";
+			break;
+			case "festival":
+				$catname = "Festivals in the ";
+			break;
+			case "beach resort":
+				$catname = "Beach Resorts in ";
+			break;
+		}
+	}
+	
+	if(isset($obj->name) && $obj->name != ""){
+		if($obj->parent == 0){
+			$catname .= $obj->name;
+		}else{
+			$childcat = getCatInfo($obj->parent);
+			
+			if(in_array($childcat->name,$arrCatType)){
+				$catname .= $obj->name;
+			}else{
+				$catname .= $childcat->name;
+			}
+			
+			$catname .= " Philippines";
+			
+		}
+	}
+	
+	
+	
+	return $catname;
+	
+}
 function getChildCategory($parent_id){
 	global $wpdb;
 	global $table_prefix;
