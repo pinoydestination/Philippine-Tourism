@@ -134,7 +134,7 @@ global $category_base;
 					</div>
 					<div class="menu curveright norightmargin">
 						<ul class="menulinks floatleft">
-							<li class="tobehide"><a href="/company/suggest-places">Suggest Places</a></li>
+							<li class="tobehide"><a href="/company/suggest-destination">Suggest Destinations</a></li>
 							<li class="tobehide"><a href="<?php bloginfo('url'); ?>/vacation/blog">Blog</a></li>
 							<li class="tobehide"><a href="#" id="showmyitinerary">My Itinerary</a></li>
 							

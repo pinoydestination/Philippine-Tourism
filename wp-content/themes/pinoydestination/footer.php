@@ -19,7 +19,12 @@
 					<br clear="all" />
 					</div>
 					<div class="footer_credit">
+						<p>
 						* Pinoy Destination is not affiliated nor connected with the Philippines' Department of Tourism.
+						</p>
+						<p>
+							<a href="http://www.proudlypinoy.org/" target="_blank" rel="nofollow"><img src="http://www.proudlypinoy.org/proudlypinoysmallontrans.png" width="75" height="75" border="0" alt="Proudly Pinoy!"></a>
+						</p>
 					</div>
 				</div>
 				
