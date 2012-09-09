@@ -1,4 +1,7 @@
 <?php get_header();
+global $globalCatType;
+global $parentCat;
+$globalCatType = "";
  while ( have_posts() ) : the_post(); 
 						
 	$postID = get_the_ID();
@@ -6,9 +9,7 @@
 	
 	/*Get Star Ratings*/	
 	$starComputeFinal = getPostRatings(get_the_ID());
-	
-	print_r($starComputedFinal);
-	
+		
 	/*Get Special Info*/
 	$sql = "SELECT * FROM ".$wpdb->prefix."other_info WHERE post_id='".$postID."'";
 	$otherInfoData = $wpdb->get_results($sql);
@@ -35,6 +36,8 @@
 		
 	}
 	
+	$parentCat = $finalCat;
+	
 	$newCat = rearrangeCategory($newCat,$arrCatAll);
 	
 	$GLOBALS['Current_City'] = $finalCat;
@@ -59,6 +62,9 @@
 								<?php
 								$prevCat = "";
 								foreach($newCat as $category){
+									if(in_array($category->name,$arrCatType)){
+										$globalCatType = $category->name;
+									}
 									$totalCounter++;
 									if($totalCounter >= $totalCat){
 										$breadStyle = " class='xnomarginright'";
@@ -179,11 +185,14 @@
 												<?php foreach($hotelLists as $hotels){ ?>
 												<li>
 													<div class="extralist">
-														<a href="<?php echo $hotels->guid; ?>"><?php echo $hotels->post_title; ?></a>
+														<div class="extralisttitle">
+															<a href="<?php echo $hotels->guid; ?>"><?php echo $hotels->post_title; ?></a>
+															<a class="showdirection fancybox fancybox.iframe" href="http://www.pinoydestination.com/gdirections.php?from=<?php echo urlencode($GLOBALS['Current_Location']); ?>&to=<?php echo urlencode($hotels->location_address); ?>&zoom=1">Show Directions</a>
+															<br clear="all" />
+														</div>
 														<span><?php echo $hotels->location_address; ?></span>
 														<span><?php echo $hotels->contact_number; ?></span>
 														<span class="website"><?php echo $hotels->website; ?></span>
-														<a class="showdirection fancybox fancybox.iframe" href="http://www.pinoydestination.com/gdirections.php?from=<?php echo urlencode($GLOBALS['Current_Location']); ?>&to=<?php echo urlencode($hotels->location_address); ?>&zoom=1">Show Directions</a>
 													</div>
 												</li>
 												<?php } ?>

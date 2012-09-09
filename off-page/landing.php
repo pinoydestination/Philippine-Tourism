@@ -14,7 +14,7 @@ get_header();
 		<div class="postBread">
 			<ul class="breadList">
 			<?php
-			if (is_category( )) {
+			if (is_category()) {
 				$cat = get_query_var('cat');
 				$yourcat = get_category ($cat);
 			}
@@ -41,21 +41,65 @@ get_header();
 			<br clear="all" />
 			</ul>
 		</div>
+		<?php
+		if(isset($_REQUEST['filter']) && $_REQUEST['filter'] != ""){
+			$explodedFilter = explode("|",$_REQUEST['filter']);
+			if(count($xplodedFilter) <= 3){
+				$filter = $explodedFilter[1];
+			}else{
+				$filter = $explodedFilter[0];
+			}
+		}else{
+			$filter = $_REQUEST['category'];
+		}
+		$catPostDropdown = categorySpecific($_REQUEST['category']);
+		$catPost = categorySpecific($filter);
+		foreach($catPost as $cat){
+			$arrCat[] = $cat->cat_id;
+		}
+		?>
 		<div class="postTitle greenbgnew">
-			<h1 class="title">Philippines: <?php echo ucwords($_GET['category']); ?></h1>
-			
+			<div>
+				<h1 class="title">Philippines: <?php echo ucwords($_GET['category']); ?></h1>
+			</div>
+			<div class="locationfilter">
+				<form method="GET">
+					<input type="hidden" id="filtercat" name="filtercat" value="<?php echo $_GET['category']; ?>" />
+				Location Filter: <select class="selection" name="locid" id="locationfilter">
+									<option value="<?php echo $_REQUEST['category']; ?>">All Location</option>
+									<?php foreach($catPostDropdown as $catData){ 
+										
+											if(isset($explodedFilter) && is_array($explodedFilter)){
+												if(count($xplodedFilter) <= 3){
+													$current_location_data = $explodedFilter[2];
+												}else{
+													$current_location_data = $explodedFilter[0];
+												}
+											}
+											if($current_location_data == $catData->category_type){
+												$selected = "selected='selected'";
+											}else{
+												$selected = "";
+											}
+											if(in_array($catData->category_location,$arrCatIsland)){
+												$optionName = $catData->category_location;
+											}else{
+												$optionName = $catData->category_type;
+											}
+									?>
+									<option <?php echo $selected; ?> value="<?php echo $catData->cat_id."|".$catData->slug."|".$catData->category_type; ?>"><?php echo $optionName; ?></option>
+									<?php } ?>
+								 </select>
+				</form>
+			</div>
 		</div>
 		<div class="homepageshadow">&nbsp;</div>
 		
 		<div>
+			<div>
 		<?php
-		$catPost = categorySpecific($_GET['category']);
-		foreach($catPost as $cat){
-			$arrCat[] = $cat->cat_id;
-			
-			
-		}
 		$the_query = new WP_Query( array('category__in' => $arrCat) );
+
 		if ( $the_query->have_posts() ) : 
 			// The Loop
 			while ( $the_query->have_posts() ) : $the_query->the_post();
@@ -124,9 +168,16 @@ get_header();
 				</div>
 				<?php
 			endwhile;
-			
+			?>
+			</div>
+			<div>
+				<?php
+					PinoyPagination( $the_query );
+				?>
+			</div>
+			<?php
 			// Reset Post Data
-			wp_reset_postdata();
+			//wp_reset_postdata();
 		else:
 			echo "no post found";
 		endif;

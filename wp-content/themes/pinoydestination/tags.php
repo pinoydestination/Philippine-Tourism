@@ -2,7 +2,6 @@
 get_header();
 global $globalCatType;
 global $selectedCat;
-global $parentCat;
 ?>
 <link href="<?php bloginfo('stylesheet_directory'); ?>/post.css" rel="stylesheet" />
 <link href="<?php bloginfo('stylesheet_directory'); ?>/blue.css" rel="stylesheet" />
@@ -47,14 +46,11 @@ global $parentCat;
 				}
 			}
 			?>
-				
-				<li class="changelocationcontainer" class="floatright" style="float:right !important;"><a id="changelocationbutton" class="changelocation" href="javascript:;">Change Location</a></li>
-				
+
 			<br clear="all" />
 			</ul>
 		</div>
 		<div class="postTitle greenbgnew">
-	
 			<h1 class="title"><?php
 			$selectedCat = (single_cat_title( '', false ));
 			printf( __( '%s', 'twentyeleven' ), '' . ucfirst(single_cat_title( '', false )) . '' );
@@ -64,10 +60,7 @@ global $parentCat;
 			?></h1>
 			
 		</div>
-		<?php include("category_filter.php"); ?>
 		<div class="homepageshadow">&nbsp;</div>
-		
-		
 		
 		<div>
 			<?php

@@ -5,16 +5,34 @@ global $category_base;
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" > 
 <head>
     	<meta charset="utf-8">
-		<title>Pinoy Destination - Experience Philippines - Travel. Destinations. Adventures. 100% Pinoy.</title>
+		
+		<?php
+		if(!is_category()){
+		?>
+		<title>Pinoy Destination - Explore Philippines, Travel Philippines! | Tourist Spots, Destinations, Beach, Resorts, Restaurants</title>
+		<?php
+		}else{
+			$cat = get_query_var('cat');
+			$yourcat = get_category ($cat);
+			$idObj = get_category_by_slug($yourcat->slug);
+			$catname = titleMaker($idObj,$_GET['cat']);
+		?>
+			<title><?php echo $catname; ?> | Pinoy Destination - Explore Philippines, Travel Philippines! | Tourist Spots, Destinations, Beach, Resorts, Restaurants</title>
+		<?php
+		}
+		?>
+		
+		<?php include("meta.php"); ?>
+		
 		<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/style.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
 		<?php if(is_single()){ ?>
 			<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/post.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
 		<?php } ?>
 		
-		<?php if(is_category()){ ?>
+		<?php if(is_category() || is_tag()){ ?>
 			<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/category.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
-		<?php } ?>
 		
+		<?php } ?>
 		<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/palawan.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
 		
 		<script src="<?php bloginfo("stylesheet_directory"); ?>/js/jquery.js" type="text/javascript"></script>
@@ -58,6 +76,27 @@ global $category_base;
 <link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/itinerary.css" type="text/css" media="all" title="Itinerary Style" charset="utf-8"/>
 		<?php } ?>
 		
+		
+		<?php
+		if(is_search()){
+		?>
+			<!-- Put the following javascript before the closing </head> tag. -->
+			<script>
+			  (function() {
+				var cx = '002465766118692481817:ap6gu8gmyfi';
+				var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+				gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					'//www.google.com/cse/cse.js?cx=' + cx;
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+			  })();
+			</script>
+		<?php
+		}
+		
+		
+		include("analytics.php");
+		?>
+		
 </head>
 	<body>
 		<div class="firstBackground">
@@ -65,7 +104,7 @@ global $category_base;
 				<div class="menucontainer">
 					<div class="menu curveleft noleftmargin">
 						<ul class="menulinks">
-							<li class="haschild"><a href="/landing/restaurant">Restaurants</a>
+							<li class="haschild"><a href="<?php echo $category_base;?>/philippines?cat=restaurant">Restaurants</a>
 								<ul>
 									<?php
 										$menu = getMenu( "restaurant" );
@@ -77,7 +116,7 @@ global $category_base;
 									?>
 								</ul>
 							</li>
-							<li class="haschild"><a href="/landing/hotel">Hotels</a>
+							<li class="haschild"><a href="<?php echo $category_base;?>/philippines?cat=hotel">Hotels</a>
 								<ul>
 									<?php
 										$menu = getMenu( "hotel" );
@@ -89,7 +128,7 @@ global $category_base;
 									?>
 								</ul>
 							</li>
-							<li class="haschild"><a href="/landing/destination">Destinations</a>
+							<li class="haschild"><a href="<?php echo $category_base;?>/philippines?cat=destination">Destinations</a>
 								<ul>
 									<?php
 										$menu = getMenu( "destination" );
@@ -110,7 +149,7 @@ global $category_base;
 					</div>
 					<div class="menu curveright norightmargin">
 						<ul class="menulinks floatleft">
-							<li class="tobehide"><a href="#">Plan Your Visit</a></li>
+							<li class="tobehide"><a href="/company/suggest-destination">Suggest Destinations</a></li>
 							<li class="tobehide"><a href="<?php bloginfo('url'); ?>/vacation/blog">Blog</a></li>
 							<li class="tobehide"><a href="#" id="showmyitinerary">My Itinerary</a></li>
 							
@@ -120,7 +159,9 @@ global $category_base;
 							<br clear="all" />
 						</ul>
 						<div class="searchframe" id="searchframe">
-							<input type="text" name="s" placeholder="What are you looking for?" />
+							<form method="get" action="/search/" id="searchform">
+								<input type="text" name="s" placeholder="What are you looking for?" id="searchinputbox" />
+							</form>
 						</div>
 						
 						<div class="itihead" id="itihead">

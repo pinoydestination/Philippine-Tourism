@@ -2,6 +2,177 @@
 function getAllPostUnder($category_type="destination"){
 	
 }
+function getCatInfo($term_id){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = "SELECT * FROM ".$table_prefix."terms as terms WHERE terms.term_id='".$term_id."'";
+	$result = $wpdb->get_row($sql);
+	return $result;
+}
+function titleMaker($obj,$req=""){
+	global $arrCatType;
+	
+	if(isset($req) && $req!= ""){
+		switch($req){
+			case "destination":
+				$catname = "Tourist Spots in the ";
+			break;
+			case "hotel":
+				$catname = "Hotels in the ";
+			break;
+			case "restaurant":
+				$catname = "Restaurants in the ";
+			break;
+			case "beach":
+				$catname = "Beaches in the ";
+			break;
+			case "resort":
+				$catname = "Resorts in the ";
+			break;
+			case "festival":
+				$catname = "Festivals in the ";
+			break;
+			case "beach resort":
+				$catname = "Beach Resorts in the ";
+			break;
+		}
+	}else{
+		$childcat = getCatInfo($obj->parent);
+		if(in_array($childcat->name,$arrCatType)){
+			$ccname = $childcat->name;
+		}else{
+			$ccname = $obj->name;
+		}
+		switch(strtolower($ccname)){
+			case "destination":
+				$catname = "Tourist Spots in ";
+			break;
+			case "hotel":
+				$catname = "Hotels in ";
+			break;
+			case "restaurant":
+				$catname = "Restaurants in ";
+			break;
+			case "beach":
+				$catname = "Beaches in ";
+			break;
+			case "resort":
+				$catname = "Resorts in ";
+			break;
+			case "festival":
+				$catname = "Festivals in the ";
+			break;
+			case "beach resort":
+				$catname = "Beach Resorts in ";
+			break;
+		}
+	}
+	
+	if(isset($obj->name) && $obj->name != ""){
+		if($obj->parent == 0){
+			$catname .= $obj->name;
+		}else{
+			$childcat = getCatInfo($obj->parent);
+			
+			if(in_array($childcat->name,$arrCatType)){
+				$catname .= $obj->name;
+			}else{
+				$catname .= $childcat->name;
+			}
+			
+			$catname .= " Philippines";
+			
+		}
+	}
+	
+	
+	
+	return $catname;
+	
+}
+function getChildCategory($parent_id){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = 'SELECT 
+				terms.term_id,
+				terms.name,
+				terms.slug,
+				taxonomy.term_taxonomy_id,
+				taxonomy.taxonomy,
+				taxonomy.parent AS primary_parent
+			FROM
+				'.$table_prefix.'terms AS terms
+			INNER JOIN
+				'.$table_prefix.'term_taxonomy AS taxonomy ON terms.term_id = taxonomy.term_id
+			WHERE
+				taxonomy.taxonomy = "category" AND
+				taxonomy.parent = "'.$parent_id.'"';
+	
+	$result = $wpdb->get_results($sql);
+	return $result;
+}
+function getParentCatUnder($parent_id){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = "SELECT 
+					terms.term_id,
+					terms.name,
+					terms.slug,
+					taxonomy.term_taxonomy_id,
+					taxonomy.taxonomy,
+					taxonomy.parent AS primary_parent";
+		if($parent_id >= 1){
+			$sql .= ",
+					taxonomy2.parent AS secondary_parent";
+		}else{
+			$sql .= ", '0' as secondary_parent";
+		}
+		
+		$sql .=	" FROM
+					".$table_prefix."terms AS terms
+				INNER JOIN
+					".$table_prefix."term_taxonomy AS taxonomy ON terms.term_id = taxonomy.term_id";
+					
+		if($parent_id >= 1){
+			$sql .=	" INNER JOIN 
+					".$table_prefix."term_taxonomy AS taxonomy2 ON taxonomy.parent = taxonomy2.term_id";
+		}
+		$sql .= " WHERE
+					taxonomy.taxonomy = 'category' AND
+					taxonomy.parent = '".$parent_id."'";
+					
+	$result = $wpdb->get_results($sql);
+	
+	return $result;
+}
+function getAllCategoriesUnder($parent_id){
+	$categories = Array();
+	
+	$result = getParentCatUnder($parent_id);
+	$categories[] = $result;
+	$current = (int)$result[0]->secondary_parent;
+	
+	$x=$current;
+	
+	while($x>0){
+		
+		$result = getParentCatUnder($current);
+		$categories[] = $result;
+		$current = (int)$result[0]->secondary_parent;
+		$x = $current;
+		if($x == 0){
+			/*$result = getParentCatUnder("0");
+			$categories[] = $result;
+			$current = (int)$result[0]->secondary_parent;*/
+			break;
+		}
+	}
+	return $categories;
+}
+
 function alterUserVote($user_id,$comment_id,$vote){
 	global $wpdb;
 	global $table_prefix;
@@ -177,6 +348,7 @@ function getOtherInfo($post_id){
 function categorySpecific($category_type="destination"){
 	global $wpdb;
 	global $table_prefix;
+	global $wp_query;
 	
 	$sql = 'SELECT
 				terms.term_id AS parent_id,
@@ -201,6 +373,7 @@ function categorySpecific($category_type="destination"){
 				AND terms2.slug LIKE "%'.$category_type.'%"';
 				
 	$results = $wpdb->get_results( $sql );
+	$wpdb = $wpdb;
 	return $results;
 }
 function getMenu($type="destination"){
@@ -254,7 +427,7 @@ function getEvents($limit){
 	return $results;
 }
 
-function getRecentComments($limit=5){
+function getRecentComments($limit=5,$post_id=""){
 	global $wpdb;
 	global $table_prefix;
 	global $thumbdir;
@@ -274,13 +447,57 @@ function getRecentComments($limit=5){
 			FROM
 				".$table_prefix."comments AS comments
 			INNER JOIN
-				".$table_prefix."posts AS posts ON comments.comment_post_ID = posts.ID
+				".$table_prefix."posts AS posts ON comments.comment_post_ID = posts.ID";
 				
-			ORDER BY comments.comment_ID DESC
-
-			LIMIT ".$limit;
+	if($post_id != ""){
+		$sql .= " WHERE posts.ID = '".$post_id."' ";
+	}
+	$sql .=	" ORDER BY comments.comment_ID DESC 	LIMIT ".$limit;
 	$rows = $wpdb->get_results( $sql );
 	return $rows;
+}
+
+function sideTripFilter($category_type="",$category_location=""){
+	global $wpdb;
+	global $table_prefix;
+	
+	$isSingle = explode("|",$category_location);
+	
+	$sql = "SELECT
+				*
+			FROM
+				".$table_prefix."terms AS terms
+
+			INNER JOIN
+				".$table_prefix."term_taxonomy AS taxonomy ON terms.term_id = taxonomy.term_id
+
+
+			WHERE
+				
+				taxonomy.taxonomy = 'category'";
+				
+	if(in_array("single",$isSingle)){			
+		if($category_type != ""){			
+			$sql .= " AND terms.slug LIKE '%".trim($category_type)."%'";
+		}
+	}else{
+		if($category_type != ""){			
+			$sql .= " AND terms.name LIKE '%".trim($category_type)."%'";
+		}
+	}
+	
+	
+	if(in_array("single",$isSingle)){
+		$sql .= "AND terms.slug LIKE '%".trim($isSingle[0])."%'";
+	}else{
+		
+		if($category_location != ""){
+			$sql .= "AND terms.name LIKE '%".trim($isSingle[0])."%'";
+		}
+		
+	}
+	$result = $wpdb->get_results( $sql );
+	return $result;
 }
 
 function getSideTrips($location,$limit=5){
@@ -488,8 +705,18 @@ function getParentCat($catID,$wpdb){
 	}	
 }
 
-function pagination($pages = '', $range = 4)
+function PinoyPagination($wp_query_obj="", $pages = '', $range = 4)
 { 
+	
+	global $wpdb;
+	global $wp_query;
+	
+	if($wp_query_obj == ""){
+		global $wp_query;
+	}else{
+		$wp_query = $wp_query_obj;
+	}
+
      $showitems = ($range * 2)+1; 
  
      global $paged;
@@ -521,7 +748,7 @@ function pagination($pages = '', $range = 4)
  
          if ($paged < $pages && $showitems < $pages) echo "<a href=\"".get_pagenum_link($paged + 1)."\">Next &rsaquo;</a>"; 
          if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>Last &raquo;</a>";
-         echo "</div>\n";
+         echo "<br clear='all' /></div>\n";
      }
 }
 

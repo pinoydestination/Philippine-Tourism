@@ -1,0 +1,14 @@
+.locationfilter{
+	margin-top:10px;
+	font-size:11px;
+	color:#6C665D;
+}
+
+.locationfilter .selection{
+	background:#EFE8DF;
+	border:1px solid #6C665D;
+	padding:3px;
+	border-radius:3px;
+	font-size:11px;
+	width:150px;
+}
