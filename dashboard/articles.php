@@ -5,7 +5,9 @@ if ( !is_user_logged_in() ) {
 }
 include("dashboard.class.php");
 $dashboard = new Dashboard($wpdb,$table_prefix,$current_user);
-$userPosts = $dashboard->getUserPosts();
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+$userPosts = $dashboard->getUserPosts(0,5,$current_page,"DESC");
+$navigation = $dashboard->getNavi($userPosts['navi'],$current_page);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" > 
@@ -29,6 +31,9 @@ $userPosts = $dashboard->getUserPosts();
 					<a href="add-new.php"><span class="iconAddPost">&nbsp;</span>Add New Article</a>
 					<br clear="all" />
 				</div>
+				<div class="articleMenu nav">
+					<?php echo $navigation; ?>
+				</div>
 				<div>
 					<table class="featureTable">
 						<thead>
@@ -40,7 +45,7 @@ $userPosts = $dashboard->getUserPosts();
 						</thead>
 						<tbody>
 							<?php
-							foreach($userPosts as $postData){
+							foreach($userPosts["data"] as $postData){
 								$pageicondraft = "";
 								if($postData->post_status == "draft"){
 									$pageicondraft = "pageicondraft";
@@ -57,6 +62,13 @@ $userPosts = $dashboard->getUserPosts();
 							<?php } ?>
 						</tbody>
 					</table>
+				</div>
+				<div class="articleMenu nav">
+					<?php echo $navigation; ?>
+				</div>
+				<div class="articleMenu">
+					<a href="add-new.php"><span class="iconAddPost">&nbsp;</span>Add New Article</a>
+					<br clear="all" />
 				</div>
 			</div>
 			<br clear="all" />

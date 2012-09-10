@@ -120,18 +120,54 @@ class Dashboard{
 		}	
 	}
 	
-	public function getUserPosts($id=0){
+	public function getNavi($total,$current){
+		$str = "<ul>";
+		if($current > 1 ){
+			$str .= "<li><a href='?page=".($current-1)."'>Previous</a></li>";
+		}
+		for($x = 1 ; $x <= $total ; $x++){
+			if($current == $x){
+				$style = "class='active'";
+			}else{
+				$style = "";
+			}
+			$str .= "<li><a ".$style." href='?page=".$x."'>".$x."</a></li>";
+		}
+		if($current <= $total-1 ){
+			$str .= "<li><a href='?page=".($current+1)."'>Next</a></li>";
+		}
+		$str .= "<br clear='all' /></ul>";
+		return $str;
+	}
+	
+	public function getUserPosts($id=0,$post_per_page=2,$current_page=1,$order="DESC"){
 		$userPosts = $this->table_prefix."user_posts";
 		$author_id = $this->current_user->ID;
 		
+		$count = "SELECT count(id) as totalRow FROM ".$userPosts . " WHERE user_id = '".$author_id."'";
+		
+		$totalRow = $this->wpdb->get_row($count);
+		$totalRow = $totalRow->totalRow;
+		
+		$totalPage = ceil($totalRow/$post_per_page);
+		
+		$current_page = ($current_page-1)*$post_per_page;
+		
 		$sql = "SELECT * FROM ".$userPosts . " WHERE user_id = '".$author_id."'";
+		
+		$sql .= " ORDER BY id ".$order;
+		
+		$sql .= " LIMIT " .$current_page . "," . $post_per_page;
+		
 		$results = $this->wpdb->get_results($sql);
-
+		
+		
 		foreach($results as $resData){
 			$articleID = $resData->post_id;
 			$data[] = $this->getPostDetails($articleID);
 		}
-		return ($data);
+		$ret = array("data"=>$data,"navi"=>$totalPage);
+		return ($ret);
 	}
 	
 	private function getPostDetails($post_id){
