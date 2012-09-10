@@ -332,7 +332,8 @@ $globalCatType = "";
 							</div>
 							
 							<?php 
-								include("sidetrip_sidebar.php"); 
+								include("sidetrip_sidebar.php");
+								include("sidebarboxad.php");
 								include("festival_calendar.php"); 
 							?>
 						</div>
