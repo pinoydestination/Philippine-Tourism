@@ -30,7 +30,7 @@ function titleMaker($obj,$req=""){
 	if(isset($req) && $req!= ""){
 		switch($req){
 			case "destination":
-				$catname = "Tourist Spots in the ";
+				$catname = "Tourists Spots in the ";
 			break;
 			case "hotel":
 				$catname = "Hotels in the ";
@@ -60,7 +60,7 @@ function titleMaker($obj,$req=""){
 		}
 		switch(strtolower($ccname)){
 			case "destination":
-				$catname = "Tourist Spots in ";
+				$catname = "Tourists Spots in ";
 			break;
 			case "hotel":
 				$catname = "Hotels in ";
