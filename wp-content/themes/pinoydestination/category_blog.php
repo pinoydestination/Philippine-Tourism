@@ -24,5 +24,6 @@ if ( $the_query->have_posts() ) :
 	PinoyPagination($the_query);
 
 else:
+	echo "<h1>Sorry, no post found under this category.</h1>";
 endif;
 ?>
