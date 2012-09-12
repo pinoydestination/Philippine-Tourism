@@ -1,9 +1,17 @@
 $(document).ready(function(){
 	
-	
-	
+	function getAdLeftPos(){
+		var posTop = $(".cut").offset();
+		console.log(posTop);
+		$("#adleft").offset({top:posTop.top+12, left: posTop.left-$("#adleft").width()-10});
+		$("#adright").offset({top:posTop.top+12, left: posTop.left+$(".cut").width()+7});
+		$("#adleft").show();
+		$("#adright").show();
+	}
+		
 	$(window).resize(function(){
 		myItineraryReposition();
+		/*getAdLeftPos();*/
 	});
 	
 	
@@ -99,4 +107,5 @@ $(document).ready(function(){
 		myItineraryReposition();
 		return false;
 	});
+	/*getAdLeftPos();*/
 });

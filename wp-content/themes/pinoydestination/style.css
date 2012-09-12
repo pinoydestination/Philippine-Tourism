@@ -948,3 +948,14 @@ ul.commentlistul li p.speech{
 .floatright{
 	float:right;
 }
+.adleft{
+	width:123px;
+	min-height:600px;
+	padding:1px;
+	border:1px solid #fff;
+	background:silver;
+	position:absolute;
+	display:none;
+	display:fixed;
+	
+}

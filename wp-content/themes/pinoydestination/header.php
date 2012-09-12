@@ -33,7 +33,8 @@ global $category_base;
 			<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/category.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
 		
 		<?php } ?>
-		<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/palawan.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
+		
+		<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/<?php echo backgroundStyle(); ?>" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
 		
 		<script src="<?php bloginfo("stylesheet_directory"); ?>/js/jquery.js" type="text/javascript"></script>
 		<script src="<?php bloginfo("stylesheet_directory"); ?>/js/menu.js" type="text/javascript"></script>
@@ -100,6 +101,7 @@ global $category_base;
 </head>
 	<body>
 		<div class="firstBackground">
+			<?php /*include("sideads.php");*/ ?>
 			<div class="container960">
 				<div class="menucontainer">
 					<div class="menu curveleft noleftmargin">

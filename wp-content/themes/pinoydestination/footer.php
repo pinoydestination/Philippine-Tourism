@@ -5,7 +5,7 @@
 					<div class="right">
 						<strong class="footertitle">2012 &copy; Pinoy Destination. All Rights Reserved.</strong>
 						<p>
-							Managed and maintained by Pinoy Destination, City of Dasmarinas, Cavite. All images, media and other digital content are property of Pinoy Destination. For other information please refer to our <a href="<?php bloginfo("url"); ?>/company/legal">legal</a> section.
+							Managed and maintained by Pinoy Destination &dash; Makati City, Metro Manila, PH. All images, media and other digital content are property of Pinoy Destination. For other information please refer to our <a href="<?php bloginfo("url"); ?>/company/legal">legal</a> section.
 						</p>
 						
 						<p>

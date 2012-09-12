@@ -28,7 +28,6 @@ if($yourcat->slug != "blog"){
 }else{
 ?>
 	<div class="blogleft">
-		<?php include("category_blog.php"); ?>
 	</div>
 	<div class="blogright">
 		<?php include("blog_sidebar.php"); ?>

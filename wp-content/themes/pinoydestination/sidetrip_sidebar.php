@@ -38,11 +38,10 @@ if(is_home()){ ?>
 <?php 
 }
 if(is_single()){
-	
 }else{
-	if(strtolower($globalCatType) == "destination"){
+	if(strtolower(trim($globalCatType)) == "destination"){
 		$globalCatType = "hotel";
-	}else if(strtolower($globalCatType) == "hotel"){
+	}else if(strtolower(trim($globalCatType)) == "hotel"){
 		$globalCatType = "destination";
 	}else{
 		$globalCatType = "destination"; 
@@ -53,12 +52,19 @@ if(is_single()){
 	$island = str_replace(" ","-",strtolower($island));
 	$island = $island."|single";
 }
+if(is_home()){
+	$island = "";
+}
+if(is_category()){
+	if(isset($_GET['cat']) && $_GET['cat'] != ""){
+		$island = "";
+	}
+}
 $sidetrips = sideTripFilter($globalCatType,$island);
 $sideTripArrID = Array();
 foreach($sidetrips as $sidedata){
 	$sideTripArrID[] = $sidedata->term_id;
 }
-
 		wp_reset_query();
 		$the_query = new WP_Query( array('category__in' => $sideTripArrID, "posts_per_page"=>5) );
 		if ( $the_query->have_posts() ) : 

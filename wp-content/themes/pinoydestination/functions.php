@@ -2,6 +2,20 @@
 function getAllPostUnder($category_type="destination"){
 	
 }
+
+function backgroundStyle($destination=""){
+	global $wpdb;
+	global $table_prefix;
+	
+	if($destination == ""){
+		$sql = "SELECT filename FROM ".$table_prefix."styles  ORDER BY RAND() LIMIT 1";
+	}else{
+		$sql = "SELECT filename FROM ".$table_prefix."styles  WHERE filename LIKE '%".$destination."%' LIMIT 1";
+	}
+	$result = $wpdb->get_row($sql);
+	return $result->filename;
+}
+
 function getCatInfo($term_id){
 	global $wpdb;
 	global $table_prefix;
@@ -482,7 +496,7 @@ function sideTripFilter($category_type="",$category_location=""){
 		}
 	}else{
 		if($category_type != ""){			
-			$sql .= " AND terms.name LIKE '%".trim($category_type)."%'";
+			$sql .= " AND terms.slug LIKE '%".trim($category_type)."%'";
 		}
 	}
 	
@@ -492,7 +506,7 @@ function sideTripFilter($category_type="",$category_location=""){
 	}else{
 		
 		if($category_location != ""){
-			$sql .= "AND terms.name LIKE '%".trim($isSingle[0])."%'";
+			$sql .= "AND terms.slug LIKE '%".trim($isSingle[0])."%'";
 		}
 		
 	}
