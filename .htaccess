@@ -18,6 +18,8 @@ RewriteRule ^helpful-vote/(.*)/(.*)/(.*)$ /off-page/helpful-vote.php?comment_id=
 RewriteRule ^dashboard-login /wp-login.php [L]
 RewriteRule ^dashboard-login/ /wp-login.php [L]
 
+RewriteRule ^company/special-thanks /off-page/special-thanks.php [L]
+
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

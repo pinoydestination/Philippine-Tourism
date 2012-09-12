@@ -4,6 +4,8 @@ global $finalCat;
 global $arrCatIsland;
 global $globalCatType;
 global $selectedCat;
+global $yourcat;
+
 if($globalCatType == ""){
 	$globalCatType = $selectedCat;
 }
@@ -57,6 +59,8 @@ if(is_home()){
 }
 if(is_category()){
 	if(isset($_GET['cat']) && $_GET['cat'] != ""){
+		$island = "";
+	}else if('blog' == $yourcat->slug){
 		$island = "";
 	}
 }

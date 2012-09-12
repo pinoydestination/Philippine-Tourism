@@ -496,7 +496,7 @@ function sideTripFilter($category_type="",$category_location=""){
 		}
 	}else{
 		if($category_type != ""){			
-			$sql .= " AND terms.slug LIKE '%".trim($category_type)."%'";
+			$sql .= " AND terms.name LIKE '%".trim($category_type)."%'";
 		}
 	}
 	
@@ -510,6 +510,7 @@ function sideTripFilter($category_type="",$category_location=""){
 		}
 		
 	}
+	
 	$result = $wpdb->get_results( $sql );
 	return $result;
 }

@@ -301,21 +301,65 @@ ul.blogtitlelist li span{
 	color:#A6B0B7;
 }
 div.blogpostcatcontainer{
-	width:620px;
+	width:598px;
 	min-height:100px;
 	margin-bottom:20px;
+	padding:10px;
+	border:1px solid #B29EC8;
+	border-bottom:3px solid #B29EC8;
+	border-radius:3px;
+	background:#ECEFF8;
 }
 .blogpostcatcontainer a{
 	font-family:"Arial Narrow", Arial, Helvetica, Sans-serif;
 	font-size:25px;
 	text-decoration:none;
 	font-weight:bold;
-	color:#6C8D5B;
+	color:#9180A3;
+	text-shadow:1px 1px 0px #fff;
 }
 .blogpostcatcontainer p{
-	color:#656F60;
+	color:#9180A3;
 	font-size:12px;
 	line-height:20px;
 	padding:3px 10px;
 	margin:0;
+}
+.blogpostcontenttitle{
+	display:block;
+	width:100%;
+	border-bottom:1px dotted #B0BCAA;
+	padding-bottom:10px;
+}
+.blogpostcontenttitle span{
+	display:block;
+	padding-top:5px;
+	color:#9180A3;
+	font-size:11px;
+}
+h1.vacationblog{
+	padding:10px 0px;
+	font-weight:bold;
+	font-size:30px;
+	color:#294953;
+}
+p.readmore{
+	text-align:right;
+	display:block;
+}
+p.readmore a{
+	font-weight:normal;
+	font-size:10px;
+	text-transform:uppercase;
+	padding:3px 10px;
+	background:#8A65B3;
+	color:#fff;
+	text-shadow:1px 1px 0px rgba(0,0,0,.3);
+	border:1px solid #745299;
+	border-bottom:2px solid #745299;
+	border-radius:3px;
+	box-shadow:1px 1px 0px rgba(255,255,255,.8);
+}
+p.readmore a:hover{
+	text-decoration:underline;
 }

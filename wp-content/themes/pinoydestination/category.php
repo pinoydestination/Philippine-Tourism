@@ -3,6 +3,7 @@ get_header();
 global $globalCatType;
 global $selectedCat;
 global $parentCat;
+global $yourcat;
 ?>
 <link href="<?php bloginfo('stylesheet_directory'); ?>/post.css" rel="stylesheet" />
 <link href="<?php bloginfo('stylesheet_directory'); ?>/blue.css" rel="stylesheet" />
@@ -26,6 +27,7 @@ if($yourcat->slug != "blog"){
 	?>
 <?php
 }else{
+	
 ?>
 	<div class="blogleft">
 		<?php include("category_blog.php"); ?>
