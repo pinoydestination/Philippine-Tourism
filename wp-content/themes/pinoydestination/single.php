@@ -179,12 +179,12 @@ $globalCatType = "";
 									<ul class='tabs'>
 										<li><a href='javascript:;' activate="#tab1" class="active"><?php echo $title; ?> in <?php echo $GLOBALS['Current_City']; ?></a></li>
 										<?php if($addhotel){ ?>
-										<li><a href='javascript:;' activate="#tab3" class="active">Hotels in <?php echo $GLOBALS['Current_City']; ?></a></li>
+										<li><a href='javascript:;' activate="#tab3">Hotels in <?php echo $GLOBALS['Current_City']; ?></a></li>
 										<?php } ?>
 										<li><a href='javascript:;' activate="#tab2">Restaurants in <?php echo $GLOBALS['Current_City']; ?></a></li>
 										<br clear="all" />
 									</ul>
-									
+									<?php if($addhotel){ ?>
 									<div class="tabscontent" id='tab3'>
 										<?php
 											if(count($newlist)<=0){
@@ -211,6 +211,7 @@ $globalCatType = "";
 											}
 										?>
 									</div>
+									<?php } ?>
 									<div class="tabscontent" id='tab1'>
 										<?php
 											if(count($hotelLists)<=0){
