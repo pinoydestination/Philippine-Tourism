@@ -188,7 +188,7 @@ $globalCatType = "";
 									<div class="tabscontent" id='tab3'>
 										<?php
 											if(count($newlist)<=0){
-												echo "<center class='noutfound'><h2>No ".$catType." found within this area on our server.</h2></center>";
+												echo "<center class='noutfound'><h2>No Hotels found within this area on our server.</h2></center>";
 											}else{
 											?>
 											<ol style="display:block; ">
