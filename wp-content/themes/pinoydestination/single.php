@@ -242,6 +242,25 @@ $globalCatType = "";
 										<?php
 											if(count($restaurantLists)<=0){
 												echo "<center class='noutfound'><h2>No Restaurant found within this area on our server.</h2></center>";
+											}else{
+											?>
+												<ol style="display:block; ">
+													<?php foreach($restaurantLists as $hotels){ ?>
+													<li>
+														<div class="extralist">
+															<div class="extralisttitle">
+																<a href="<?php echo $hotels->guid; ?>"><?php echo $hotels->post_title; ?></a>
+																<a class="showdirection fancybox fancybox.iframe" href="http://www.pinoydestination.com/gdirections.php?from=<?php echo urlencode($GLOBALS['Current_Location']); ?>&to=<?php echo urlencode($hotels->location_address); ?>&zoom=1">Show Directions</a>
+																<br clear="all" />
+															</div>
+															<span><?php echo $hotels->location_address; ?></span>
+															<span><?php echo $hotels->contact_number; ?></span>
+															<span class="website"><?php echo $hotels->website; ?></span>
+														</div>
+													</li>
+													<?php } ?>
+												</ol>
+											<?php
 											}
 										?>
 									</div>
