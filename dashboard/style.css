@@ -605,3 +605,8 @@ border:1px solid #98bc80;
 				display:none;
 				z-index: 999;
 			}
+.filebrowser{
+	display:block;
+	margin:5px 0px;
+	width:250px;
+}

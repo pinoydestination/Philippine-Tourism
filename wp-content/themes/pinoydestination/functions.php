@@ -3,6 +3,15 @@ function getAllPostUnder($category_type="destination"){
 	
 }
 
+function getPost($id=0){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = "SELECT * FROM ".$table_prefix."posts WHERE id='".$id."'";
+	$result = $wpdb->get_row($sql);
+	return $result;
+}
+
 function backgroundStyle($destination=""){
 	global $wpdb;
 	global $table_prefix;
@@ -58,6 +67,7 @@ function titleMaker($obj,$req=""){
 		}else{
 			$ccname = $obj->name;
 		}
+		
 		switch(strtolower($ccname)){
 			case "destination":
 				$catname = "Tourists Spots in ";
@@ -80,6 +90,10 @@ function titleMaker($obj,$req=""){
 			case "beach resort":
 				$catname = "Beach Resorts in ";
 			break;
+			case "beach and resorts":
+				$catname = "Beach and Resorts in ";
+			break;
+
 		}
 	}
 	
@@ -88,7 +102,6 @@ function titleMaker($obj,$req=""){
 			$catname .= $obj->name;
 		}else{
 			$childcat = getCatInfo($obj->parent);
-			
 			if(in_array($childcat->name,$arrCatType)){
 				$catname .= $obj->name;
 			}else{
@@ -612,7 +625,6 @@ function getImage($post_id,$limit=1){
 	}
 	return $result;
 }
-
 
 function rearrangeCategory($arrcat, $arrArrangement){
 	$tmpCat = Array();

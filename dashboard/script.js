@@ -16,6 +16,12 @@ $(document).ready(function(){
 				updateStrength(strength);
 				});
 			}
+			
+			
+			$("#addnewfile").live("click",function(){
+				$("#filebrowsercontainer").append('<input class="filebrowser"  type="file" name="file[]" />');
+			});
+			
 
 			
 			$("#signupform").submit(function(){
