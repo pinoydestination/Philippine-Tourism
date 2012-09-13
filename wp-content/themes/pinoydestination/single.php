@@ -157,10 +157,12 @@ $globalCatType = "";
 							if(in_array("Hotel",$categoryStatic)){
 								$title = "Tourist Spots";
 								$catType = "Destination";
-							}
-							if(in_array("Destination",$categoryStatic)){
+							}else if(in_array("Destination",$categoryStatic)){
 								$title = "Hotels";
 								$catType = "Hotel";
+							}else{
+								$title = "Tourist Spots";
+								$catType = "Destination";
 							}
 							
 							$hotelLists = getSpecific($GLOBALS['Current_City'],$catType);
