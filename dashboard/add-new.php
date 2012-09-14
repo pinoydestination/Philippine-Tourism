@@ -163,7 +163,7 @@ if($_POST){
 					<input type="text" class="articleTitle required" placeholder="Location Name (eg. Hotel Name, Places, Restaurant)" name="post_title" />
 				</div>
 				
-				<div>
+				<div id="requiredfields">
 					<div class="inputcontainer half">
 						<legend>Contact Information</legend>
 						<p>
@@ -195,8 +195,8 @@ if($_POST){
 				</div>
 				<div class="inputcontainer">
 					<ul id="parentCat" class="catListStyle"></ul>
-					<ul id="subCategory" class="catListStyle"></ul>
-					<ul id="subSubCategory" class="catListStyle"></ul>
+					<ul id="subCategory" class="catListStyle"><li><a title="Click here if the intended location is not found." href="javascript:void(0);" id="addnewcat">[+] Add New Location</a></li></ul>
+					<ul id="subSubCategory" class="catListStyle"><li><a title="Click here if the intended location is not found." href="javascript:void(0);" id="addnewcat">[+] Add New Location</a></li></ul>
 					<ul id="addSubCategory" class="catListStyle">
 						<li><a title="Click here if the intended location is not found." href="javascript:void(0);" id="addnewcat">[+] Add New Location</a></li>
 					</ul>
@@ -204,7 +204,7 @@ if($_POST){
 					<br clear="all" />
 				</div>
 				
-				<div id="amenity-listing">
+				<div id="amenity-listing" style="display:none">
 					<div class="inputcontainer">
 						<legend>Select Amenities: (Only applicable on Hotels)</legend>
 						<p>

@@ -17,25 +17,42 @@ $(document).ready(function(){
 		var totalResult = newData[0];
 		data = newData[1];
 		
+		console.log(type);
+		
+		
+		
+		 
+		
+		if(data == "no-result"){
+			if("subcat" == type){
+				$("#subCategory").html('<li><a class="'+id+'" title="" href="javascript:void(0);" id="addnewcat">Add Sub-Category</a></li>');
+				$("#subCategory").show();
+			}
+			if("subsubcat" == type){
+				$("#subSubCategory").html('<li><a class="'+id+'" title="" href="javascript:void(0);" id="addnewcat">Add Sub-Category</a></li>');
+				$("#subSubCategory").show();
+			}
+		}else{
+			data = '<li><a title="" class="'+id+'" href="javascript:void(0);" id="addnewcat">Add Sub-Category</a></li>'+data;
+		}
+		
 		if("addsubsubcat" == type){
 			if('no-result' == data){
-				data = '<li><a title="Click here if the intended location is not found." href="javascript:void(0);" id="addnewcat">[+] Add New Location</a></li>';
+				data = '<li><a class="'+id+'" title="Click here if the intended location is not found." href="javascript:void(0);" id="addnewcat">[+] Add New Location</a></li>';
 			}else{
-				data = '<li><a title="Click here if the intended location is not found." href="javascript:void(0);" id="addnewcat">[+] Add New Location</a></li>'+data;
+				data = '<li><a class="'+id+'" title="Click here if the intended location is not found." href="javascript:void(0);" id="addnewcat">[+] Add New Location</a></li>'+data;
 			}
 		}
 		
-		
-		
-		 if(data != 'no-result'){
+		if(data != 'no-result'){
 			  $("#"+objId).html(data);
 			  $("#"+objId).fadeIn();
 			  if(loc){
 			  	loc.children('img.loading').fadeOut("fast");
 			  }
-			  if(totalResult == 1){
-			  	$("#"+objId).children(":first").children("a").click();
-			  }
+			  /*if(totalResult == 1){
+			  	$("#"+objId).children().eq(1).children("a").click();
+			  }*/
 			  $("#articleeditor").fadeIn("fast");
 		 }else{
 		 	if(loc){
@@ -45,6 +62,7 @@ $(document).ready(function(){
 		 }
 		 
 		 
+		 return data;
 		 
 		});
 	};
@@ -53,6 +71,7 @@ $(document).ready(function(){
 	$("#addnewcat").live("click", function(){
 		$(".overlaybg").fadeIn();
 		$("#overlay").fadeIn();
+		$("#newparentcat").attr("value",$(this).attr('class'));
 		return false;
 	});
 	
@@ -126,7 +145,10 @@ $(document).ready(function(){
 		if("addsubsubcat" != actiontype){
 			$.getVacationType = currentType;
 		}	
-		
+	
+		if(currentType == "Blog"){
+			$("#requiredfields").hide();
+		}
 		
 		if($.getVacationType == "Hotel" || $.getVacationType == "Resort"){
 			$("#amenity-listing").show();
@@ -174,7 +196,7 @@ $(document).ready(function(){
 		
 		tags = "";
 		
-		$(".required").each(function(){
+		$(".required:visible").each(function(){
 			if($(this).val() == ""){
 				error = true;
 			}
