@@ -149,127 +149,9 @@ $globalCatType = "";
 							<?php 
 							}?>
 							
-							
-							
-							<?php 
-							$addhotel = false;
-							if(!isset($_GET['gallery']) && $_GET['gallery'] != "show"){
-							
-							if(in_array("Hotel",$categoryStatic)){
-								$title = "Tourist Spots";
-								$catType = "Destination";
-							}else if(in_array("Destination",$categoryStatic)){
-								$title = "Hotels";
-								$catType = "Hotel";
-							}else{
-								$title = "Tourist Spots";
-								$catType = "Destination";
-								$addhotel = true;
-							}
-							
-							$hotelLists = getSpecific($GLOBALS['Current_City'],$catType);
-							$restaurantLists = getSpecific($GLOBALS['Current_City'],"restaurant");
-							if($addhotel){
-								$newlist = getSpecific($GLOBALS['Current_City'],"Hotel");
-							}
-							?>
-								
-								<div class="extracontentaddons">
-									
-									<ul class='tabs'>
-										<li><a href='javascript:;' activate="#tab1" class="active"><?php echo $title; ?> in <?php echo $GLOBALS['Current_City']; ?></a></li>
-										<?php if($addhotel){ ?>
-										<li><a href='javascript:;' activate="#tab3">Hotels in <?php echo $GLOBALS['Current_City']; ?></a></li>
-										<?php } ?>
-										<li><a href='javascript:;' activate="#tab2">Restaurants in <?php echo $GLOBALS['Current_City']; ?></a></li>
-										<br clear="all" />
-									</ul>
-									<?php if($addhotel){ ?>
-									<div class="tabscontent" id='tab3'>
-										<?php
-											if(count($newlist)<=0){
-												echo "<center class='noutfound'><h2>No Hotels found within this area on our server.</h2></center>";
-											}else{
-											?>
-											<ol style="display:block; ">
-												<?php foreach($newlist as $hotels){ ?>
-												<li>
-													<div class="extralist">
-														<div class="extralisttitle">
-															<a href="<?php echo $hotels->guid; ?>"><?php echo $hotels->post_title; ?></a>
-															<a class="showdirection fancybox fancybox.iframe" href="http://www.pinoydestination.com/gdirections.php?from=<?php echo urlencode($GLOBALS['Current_Location']); ?>&to=<?php echo urlencode($hotels->location_address); ?>&zoom=1">Show Directions</a>
-															<br clear="all" />
-														</div>
-														<span><?php echo $hotels->location_address; ?></span>
-														<span><?php echo $hotels->contact_number; ?></span>
-														<span class="website"><?php echo $hotels->website; ?></span>
-													</div>
-												</li>
-												<?php } ?>
-											</ol>
-											<?php
-											}
-										?>
-									</div>
-									<?php } ?>
-									<div class="tabscontent" id='tab1'>
-										<?php
-											if(count($hotelLists)<=0){
-												echo "<center class='noutfound'><h2>No ".$catType." found within this area on our server.</h2></center>";
-											}else{
-											?>
-											<ol style="display:block; ">
-												<?php foreach($hotelLists as $hotels){ ?>
-												<li>
-													<div class="extralist">
-														<div class="extralisttitle">
-															<a href="<?php echo $hotels->guid; ?>"><?php echo $hotels->post_title; ?></a>
-															<a class="showdirection fancybox fancybox.iframe" href="http://www.pinoydestination.com/gdirections.php?from=<?php echo urlencode($GLOBALS['Current_Location']); ?>&to=<?php echo urlencode($hotels->location_address); ?>&zoom=1">Show Directions</a>
-															<br clear="all" />
-														</div>
-														<span><?php echo $hotels->location_address; ?></span>
-														<span><?php echo $hotels->contact_number; ?></span>
-														<span class="website"><?php echo $hotels->website; ?></span>
-													</div>
-												</li>
-												<?php } ?>
-											</ol>
-											<?php
-											}
-										?>
-									</div>
-									<div class="tabscontent" id='tab2'>
-										<?php
-											if(count($restaurantLists)<=0){
-												echo "<center class='noutfound'><h2>No Restaurant found within this area on our server.</h2></center>";
-											}else{
-											?>
-												<ol style="display:block; ">
-													<?php foreach($restaurantLists as $hotels){ ?>
-													<li>
-														<div class="extralist">
-															<div class="extralisttitle">
-																<a href="<?php echo $hotels->guid; ?>"><?php echo $hotels->post_title; ?></a>
-																<a class="showdirection fancybox fancybox.iframe" href="http://www.pinoydestination.com/gdirections.php?from=<?php echo urlencode($GLOBALS['Current_Location']); ?>&to=<?php echo urlencode($hotels->location_address); ?>&zoom=1">Show Directions</a>
-																<br clear="all" />
-															</div>
-															<span><?php echo $hotels->location_address; ?></span>
-															<span><?php echo $hotels->contact_number; ?></span>
-															<span class="website"><?php echo $hotels->website; ?></span>
-														</div>
-													</li>
-													<?php } ?>
-												</ol>
-											<?php
-											}
-										?>
-									</div>
-									
-								</div>
-							
-							<?php } ?>
-							
+							<?php include("single_tabs.php"); ?>
 							<?php include("gallerysnippet.php"); ?>
+							
 							
 							<div class="commenthr">&nbsp;</div>
 							
@@ -369,36 +251,14 @@ $globalCatType = "";
 								</div>
 							</div>
 							
-							
-							
 							<br clear="all" />
 						</div>
 						
 					</div>
-					<div class="right" id="sidebarPanel">
-						<div id="postsidebarcontainer">
-							<div class="sidebarmap">
-								<span class="myriad_pro_bold_condensed sidebarheader" style="float:left;"><?php echo get_the_title(); ?> Map</span><a class="largermapbutton fancybox fancybox.iframe" href="http://www.pinoydestination.com/gmap.php?address=<?php echo urlencode($otherInfoData->location_address); ?>&zoom=13">ENLARGE MAP</a>
-								<br clear="all" />
-								<?php /*
-								<iframe width="300" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=+&amp;q=Philippines&amp;ie=UTF8&amp;hq=&amp;hnear=Philippines&amp;t=m&amp;ll=12.897489,121.816406&amp;spn=25.499947,26.279297&amp;z=4&amp;output=embed"></iframe>
-								<iframe width="300" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.pinoydestination.com/gmap.php?address=<?php echo $GLOBALS['Current_Location']; ?>&zoom=13"></iframe>
-								 * */ ?>
-								<img class="staticgmap" width="300" height="400" border="0" src="http://www.pinoydestination.com/gstatic.php?address=<?php echo $GLOBALS['Current_Location']; ?>&zoom=13&size=292x400" />
-							</div>
-							
-							<?php 
-								include("sidetrip_sidebar.php");
-								include("sidebarboxad.php");
-								include("festival_calendar.php"); 
-							?>
-						</div>
-					</div>
+					<?php include("single_sidebar.php"); ?>
 					
 					<br clear="all" />
 				</div>
-				
-						
 <?php 
 /**
  * END
