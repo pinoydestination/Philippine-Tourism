@@ -8,14 +8,14 @@
 		<?php
 		global $currentcatID;
 		$cat = searchCatInfoBySlug("blog");
-		print_r($cat);
+		$newID = Array();
 		if(is_array($cat)){
 			foreach($cat as $currentCatInfo){
-				$currentcatID[] = $currentCatInfo->term_id;
+				$newID[] = $currentCatInfo->term_id;
 			}
 		}
 		wp_reset_query();
-		$the_query = new WP_Query( array('category__in' => $currentcatID, "posts_per_page"=>10) );
+		$the_query = new WP_Query( array('category__in' => $newID, "posts_per_page"=>10) );
 		if ( $the_query->have_posts() ) : 
 			while ($the_query->have_posts() ) : $the_query->the_post();
 			?>
