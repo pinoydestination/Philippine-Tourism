@@ -11,7 +11,7 @@
 		$newID = Array();
 		if(is_array($cat)){
 			foreach($cat as $currentCatInfo){
-				$newID[] = $currentCatInfo->term_id;
+				$newID[$currentCatInfo->term_id] = $currentCatInfo->term_id;
 			}
 		}
 		wp_reset_query();
