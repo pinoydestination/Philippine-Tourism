@@ -56,6 +56,8 @@ function titleMaker($obj,$req=""){
 			case "festival":
 				$catname = "Festivals in the ";
 			break;
+			
+			case "beach-and-resort":
 			case "beach resort":
 				$catname = "Beach Resorts in the ";
 			break;
@@ -107,8 +109,11 @@ function titleMaker($obj,$req=""){
 			}else{
 				$catname .= $childcat->name;
 			}
-			
-			$catname .= " Philippines";
+			if(trim($catname) != "Philippines"){
+				$catname .= " Philippines";
+			}else{
+				$catname = trim($catname);
+			}
 			
 		}
 	}

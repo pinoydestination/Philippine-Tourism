@@ -7,6 +7,8 @@
 							<li><a href="<?php echo $category_base;?>/philippines?cat=hotel">Hotels</a></li>
 							<li><a href="<?php echo $category_base;?>/philippines?cat=restaurant">Restaurants</a></li>
 							<li><a href="<?php echo $category_base;?>/philippines?cat=beach">Beaches</a></li>
+							<li><a href="<?php echo $category_base;?>/philippines?cat=resort">Resorts</a></li>
+							<li><a href="<?php echo $category_base;?>/philippines?cat=beach-and-resort">Beach Resort</a></li>
 							<li><a href="/company/get-listed">Get Listed</a></li>
 							<li><a href="/company/plan-your-visit">Plan Your Visit</a></li>
 							<li><a href="/company/submit-review">Submit a Review</a></li>
@@ -35,8 +37,8 @@
 						</ul>
 						<ul>
 							<li><strong>Other Reasons to Visit</strong></li>
-							<li><a href="<?php echo $category_base;?>/philippines?cat=festival">Festivals</a></li>
-							<li><a href="<?php echo $category_base;?>/philippines?cat=beach">Resorts and Beaches</a></li>
+							<li><a href="<?php echo $category_base;?>/blog/festivals">Festivals</a></li>
+							<li><a href="<?php echo $category_base;?>/philippines?cat=beach-and-resort">Resorts and Beaches</a></li>
 							<li><a href="<?php echo $category_base;?>/philippines?cat=destination">Tourist Attractions</a></li>
 							<li><a href="<?php echo $category_base;?>/philippines?cat=restaurant">Try Our Food!</a></li>
 						</ul>
