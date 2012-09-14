@@ -1080,3 +1080,34 @@ p.readmore a{
 p.readmore a:hover{
 	text-decoration:underline;
 }
+div.indexblog{
+	
+}
+div.indexblog ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+div.indexblog ul li{
+	border-bottom:1px dotted #A1BEC9;
+	padding:10px;
+}
+div.indexblog ul li a{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:15px;
+	font-weight:bold;
+	display:block;
+	color:#5F7C97;
+}
+div.indexblog ul li p{
+	color:#919191;
+}
+div.indexblog ul li span.spanright{
+	display:block;
+	text-align:right;
+}
+div.indexblog ul li span.spanright a{
+	font-size:11px;
+	color:#409940;
+	text-decoration:underline;
+}

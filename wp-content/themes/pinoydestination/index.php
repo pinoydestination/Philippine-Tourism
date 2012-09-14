@@ -34,6 +34,13 @@
 						*/ ?>
 						
 						<div class="blogsection">
+							<h1 class="myriad_pro_bold_condensed wheretostay">Recent Blog Posts</h1>
+							<div class="indexblog">
+								<?php include("index_blog.php"); ?>
+							</div>
+						</div>
+						
+						<div class="blogsection">
 							<h1 class="myriad_pro_bold_condensed wheretostay">Recent Reviews</h1>
 							<div class="commentlist">
 								<?php include("index_reviews.php"); ?>
