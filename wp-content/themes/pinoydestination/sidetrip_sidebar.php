@@ -17,14 +17,16 @@ foreach($categories as $category){
 			$location_name = $category->name;
 			$term_id[$category->term_id] = $category->term_id;
 		}
-	}
-	
-	if(is_category()){
+	}else if(is_category()){
 		if($selectedCat == $category->name){
 			$location_name = $selectedCat;
 			$term_id[$category->term_id] = $category->term_id;
 		}
+	}else{
+		$idObj = get_category_by_slug("philippines");
+		$term_id[$category->term_id] = $idObj->term_id;
 	}
+	
 	
 }
 
