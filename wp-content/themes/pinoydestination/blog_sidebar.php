@@ -10,8 +10,8 @@
 		$cat = searchCatInfoBySlug("blog");
 		print_r($cat);
 		if(is_array($cat)){
-			foreach($cat as $c){
-				$currentcatID[] = $c->term_id;
+			foreach($cat as $currentCatInfo){
+				$currentcatID[] = $currentCatInfo->term_id;
 			}
 		}
 		wp_reset_query();
