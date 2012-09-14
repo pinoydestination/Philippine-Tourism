@@ -20,9 +20,12 @@ if(isset($parentCat) && is_array($parentCat)){
 if(is_home()){ ?>
 <span class="myriad_pro_bold_condensed sidebarheader">Recently Added Destinations</span>
 <?php 
-}else{ 
+}else{
+	$finalCat = trim($finalCat);
 	if($finalCat == ""){
 		$finalCat = ucwords($island);
+	}else if(strtolower($finalCat) == "blog"){
+		$finalCat = ucwords("Philippines");
 	}
 	if(!is_single()){
 		if(strtolower(trim($globalCatType)) == "hotel"){
@@ -30,7 +33,7 @@ if(is_home()){ ?>
 		}else if(strtolower(trim($globalCatType)) == "destination"){
 			$headTitle = "Hotels";
 		}else{
-			$headTitle = "Hotels";
+			$headTitle = "Tourists Spots";
 		}
 	}else{
 		$headTitle = "Side Trips";

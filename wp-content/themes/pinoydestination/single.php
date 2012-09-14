@@ -1,6 +1,9 @@
-<?php get_header();
+<?php
+get_header();
 global $globalCatType;
 global $parentCat;
+global $isBlog;
+
 $globalCatType = "";
  while ( have_posts() ) : the_post(); 
 						
@@ -39,6 +42,15 @@ $globalCatType = "";
 	$parentCat = $finalCat;
 	
 	$newCat = rearrangeCategory($newCat,$arrCatAll);
+	
+	/*Check if current post is a blog*/
+	$isBlog = false;
+	foreach($newCat as $category){
+		if($category->slug == "blog"){
+			$isBlog = true;
+		}
+	}
+	/*End of Checking*/
 	
 	$GLOBALS['Current_City'] = $finalCat;
 	global $finalCat;
@@ -84,31 +96,34 @@ $globalCatType = "";
 								if(isset($_GET['gallery']) && $_GET['gallery'] == "show"){
 								?>
 									<li><a href="<?php the_permalink(); ?>"><?php echo the_title(); ?></a></li>
-								<?php } ?>
-									<?php 
-										if(isset($_SESSION['myItinerary']) && is_array($_SESSION['myItinerary'])){
-											$sha1Title = sha1(get_the_title());
-											if(isset($_SESSION['myItinerary'][$sha1Title]) && is_array($_SESSION['myItinerary'][$sha1Title])){
-												?>
-												<!--//<li class="nomarginright"><span class="gallerySpanHead additinerarybutton" id="addthistomyitinerary" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink();?>">Remove this in your itinerary<span>&times;</span></span></li>//-->
-												<?php
-											}else{
-												?>
-												<li class="nomarginright"><span class="gallerySpanHead additinerarybutton" id="addthistomyitinerary" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink();?>">Add to Itinerary</span></li>
-												<?php
-											}
+								<?php 
+								}
+								if(!$isBlog){
+									if(isset($_SESSION['myItinerary']) && is_array($_SESSION['myItinerary'])){
+										$sha1Title = sha1(get_the_title());
+										if(isset($_SESSION['myItinerary'][$sha1Title]) && is_array($_SESSION['myItinerary'][$sha1Title])){
+											?>
+											<!--//<li class="nomarginright"><span class="gallerySpanHead additinerarybutton" id="addthistomyitinerary" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink();?>">Remove this in your itinerary<span>&times;</span></span></li>//-->
+											<?php
 										}else{
-										?>
+											?>
 											<li class="nomarginright"><span class="gallerySpanHead additinerarybutton" id="addthistomyitinerary" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink();?>">Add to Itinerary</span></li>
-										<?php
+											<?php
 										}
+									}else{
 									?>
-									
-								
+										<li class="nomarginright"><span class="gallerySpanHead additinerarybutton" id="addthistomyitinerary" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink();?>">Add to Itinerary</span></li>
+									<?php
+									}
+								}
+								?>								
 								<br clear="all" />
 								</ul>
 								
+								<?php if(!$isBlog){ ?>
 								<div class="star_w star_w_white" style="float:right; margin-top:6px;"><div class="star_w2 star_w2_white" style="width:<?php echo $starComputeFinal->overAllRatings; ?>%;">&nbsp;</div></div>
+								<?php } ?>
+								
 							</div>
 							<div class="postTitle greenbgnew">
 								<?php if(isset($_GET['gallery']) && $_GET['gallery'] == "show"){ ?>
@@ -149,8 +164,16 @@ $globalCatType = "";
 							<?php 
 							}?>
 							
-							<?php include("single_tabs.php"); ?>
-							<?php include("gallerysnippet.php"); ?>
+							<?php 
+							if(!$isBlog){
+								include("single_tabs.php");
+								include("gallerysnippet.php");
+							}else{
+								//include("single_author.php");
+							}
+							?>
+							
+							
 							
 							
 							<div class="commenthr">&nbsp;</div>
@@ -255,8 +278,15 @@ $globalCatType = "";
 						</div>
 						
 					</div>
-					<?php include("single_sidebar.php"); ?>
-					
+					<?php
+					if($isBlog){
+						echo '<div class="right" id="sidebarPanel">';
+						include("blog_sidebar.php"); 
+						echo '</div>';
+					}else{
+						include("single_sidebar.php"); 
+					}
+					?>
 					<br clear="all" />
 				</div>
 <?php 

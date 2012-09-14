@@ -25,6 +25,15 @@ function backgroundStyle($destination=""){
 	return $result->filename;
 }
 
+function searchCatInfoBySlug($slug){
+	global $wpdb;
+	global $table_prefix;
+	
+	$sql = "SELECT * FROM ".$table_prefix."terms as terms WHERE terms.slug LIKE '%".$slug."%'";
+	$result = $wpdb->get_results($sql);
+	return $result;
+}
+
 function getCatInfo($term_id){
 	global $wpdb;
 	global $table_prefix;
@@ -528,7 +537,6 @@ function sideTripFilter($category_type="",$category_location=""){
 		}
 		
 	}
-	
 	$result = $wpdb->get_results( $sql );
 	return $result;
 }
