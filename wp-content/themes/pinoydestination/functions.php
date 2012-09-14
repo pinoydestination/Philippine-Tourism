@@ -537,6 +537,7 @@ function sideTripFilter($category_type="",$category_location=""){
 		}
 		
 	}
+	echo $sql;
 	$result = $wpdb->get_results( $sql );
 	return $result;
 }
