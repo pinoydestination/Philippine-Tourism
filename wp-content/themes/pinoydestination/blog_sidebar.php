@@ -8,8 +8,10 @@
 		<?php
 		global $currentcatID;
 		$cat = searchCatInfoBySlug("blog");
-		foreach($cat as $c){
-			$currentcatID[] = $c->term_id;
+		if(is_array($cat)){
+			foreach($cat as $c){
+				$currentcatID[] = $c->term_id;
+			}
 		}
 		wp_reset_query();
 		$the_query = new WP_Query( array('category__in' => $currentcatID, "posts_per_page"=>10) );
