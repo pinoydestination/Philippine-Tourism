@@ -19,7 +19,6 @@
 			resizeFrame = function(){
 				var windowWidth = $(window).width();
 				var windowHeight = $(window).height();
-				console.log(windowWidth);
 				
 				$("#mainframe").width(windowWidth);
 				$("#mainframe").height(windowHeight);
