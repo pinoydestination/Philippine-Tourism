@@ -6,7 +6,7 @@
 </div>
 
 <div class="homepagetilecontainergreen">
-	<a class="homepagetilelink" href="<?php echo $category_base;?>/philippines?cat=beach">
+	<a class="homepagetilelink" href="<?php echo $category_base;?>/philippines?cat=beach-and-resort">
 		<img class="indexgreenimages" src="<?php bloginfo("stylesheet_directory"); ?>/images/home/bora.jpg" border="0" />
 		<span>Beach &amp; Resorts</span>
 	</a>

@@ -1,6 +1,9 @@
 <?php global $currentIsland; ?>
 <div class="right" id="sidebarPanel">
-	<?php 
+	<?php
+	if(is_category()){
+		include("sidebarboxad.php");
+	}
 	if(is_home()){
 		include("festival_calendar.php");
 		include("sidebarboxad.php");
