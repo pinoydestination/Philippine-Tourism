@@ -1,7 +1,7 @@
 <?php 
 if("www.pinoydestination.com" == $_SERVER['SERVER_NAME']){
 ?>
-<!--//Google Analytics Code//-->
+<!--//Google Analytics Code #1//-->
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-34588505-1']);
@@ -12,5 +12,19 @@ if("www.pinoydestination.com" == $_SERVER['SERVER_NAME']){
 	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
+</script>
+<!--//Google Analytics Code #2//-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-34877599-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
 </script>
 <?php } ?>
