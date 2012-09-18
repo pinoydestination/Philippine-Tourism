@@ -11,6 +11,11 @@
 							</div>
 							<div class="homepageshadow">&nbsp;</div>
 						</div>
+						
+						<div class="indexbanner">
+							<?php include("adsensebanner468x60.php"); ?>
+						</div>
+						
 						<div class="homelistcontainer">
 							<h1 class="myriad_pro_bold_condensed wheretostay">Where to Stay</h1>
 							<div class="newloationcontainer">

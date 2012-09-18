@@ -1111,3 +1111,9 @@ div.indexblog ul li span.spanright a{
 	color:#409940;
 	text-decoration:underline;
 }
+.indexbanner{
+	width:468px;
+	height:60px;
+	padding:1px;
+	margin:20px auto;
+}
