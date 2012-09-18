@@ -46,7 +46,7 @@ $globalCatType = "";
 	/*Check if current post is a blog*/
 	$isBlog = false;
 	foreach($newCat as $category){
-		if($category->slug == "blog"){
+		if($category->slug == "blog" || $category->slug == "travel-news"){
 			$isBlog = true;
 		}
 	}

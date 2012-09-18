@@ -16,6 +16,7 @@ if(isset($_GET['zoom'])){
 <!DOCTYPE html>
 <html>
   <head>
+	<title>Google Map Direction | <?php echo $_GET['address']; ?> | Pinoy Destination</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
       html { height: 100% }

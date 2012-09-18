@@ -24,26 +24,24 @@
 							</div>
 						</div>
 						
-						<?php /*
-						<div class="homepageothers">
+						
+						<div class="homepageothers blogsection">
 							<div class="homepageothersleft">
 								<h1 class="myriad_pro_bold_condensed wheretostay">Pinoy Destination Blog</h1>
-								
+								<div class="indexblog">
+									<?php include("index_blog.php"); ?>
+								</div>
 							</div>
 							
-							<div class="homepageothersleft norightmargin">
+							<div class="homepageothersleft blogsection norightmargin">
 								<h1 class="myriad_pro_bold_condensed wheretostay">Philippine Tourism News</h1>
+								<div class="indexblog">
+									<?php include("index_news.php"); ?>
+								</div>
 							</div>
 							<br clear="all" />
 						</div>
-						*/ ?>
 						
-						<div class="blogsection">
-							<h1 class="myriad_pro_bold_condensed wheretostay">Recent Blog Posts</h1>
-							<div class="indexblog">
-								<?php include("index_blog.php"); ?>
-							</div>
-						</div>
 						
 						<div class="blogsection">
 							<h1 class="myriad_pro_bold_condensed wheretostay">Recent Reviews</h1>

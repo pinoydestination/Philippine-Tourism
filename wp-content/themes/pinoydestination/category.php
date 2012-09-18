@@ -13,7 +13,7 @@ global $yourcat;
 $cat = get_query_var('cat');
 $yourcat = get_category ($cat);
 
-if($yourcat->slug != "blog"){
+if($yourcat->slug != "blog" && $yourcat->slug != "travel-news"){
 ?>
 	<div class="left" id="leftSidePanel">
 		<?php include("category_normal.php"); ?>

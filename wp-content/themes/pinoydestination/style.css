@@ -655,7 +655,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
 	margin-top:30px;
 }
 .homepageothersleft{
-	width:305px;
+	width:293px;
 	min-height: 20px;
 	float:left;
 	margin-right:10px;
@@ -1090,6 +1090,7 @@ div.indexblog ul{
 }
 div.indexblog ul li{
 	border-bottom:1px dotted #A1BEC9;
+	border-right:1px dotted #A1BEC9;
 	padding:10px;
 }
 div.indexblog ul li a{

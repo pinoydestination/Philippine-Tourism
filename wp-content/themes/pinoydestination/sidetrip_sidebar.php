@@ -11,33 +11,37 @@ global $arrCatType;
 
 $categories = get_the_category();
 
+$cat = get_query_var('cat');
+$yourcat = get_category($cat);
+$idObj = get_category_by_slug($yourcat->slug);
+$catname = titleMaker($idObj,$_GET['cat']);
+
 foreach($categories as $category){
 	if(is_single()){
 		if(!in_array($category->name,$arrCatAll)){
 			$location_name = $category->name;
 			$term_id[$category->term_id] = $category->term_id;
 		}
-		if("blog" == strtolower($category->name)){
+		if("blog" == strtolower($category->name) || "travel-news" == strtolower($category->slug)){
 			$idObj = get_category_by_slug("philippines");
 			$term_id[$category->term_id] = $idObj->term_id;
+			$catname = "Philippines";
 		}
 	}else if(is_category()){
 		if($selectedCat == $category->name){
 			$location_name = $selectedCat;
 			$term_id[$category->term_id] = $category->term_id;
 		}
+		if("blog" == strtolower($category->name) || "travel-news" == strtolower($category->slug)){
+			$idObj = get_category_by_slug("philippines");
+			$term_id[$category->term_id] = $idObj->term_id;
+			$catname = "Philippines";
+		}
 	}else{
 		$idObj = get_category_by_slug("philippines");
 		$term_id[$category->term_id] = $idObj->term_id;
 	}
-	
-	
 }
-
-$cat = get_query_var('cat');
-$yourcat = get_category($cat);
-$idObj = get_category_by_slug($yourcat->slug);
-$catname = titleMaker($idObj,$_GET['cat']);
 
 $the_query = new WP_Query( array("category__in" => $term_id, "posts_per_page"=>8) );
 ?>

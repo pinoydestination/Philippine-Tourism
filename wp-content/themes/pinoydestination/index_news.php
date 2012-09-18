@@ -1,7 +1,7 @@
 <ul class="commentlistul">
 <?php
 global $currentcatID;
-$cat = searchCatInfoBySlug("blog");
+$cat = searchCatInfoBySlug("travel-news");
 $newID = Array();
 if(is_array($cat)){
 	foreach($cat as $currentCatInfo){
