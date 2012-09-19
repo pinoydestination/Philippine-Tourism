@@ -19,7 +19,6 @@ if ( $the_query->have_posts() ) :
 		<p>
 		<?php the_excerpt(); ?>
 		</p>
-		<span class="spanright"><a href="<?php the_permalink(); ?>">Read More</a></span>
 	</li>
 	<?php
 	endwhile;

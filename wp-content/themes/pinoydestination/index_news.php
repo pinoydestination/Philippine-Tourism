@@ -15,11 +15,8 @@ if ( $the_query->have_posts() ) :
 	?>
 	<li>
 		<a href="<?php echo the_permalink(); ?>"><?php echo the_title(); ?></a>
-		by <?php the_author(); ?>
-		<p>
+		<span class="indexnewspan">by <?php the_author(); ?></span>
 		<?php the_excerpt(); ?>
-		</p>
-		<span class="spanright"><a href="<?php the_permalink(); ?>">Read More</a></span>
 	</li>
 	<?php
 	endwhile;

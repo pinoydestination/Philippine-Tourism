@@ -25,26 +25,36 @@
 						</div>
 						
 						
-						<div class="homepageothers blogsection">
+						<div class="homepageothers">
 							<div class="homepageothersleft">
-								<h1 class="myriad_pro_bold_condensed wheretostay">Pinoy Destination Blog</h1>
+								<h1 class="myriad_pro_bold_condensed blogfontindex">Pinoy Destination Blog</h1>
 								<div class="indexblog">
 									<?php include("index_blog.php"); ?>
 								</div>
 							</div>
 							
-							<div class="homepageothersleft blogsection norightmargin">
-								<h1 class="myriad_pro_bold_condensed wheretostay">Philippine Tourism News</h1>
+							<div class="homepageothersleft norightmargin">
+								<h1 class="myriad_pro_bold_condensed tournewsfont">Travel and Tourism News</h1>
 								<div class="indexblog">
 									<?php include("index_news.php"); ?>
 								</div>
 							</div>
 							<br clear="all" />
 						</div>
+						<div class="homepageothers">
+							<div class="homepageothersleft alignright">
+								<a href="<?php bloginfo('url'); ?><?php echo $category_base; ?>/blog/" class="readmorebuttonindex">Show all Blog Posts</a>
+							</div>
+							
+							<div class="homepageothersleft alignright norightmargin">
+								<a href="<?php bloginfo('url'); ?>/travel-news/" class="readmorebuttonindex">More Travel and Tourism News</a>
+							</div>
+							<br clear="all" />
+						</div>
 						
 						
 						<div class="blogsection">
-							<h1 class="myriad_pro_bold_condensed wheretostay">Recent Reviews</h1>
+							<h1 class="myriad_pro_bold_condensed recentreviewfont">Recent Reviews</h1>
 							<div class="commentlist">
 								<?php include("index_reviews.php"); ?>
 							</div>

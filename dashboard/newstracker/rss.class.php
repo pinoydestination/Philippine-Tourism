@@ -9,6 +9,7 @@ function addToDB( $rssdata ){
 	$desc    = $rssdata["description"];
 	$pub     = $rssdata["pubDate"];
 	
+	$exerpt  = substr($desc,0,200);
 	$desc = "<p>".$desc."</p><p><a rel='nofollow' target='_blank' href='/external/".$url."'>".$url."</a></p>";
 	
 	$data = array("post_author"=>"6",
@@ -16,7 +17,8 @@ function addToDB( $rssdata ){
 				  "post_content"=>$desc,
 				  "post_title"=>wp_strip_all_tags($title),
 				  "tags_input"=>"philippines travel news, travel news ph",
-				  "post_status"=>"publish"
+				  "post_status"=>"publish",
+				  "post_excerpt"=>$exerpt
 				 );
 	$insert_post = wp_insert_post( $data );
 	return $insert_post;
