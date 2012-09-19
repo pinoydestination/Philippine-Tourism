@@ -11,7 +11,9 @@
 		</div>
 		<?php 
 			include("sidetrip_sidebar.php");
+			echo '<div class="whitespace">&nbsp;</div>';
 			include("sidebarboxad.php");
+			echo '<div class="whitespace">&nbsp;</div>';
 			include("festival_calendar.php"); 
 		?>
 	</div>

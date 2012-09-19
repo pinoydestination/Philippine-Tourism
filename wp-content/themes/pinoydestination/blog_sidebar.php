@@ -1,5 +1,6 @@
 <div class="adright">
 	<?php include("sidebarboxad.php"); ?>
+	echo '<div class="whitespace">&nbsp;</div>';
 </div>
 <div class="largebox">
 	<span class="myriad_pro_bold_condensed sidebarheader">Recent Blog Posts</span>
