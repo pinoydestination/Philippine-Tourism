@@ -7,7 +7,12 @@ get_header();
 
 <div class="mainbodycontent" id="mainDocument">
 	<div class="left" id="leftSidePanel searchPanel">
-
+		<div class="searchcontainerboxbody">
+			<form method="get" action="/search/">
+				<input class="searchrequesttextbox" type="text" name="s" value="<?php echo $_REQUEST['s']; ?>" placeholder="Place your search here" />
+				<input type="submit" value="Search" class="searchbuttonsearchpage" />
+			</form>
+		</div>
 		<div id="cse" style="width: 100%;"><center><h1>Finding Search Results...</h1></center></div>
 		<script src="//www.google.com/jsapi" type="text/javascript"></script>
 		<script type="text/javascript"> 

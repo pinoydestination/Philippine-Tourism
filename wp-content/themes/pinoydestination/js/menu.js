@@ -57,6 +57,7 @@ $(document).ready(function(){
 			  }, 200, function() {
 			    // Animation complete.
 			    $(this).show();
+				$("#searchinputbox").focus();
 			  });
 			  
 		}else{

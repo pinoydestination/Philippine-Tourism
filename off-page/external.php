@@ -1,8 +1,10 @@
 <?php
 /** Sets up the WordPress Environment. */
 require( '../wp-load.php' );
+$_GET['url'] = str_replace("http:/w","http://w",$_GET['url']);
 $url = explode("http://",$_GET['url']);
-if(in_array("http://",$url)){
+
+if(count($url) > 1){
 	$url = $_GET['url'];
 }else{
 	$url = "http://".$_GET['url'];
