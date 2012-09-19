@@ -15,31 +15,38 @@ $cat = get_query_var('cat');
 $yourcat = get_category($cat);
 $idObj = get_category_by_slug($yourcat->slug);
 $catname = titleMaker($idObj,$_GET['cat']);
-
-foreach($categories as $category){
-	if(is_single()){
-		if(!in_array($category->name,$arrCatAll)){
-			$location_name = $category->name;
-			$term_id[$category->term_id] = $category->term_id;
-		}
-		if("blog" == strtolower($category->name) || "travel-news" == strtolower($category->slug)){
+if(is_array($categories) && count($categories) > 0){
+	foreach($categories as $category){
+		if(is_single()){
+			if(!in_array($category->name,$arrCatAll)){
+				$location_name = $category->name;
+				$term_id[$category->term_id] = $category->term_id;
+			}
+			if("blog" == strtolower($category->name) || "travel-news" == strtolower($category->slug)){
+				$idObj = get_category_by_slug("philippines");
+				$term_id[$category->term_id] = $idObj->term_id;
+				$catname = "Philippines";
+			}
+		}else if(is_category()){
+			if($selectedCat == $category->name){
+				$location_name = $selectedCat;
+				$term_id[$category->term_id] = $category->term_id;
+			}
+			if("blog" == strtolower($category->name) || "travel-news" == strtolower($category->slug)){
+				$idObj = get_category_by_slug("philippines");
+				$term_id[$category->term_id] = $idObj->term_id;
+				$catname = "Philippines";
+			}
+		}else{
 			$idObj = get_category_by_slug("philippines");
 			$term_id[$category->term_id] = $idObj->term_id;
-			$catname = "Philippines";
 		}
-	}else if(is_category()){
-		if($selectedCat == $category->name){
-			$location_name = $selectedCat;
-			$term_id[$category->term_id] = $category->term_id;
-		}
-		if("blog" == strtolower($category->name) || "travel-news" == strtolower($category->slug)){
-			$idObj = get_category_by_slug("philippines");
-			$term_id[$category->term_id] = $idObj->term_id;
-			$catname = "Philippines";
-		}
-	}else{
+	}
+}else{
+	if(is_page()){
 		$idObj = get_category_by_slug("philippines");
 		$term_id[$category->term_id] = $idObj->term_id;
+		$catname = "Philippines";
 	}
 }
 
