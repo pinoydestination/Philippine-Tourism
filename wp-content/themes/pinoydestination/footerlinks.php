@@ -41,6 +41,8 @@
 							<li><a href="<?php echo $category_base;?>/philippines?cat=beach-and-resort">Resorts and Beaches</a></li>
 							<li><a href="<?php echo $category_base;?>/philippines?cat=destination">Tourist Attractions</a></li>
 							<li><a href="<?php echo $category_base;?>/philippines?cat=restaurant">Try Our Food!</a></li>
+							<li><a href="<?php echo $category_base;?>/blog/">Blog</a></li>
+							<li><a href="/travel-news/">Travel and Tourism News</a></li>
 						</ul>
 						<br clear="all" />
 					</div>
