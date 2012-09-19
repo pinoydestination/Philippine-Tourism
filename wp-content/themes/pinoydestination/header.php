@@ -147,7 +147,9 @@ global $category_base;
 						</ul>
 					</div>
 					<div class="logo">
-						<img src="<?php bloginfo("stylesheet_directory"); ?>/images/mainlogo.png" border="0" alt="Pinoy Destination" />
+						<a href="<?php bloginfo("url"); ?>" title="Pinoy Destination Home">
+						<img src="<?php bloginfo("stylesheet_directory"); ?>/images/mainlogo.png" border="0" alt="Pinoy Destination | Philippine Tourism, Travel Philippines" border="0" />
+						</a>
 					</div>
 					<div class="menu curveright norightmargin">
 						<ul class="menulinks floatleft">
