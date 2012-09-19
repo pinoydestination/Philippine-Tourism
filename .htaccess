@@ -1,8 +1,3 @@
-<IfModule headers_module>
-Header always append X-Frame-Options SAMEORIGIN
-SetEnvIfNoCase User-Agent "^TurnitinBot" badbot
-</IfModule>
-
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
