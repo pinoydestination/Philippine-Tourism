@@ -571,7 +571,7 @@ ul.tabs li{
 	float:left;
 }
 ul.tabs li a{
-	padding:10px 25px;
+	padding:8px 10px;
 	display:inline-block;
 	
 	background: rgb(226,226,226); /* Old browsers */
@@ -584,7 +584,7 @@ ul.tabs li a{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
 
 	
-	margin:0px 3px;
+	margin:0px 1px;
 	border-radius:5px 5px 0 0;
 	font-family:Arial, Helvetica, Sans-serif;
 	text-decoration:none;
