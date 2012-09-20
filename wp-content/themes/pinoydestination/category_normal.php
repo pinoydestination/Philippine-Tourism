@@ -122,7 +122,7 @@
 						 <?php } ?>
 					</div>
 					<div>
-						<span class="showreview arrow_go"><a href="<?php the_permalink(); ?>#reviews">Show Reviews</a></span><span class="showmap globe_go" addresslocation="<?php echo urlencode($otherInfoData->location_address); ?>"><a class="fancybox fancybox.iframe" href="http://www.pinoydestination.com/gmap.php?address=<?php echo urlencode($otherInfoData->location_address); ?>&zoom=13" rel="nofollow">Reveal in Map</a></span>
+						<span class="showreview arrow_go"><a href="<?php the_permalink(); ?>#reviews">Show Reviews</a></span><span class="showmap globe_go" addresslocation="<?php echo urlencode($otherInfoData->location_address); ?>"><a class="fancybox fancybox.iframe" href="http://www.pinoydestination.com/googlemap/gmap.php?address=<?php echo urlencode($otherInfoData->location_address); ?>&zoom=13" rel="nofollow">Reveal in Map</a></span>
 					</div>
 					
 					<div class="searchResultDetails">

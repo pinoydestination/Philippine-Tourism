@@ -93,7 +93,7 @@ $(document).ready(function(){
 				stringAddress = stringAddress + "|" + legAddress;
 			}
 		});
-		var href = "http://www.pinoydestination.com/gmapleg.php?waypoints="+stringAddress;
+		var href = "http://www.pinoydestination.com/googlemap/gmapleg.php?waypoints="+stringAddress;
 		$(this).attr("href",href);
 		return false;
 	});

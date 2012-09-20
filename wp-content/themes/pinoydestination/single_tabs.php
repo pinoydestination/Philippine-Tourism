@@ -44,7 +44,7 @@ if($addhotel){
 					<div class="extralist">
 						<div class="extralisttitle">
 							<a href="<?php echo $hotels->guid; ?>"><?php echo $hotels->post_title; ?></a>
-							<a class="showdirection fancybox fancybox.iframe" href="http://www.pinoydestination.com/gdirections.php?from=<?php echo urlencode($GLOBALS['Current_Location']); ?>&to=<?php echo urlencode($hotels->location_address); ?>&zoom=1">Show Directions</a>
+							<a class="showdirection fancybox fancybox.iframe" href="http://www.pinoydestination.com/googlemap/gdirections.php?from=<?php echo urlencode($GLOBALS['Current_Location']); ?>&to=<?php echo urlencode($hotels->location_address); ?>&zoom=1">Show Directions</a>
 							<br clear="all" />
 						</div>
 						<span><?php echo $hotels->location_address; ?></span>
@@ -70,7 +70,7 @@ if($addhotel){
 						<div class="extralist">
 							<div class="extralisttitle">
 								<a href="<?php echo $hotels->guid; ?>"><?php echo $hotels->post_title; ?></a>
-								<a class="showdirection fancybox fancybox.iframe" href="http://www.pinoydestination.com/gdirections.php?from=<?php echo urlencode($GLOBALS['Current_Location']); ?>&to=<?php echo urlencode($hotels->location_address); ?>&zoom=1">Show Directions</a>
+								<a class="showdirection fancybox fancybox.iframe" href="http://www.pinoydestination.com/googlemap/gdirections.php?from=<?php echo urlencode($GLOBALS['Current_Location']); ?>&to=<?php echo urlencode($hotels->location_address); ?>&zoom=1">Show Directions</a>
 								<br clear="all" />
 							</div>
 							<span><?php echo $hotels->location_address; ?></span>
