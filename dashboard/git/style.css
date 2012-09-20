@@ -1,0 +1,25 @@
+body{
+	background:#000;
+	color:#fff;
+	font-family:"Courier New", Arial, Helvetica, sans-serif;
+	font-size:12px;
+	position:relative;
+}
+div.container{
+	width:100%;
+	height:100%;
+	background:#000;
+}
+pre{
+	margin:0;
+	padding:0;
+	dislplay:block;
+}
+div.editor{
+	bottom:0;
+	position:absolute;
+	background:red;
+	padding:10px;
+	width:100%;
+	height:30px;
+}
