@@ -2,7 +2,7 @@
 RewriteEngine On
 RewriteBase /
 
-RewriteRule ^search/(.*)$ /off-page/search.php [L]
+RewriteRule ^search/(.*)$ /off-page/search.php?s=$1 [L]
 
 RewriteRule ^landing/(.*)/(.*)$ /off-page/landing.php?category=$1&filter=$2 [L]
 RewriteRule ^landing/(.*)$ /off-page/landing.php?category=$1 [L]
