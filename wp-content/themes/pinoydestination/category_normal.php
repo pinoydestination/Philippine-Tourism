@@ -54,7 +54,8 @@
 			
 		</div>
 		<?php include("category_filter.php"); ?>
-		<div class="homepageshadow">&nbsp;</div>
+		
+		
 		
 		
 		

@@ -250,3 +250,72 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 }
 a.changelocation:hover{
 }
+
+
+div.categoryleft{
+	width:200px;
+	min-height:500px;
+	float:left;
+	margin-right:10px;
+}
+div.categoryright{
+	width:300px;
+	min-height:500px;
+	float:left;
+	margin-left:10px;
+}
+
+div.categoryright div.right{
+	margin:0;
+	padding:0;
+	background:none;
+}
+
+
+div.categorycenter{
+	width:420px;
+	float:left;
+	min-height:500px;
+}
+
+
+div.categorycenter .postBread{
+	width:420px;
+}
+
+div.categorycenter .postTitle{
+	width:400px;
+}
+div.categorycenter .categoryfilter{
+	width:408px;
+	overflow:scroll;
+}
+div.categorycenter .searchresultBox{
+	margin:20px 0px;
+	width:398px;
+}
+div.categorycenter .reviewcorner{
+	width:auto;
+}	
+div.categorycenter .navimargin{
+	margin:20px 0px;
+}
+div.categorycenter div.blogpostcatcontainer{
+	width:398px;
+}
+div.categoryleft ul.blogtitlelist li{
+	margin:5px 0px;
+	padding:5px;
+	border-right:1px dotted silver;
+}
+div.categoryleft ul.blogtitlelist li a{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:normal;
+}
+
+
+
+
+
+

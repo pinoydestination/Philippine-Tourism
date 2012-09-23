@@ -4,41 +4,32 @@ global $globalCatType;
 global $selectedCat;
 global $parentCat;
 global $yourcat;
+$cat = get_query_var('cat');
+$yourcat = get_category ($cat);
 ?>
 <link href="<?php bloginfo('stylesheet_directory'); ?>/post.css" rel="stylesheet" />
 <link href="<?php bloginfo('stylesheet_directory'); ?>/blue.css" rel="stylesheet" />
 
 <div class="mainbodycontent" id="mainDocument">
-<?php
-$cat = get_query_var('cat');
-$yourcat = get_category ($cat);
-
-if($yourcat->slug != "blog" && $yourcat->slug != "travel-news"){
-?>
-	<div class="left" id="leftSidePanel">
-		<?php include("category_normal.php"); ?>
+	<div class="categoryleft">
+		<?php include("category_leftbar.php"); ?>
 	</div>
-					
-	<?php			
-	/**
-	 * Sidebar
-	 */
-	get_sidebar();
-	?>
-<?php
-}else{
 	
-?>
-	<div class="blogleft">
-		<?php include("category_blog.php"); ?>
+	<div class="categorycenter">
+		<?php if($yourcat->slug != "blog" && $yourcat->slug != "travel-news"){ ?>
+			<?php include("category_normal.php"); ?>
+		<?php }else{ ?>
+			<?php include("category_blog.php"); ?>
+		<?php } ?>
 	</div>
-	<div class="blogright">
-		<?php include("blog_sidebar.php"); ?>
-	</div>
-<?php
-}
-?>
-					
+	
+	<div class="categoryright">
+		<?php if($yourcat->slug != "blog" && $yourcat->slug != "travel-news"){ ?>
+			<?php get_sidebar(); ?>
+		<?php }else{ ?>
+			<?php include("blog_sidebar.php"); ?>
+		<?php } ?>
+	</div>	
 	<br clear="all" />
 </div>
 				
