@@ -10,8 +10,8 @@ if("www.pinoydestination.com" == $servername){
 ?>
 <script type="text/javascript"><!--
 google_ad_client = "ca-pub-0908617034545427";
-/* Pinoy Destination - small Ad Post */
-google_ad_slot = "9068492048";
+/* bannerAd */
+google_ad_slot = "5923837817";
 google_ad_width = 468;
 google_ad_height = 60;
 //-->
