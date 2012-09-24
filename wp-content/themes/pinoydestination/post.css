@@ -725,3 +725,9 @@ div.authorcontainer{
 	border-radius:3px;
 	border:1px dashed #E2E9EC;
 }
+div.sharecontainer{
+	width:auto;
+	margin:20px 0px;
+	padding:10px;
+	border-radius:3px;
+}
