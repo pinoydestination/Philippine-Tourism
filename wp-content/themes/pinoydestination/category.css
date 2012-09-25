@@ -313,9 +313,10 @@ div.categoryleft ul.blogtitlelist li a{
 	font-size:12px;
 	font-weight:normal;
 }
-
-
-
+div.widesky{
+	width:160px;
+	height:auto;
+}
 
 
 

@@ -53,3 +53,7 @@
 		endif;
 		?>
 	</ul>
+
+	<div class="widesky">
+		<?php include("adsense_wide160.php"); ?>
+	</div>
