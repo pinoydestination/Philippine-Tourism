@@ -1,6 +1,6 @@
 <?php
 $servername = $_SERVER["SERVER_NAME"];
-if("www.pinoydestination.com" != $servername){
+if("www.pinoydestination.com" == $servername){
 /*
  <!-- Begin BidVertiser code -->
 <SCRIPT LANGUAGE="JavaScript1.1" SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=93354&bid=1212322" type="text/javascript"></SCRIPT>
