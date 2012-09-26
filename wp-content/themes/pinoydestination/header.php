@@ -163,9 +163,18 @@ global $category_base;
 							<br clear="all" />
 						</ul>
 						<div class="searchframe" id="searchframe">
-							<form method="get" action="/search/" id="searchform">
-								<input type="text" name="s" placeholder="What are you looking for?" id="searchinputbox" />
+							<form action="/off-page/search.php" id="cse-search-box">
+							  <div>
+								<input type="hidden" name="cx" value="partner-pub-0908617034545427:2131955478" />
+								<input type="hidden" name="cof" value="FORID:10" />
+								<input type="hidden" name="ie" value="UTF-8" />
+								<input type="text" name="q" size="55" />
+								<input type="submit" name="sa" value="Search" />
+							  </div>
 							</form>
+
+							<script type="text/javascript" src="http://www.google.com.ph/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+
 						</div>
 						
 						<div class="itihead" id="itihead">

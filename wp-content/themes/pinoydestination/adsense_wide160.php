@@ -1,11 +1,1 @@
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0908617034545427";
-/* PD_WideSky160 */
-google_ad_slot = "7187128516";
-google_ad_width = 160;
-google_ad_height = 600;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
+<iframe src="<?php bloginfo("url"); ?>/current/adsense_ad.php?type=160x600" scrolling="no" style="width:160px; height:600px;" frameborder="0" width="160" height="600"></iframe>
