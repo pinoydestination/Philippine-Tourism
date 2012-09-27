@@ -10,9 +10,9 @@
 			<img class="staticgmap" width="300" height="400" border="0" src="http://www.pinoydestination.com/googlemap/gstatic.php?address=<?php echo $GLOBALS['Current_Location']; ?>&zoom=13&size=292x400" />
 		</div>
 		<?php 
-			include("sidetrip_sidebar.php");
-			echo '<div class="whitespace">&nbsp;</div>';
 			include("sidebarboxad.php");
+			echo '<div class="whitespace">&nbsp;</div>';
+			include("sidetrip_sidebar.php");
 			echo '<div class="whitespace">&nbsp;</div>';
 			include("festival_calendar.php"); 
 		?>
