@@ -1,6 +1,19 @@
 <?php
 function getHTML(){
-	return '<!DOCTYPE HTML><html><head><title>Pinoy Destination</title><style> html,body{ margin:0; padding:0; }</style> </head> <body> <iframe scrolling="no" width="300" height="250" frameborder="0" style="width:300px; height:250px;" src="http://www.pinoydestination.com/current/adsense_ad.php?type=300x250"></iframe> </body> </html>';
+	
+	return '<!DOCTYPE HTML><html><head><title>Pinoy Destination</title><style> html,body{ margin:0; padding:0; }</style> </head> <body> 
+	<script type="text/javascript"><!--
+	google_ad_client = "ca-pub-0908617034545427";
+	/* BoxAd */
+	google_ad_slot = "3794932741";
+	google_ad_width = 300;
+	google_ad_height = 250;
+	//-->
+	</script>
+	<script type="text/javascript"
+	src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+	</body> </html>';
 }
 function adListener($server){
 	$ref = $server['HTTP_REFERER'];
