@@ -21,7 +21,7 @@ get_header();
 		<script type="text/javascript">
 		  var googleSearchIframeName = "cse-search-results";
 		  var googleSearchFormName = "cse-search-box";
-		  var googleSearchFrameWidth = 950;
+		  var googleSearchFrameWidth = 940;
 		  var googleSearchDomain = "www.google.com.ph";
 		  var googleSearchPath = "/cse";
 		</script>
