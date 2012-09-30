@@ -82,8 +82,12 @@
 			?>
 			<div>
 			<?php
+			
+				$adcount = 0;
 				
 				while ($the_query->have_posts() ) : $the_query->the_post(); 
+				
+				$adcount++;
 				
 				$postID = get_the_ID();
 				$allCat = null;
@@ -168,6 +172,12 @@
 					}
 					?>
 				</div>
+				
+				<?php if($adcount >= 2){ ?>
+				<div>
+					<?php include("adsense_textlink.php"); ?>
+				</div>
+				<?php } ?>
 			
 				<?php 
 				endwhile; 
