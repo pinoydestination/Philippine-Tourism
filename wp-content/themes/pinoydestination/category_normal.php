@@ -173,7 +173,7 @@
 					?>
 				</div>
 				
-				<?php if($adcount >= 2){ ?>
+				<?php if($adcount%2){ ?>
 				<div>
 					<?php include("adsense_textlink.php"); ?>
 				</div>
