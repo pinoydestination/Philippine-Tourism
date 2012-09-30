@@ -154,6 +154,21 @@ $globalCatType = "";
 							<div class="homepageshadow">&nbsp;</div>
 							
 							
+							<div>
+								<script type="text/javascript"><!--
+								google_ad_client = "ca-pub-0908617034545427";
+								/* PD Text Link Posts */
+								google_ad_slot = "6273113945";
+								google_ad_width = 468;
+								google_ad_height = 15;
+								//-->
+								</script>
+								<script type="text/javascript"
+								src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+								</script>
+							</div>
+							
+							
 						<div id="mainarticlecontainer">
 							<?php if(isset($_GET['gallery']) && $_GET['gallery'] == "show"){
 								
