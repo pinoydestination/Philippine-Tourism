@@ -14,9 +14,9 @@ $globalCatType = "";
 	$starComputeFinal = getPostRatings(get_the_ID());
 		
 	/*Get Special Info*/
-	$sql = "SELECT * FROM ".$wpdb->prefix."other_info WHERE post_id='".$postID."'";
-	$otherInfoData = $wpdb->get_results($sql);
-	$otherInfoData = $otherInfoData[0];
+	$otherInfoData = getOtherInfo($postID);
+	
+	$GLOBALS['Current_Coordinates'] = $otherInfoData->google_map_coordinate != "" ? $otherInfoData->google_map_coordinate : $otherInfoData->location_address;
 	
 	$GLOBALS['Current_Location'] = $otherInfoData->location_address;
 	
