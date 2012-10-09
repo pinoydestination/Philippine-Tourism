@@ -46,7 +46,7 @@ if(isset($_GET['zoom'])){
       var map;
       function initialize() {
         geocoder = new google.maps.Geocoder();
-        var address = new google.maps.LatLng(-34.397, 150.644);
+        var address = "<?php echo $_GET['address']; ?>";
         
        // var latlng = new google.maps.LatLng(-34.397, 150.644);
         var mapOptions = {
@@ -54,8 +54,7 @@ if(isset($_GET['zoom'])){
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         
-        var address = new google.maps.LatLng(-34.397, 150.644);
-
+        var address = "<?php echo $_GET['address']; ?>";
         geocoder.geocode( { 'address': address}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             map.setCenter(results[0].geometry.location);
