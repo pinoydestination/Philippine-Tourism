@@ -83,14 +83,24 @@ if(isset($_GET['zoom'])){
 				infowindow.open(map, marker);*/
 				
 				jQuery(parent.document.getElementById("coordinates")).val(event.latLng.lat() + ', ' + event.latLng.lng());
-				jQuery(parent.document.getElementById("latlong")).html("Current Coordinates: " + event.latLng.lat() + ', ' + event.latLng.lng());
+				jQuery(parent.document.getElementById("latlong")).html("<strong>Current Coordinates:</strong> " + event.latLng.lat() + ', ' + event.latLng.lng());
 				
 				
 				
 			});
 			
 			
+			google.maps.event.addListener(map, 'zoom_changed', function(event) {
 			
+				console.log(event);
+			
+				var zoomLevel = map.getZoom();
+				//map.setCenter(myLatLng);
+				console.log(zoomLevel);
+				jQuery(parent.document.getElementById("zoomlevel")).html(zoomLevel);
+				jQuery(parent.document.getElementById("zoomlevel2")).html("<strong>Zoom Level:</strong> "+zoomLevel);
+			});
+
 			
 			
           } else {

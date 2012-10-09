@@ -181,6 +181,7 @@ if($_POST){
 						<input type="text" class="simpleText" placeholder="E-Mail Address" name="post_email" />
 						<input type="text" class="simpleText" placeholder="Website" name="post_website" />
 						<input type="hidden" class="simpleText" placeholder="Google Map Coordinate" name="coordinates" id="coordinates" />
+						<input type="hidden" class="simpleText" placeholder="Google Map Coordinate" name="zoomlevel" id="zoomlevel" />
 						</p>
 					</div>
 					<div class="inputcontainer half">
@@ -205,7 +206,8 @@ if($_POST){
 					<p>
 					<iframe src="/googlemap/gmapdrag.php?address=Philippines&zoom=5" width="100%" height="400"  frameborder="0" ></iframe><noscript>iFrame Needed to be able to view the map</noscript>
 					</p>
-					<span id="latlong"></span>
+					<span id="latlong"></span><br />
+					<span id="zoomlevel2"></span>
 				</div>
 				<div class="inputcontainer">
 					<legend>Select The Location Below:</legend>

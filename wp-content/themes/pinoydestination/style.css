@@ -825,7 +825,7 @@ img.staticgmap{
 .itihead{
 	position:absolute;
 	width:280px;
-	height:220px;
+	height:auto;
 	margin-top:33px;
 	padding:10px;
 	border:1px solid #B3B0B0;

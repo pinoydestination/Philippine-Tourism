@@ -101,7 +101,8 @@ class Dashboard{
 							   "email"=>$data['post_email'],
 							   "website"=>$data['post_website'],
 							   "contact_person"=>$data['post_contactname'],
-							   "google_map_coordinate"=>$data['coordinates']
+							   "google_map_coordinate"=>$data['coordinates'],
+							   "google_map_zoom_level"=>$data['zoomlevel']
 							   );
 		
 		$this->wpdb->insert( $otherInfoTable, $otherInfoData, null );

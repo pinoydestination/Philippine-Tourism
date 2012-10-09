@@ -72,6 +72,7 @@ if(isset($_GET['zoom'])){
           animation: google.maps.Animation.DROP,
           position: parliament
         });
+		
         google.maps.event.addListener(marker, 'click', toggleBounce);
 		
 		

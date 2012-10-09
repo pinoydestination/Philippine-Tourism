@@ -21,6 +21,7 @@ $globalCatType = "";
 	
 	$GLOBALS['Current_Coordinates'] = $otherInfoData->google_map_coordinate != "" ? $otherInfoData->google_map_coordinate : $otherInfoData->location_address;
 	$GLOBALS['GoogleMap_Type'] = $otherInfoData->google_map_coordinate != "" ? "latlang" : "";
+	$GLOBALS['GoogleMap_Zoom'] = $otherInfoData->google_map_zoom_level != "" ? $otherInfoData->google_map_zoom_level : "13";
 	
 	$GLOBALS['Current_Location'] = $otherInfoData->location_address;
 	
