@@ -61,7 +61,7 @@ $zoom = $_GET['zoom'];
 $address = urlencode($_GET['address']);
 $size = isset($_GET['size']) ? $_GET['size'] : '400x300';
 
-if(isset($GLOBALS['GoogleMap_Type']) && $GLOBALS['GoogleMap_Type'] == "latlang"){
+if(isset($_GET['datatype']) && $_GET['datatype'] == "latlang"){
 	$name = 'http://maps.googleapis.com/maps/api/staticmap?zoom='.$zoom.'&size='.$size.'&maptype=roadmap&markers=color:blue|label:Destination|'.str_replace(", ",",",urldecode($address)).'&sensor=true&key=AIzaSyAWo2NkY1CvmTYlKZRwS0P5ZfMSE5wLiiE';
 }else{
 	$name = 'http://maps.googleapis.com/maps/api/staticmap?center='.$address.'&markers='.$address.'&zoom='.$zoom.'&size='.$size.'&key=AIzaSyAWo2NkY1CvmTYlKZRwS0P5ZfMSE5wLiiE&sensor=true';
