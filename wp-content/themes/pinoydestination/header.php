@@ -5,6 +5,7 @@ if(trim($ad) == "ad"){
 	echo getHtml();
 	die();
 }
+include_once("images.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" > 
@@ -153,7 +154,7 @@ if(trim($ad) == "ad"){
 					</div>
 					<div class="logo">
 						<a href="<?php bloginfo("url"); ?>" title="Pinoy Destination Home">
-						<img src="<?php bloginfo("stylesheet_directory"); ?>/images/mainlogo.png" border="0" alt="Pinoy Destination | Philippine Tourism, Travel Philippines" border="0" />
+						<img src="<?php echo $logo;?>" border="0" alt="Pinoy Destination | Philippine Tourism, Travel Philippines" border="0" />
 						</a>
 					</div>
 					<div class="menu curveright norightmargin">
