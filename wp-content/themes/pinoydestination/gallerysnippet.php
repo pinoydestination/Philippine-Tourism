@@ -135,6 +135,7 @@ $imageListing = $wpdb->get_results( $wpdb->prepare( $sql ));
 </div>
 <div class="homepageshadow">&nbsp;</div>
 
+<center><small>No copyright infrigment intended. Please see <a href="/company/disclaimer/">diclaimer notice</a>.</small></center>
 
 <?php
  

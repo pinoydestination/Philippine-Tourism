@@ -1,8 +1,11 @@
 <?php
-get_header();
+global $arrCatAll;
 global $globalCatType;
 global $parentCat;
 global $isBlog;
+global $arrCatAll;
+
+get_header();
 
 $globalCatType = "";
  while ( have_posts() ) : the_post(); 
@@ -214,6 +217,7 @@ $globalCatType = "";
 								//include("single_author.php");
 							}
 							?>
+							
 							
 							
 							<?php 
