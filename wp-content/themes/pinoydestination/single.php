@@ -16,7 +16,8 @@ $globalCatType = "";
 	/*Get Special Info*/
 	$otherInfoData = getOtherInfo($postID);
 	
-	$GLOBALS['Current_Coordinates'] = $otherInfoData->google_map_coordinate != "" ? $otherInfoData->google_map_coordinate."&datatype=latlang" : $otherInfoData->location_address;
+	$GLOBALS['Current_Coordinates'] = $otherInfoData->google_map_coordinate != "" ? $otherInfoData->google_map_coordinate : $otherInfoData->location_address;
+	$GLOBALS['GoogleMap_Type'] = $otherInfoData->google_map_coordinate != "" ? "latlang" : "";
 	
 	$GLOBALS['Current_Location'] = $otherInfoData->location_address;
 	
