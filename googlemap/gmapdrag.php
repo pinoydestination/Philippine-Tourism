@@ -97,7 +97,7 @@ if(isset($_GET['zoom'])){
 				var zoomLevel = map.getZoom();
 				//map.setCenter(myLatLng);
 				console.log(zoomLevel);
-				jQuery(parent.document.getElementById("zoomlevel")).html(zoomLevel);
+				jQuery(parent.document.getElementById("zoomlevel")).val(zoomLevel);
 				jQuery(parent.document.getElementById("zoomlevel2")).html("<strong>Zoom Level:</strong> "+zoomLevel);
 			});
 
