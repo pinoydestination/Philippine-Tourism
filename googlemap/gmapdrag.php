@@ -90,13 +90,9 @@ if(isset($_GET['zoom'])){
 			});
 			
 			
-			google.maps.event.addListener(map, 'zoom_changed', function(event) {
-			
-				console.log(event);
-			
+			google.maps.event.addListener(map, 'zoom_changed', function(event) {		
 				var zoomLevel = map.getZoom();
 				//map.setCenter(myLatLng);
-				console.log(zoomLevel);
 				jQuery(parent.document.getElementById("zoomlevel")).val(zoomLevel);
 				jQuery(parent.document.getElementById("zoomlevel2")).html("<strong>Zoom Level:</strong> "+zoomLevel);
 			});
