@@ -68,7 +68,7 @@ if(isset($_GET['zoom'])){
 		
 		marker = new google.maps.Marker({
           map:map,
-          draggable:true,
+          draggable:false,
           animation: google.maps.Animation.DROP,
           position: parliament
         });
