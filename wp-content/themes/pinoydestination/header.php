@@ -65,6 +65,11 @@ include_once("images.php");
 		<script>
 		$(document).ready(function() {
 			$('.fancybox').fancybox();
+			
+			$(window).scroll(function(){
+				var scrollAmount = ($(window).scrollTop());
+				$(".firstBackground").css('background-position', "center "+(scrollAmount/2)+"px");
+			});
 		});
 		</script>
 		
