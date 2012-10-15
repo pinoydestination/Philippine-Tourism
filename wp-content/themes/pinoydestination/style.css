@@ -821,6 +821,7 @@ img.staticgmap{
 	background:#fff;
 	border-bottom:3px solid #D1D1D1;
 	margin-top:5px;
+	display:block;
 }
 .itihead{
 	position:absolute;
@@ -850,7 +851,7 @@ img.staticgmap{
 	color:#514E4E;
 	padding:0;
 	margin:0px 0px;
-	font-size:22px;
+	font-size:18px;
 	font-family:"Arial Narrow", Arial, Helvetica, sans-serif;
 	text-shadow:1px 1px 0px rgba(255,255,255,.6);
 	float:left;
@@ -863,6 +864,7 @@ img.staticgmap{
 	margin-top:7px;
 	cursor:pointer;
 	margin-left:10px;
+	font-size:11px;
 }
 
 .itihead .itiheadcontents{
@@ -1220,4 +1222,11 @@ input.searchrequesttextbox{
 div.whitespace{
 	display:block;
 	padding:3px 0px;
+}
+.admineditbutton{
+	background:silver;
+	display:block;
+	text-align:center;
+	
+	padding:5px 10px;
 }

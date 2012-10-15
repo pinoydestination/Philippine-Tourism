@@ -71,7 +71,7 @@ $(document).ready(function(){
 		});
 	});
 	
-	
+		
 	$("a.removeallitinerary").live('click',function(){
 		$.ajax({
 			url:"/off-page/itinerary.php",

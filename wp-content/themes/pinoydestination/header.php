@@ -68,7 +68,7 @@ include_once("images.php");
 			
 			$(window).scroll(function(){
 				var scrollAmount = ($(window).scrollTop());
-				$(".firstBackground").css('background-position', "center "+(scrollAmount/2)+"px");
+				$(".firstBackground").css('background-position', "center "+(scrollAmount/1.8)+"px");
 			});
 		});
 		</script>

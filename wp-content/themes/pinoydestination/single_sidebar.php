@@ -13,6 +13,13 @@ $zoomlevel  = $GLOBALS['GoogleMap_Zoom'] != "" ? ($GLOBALS['GoogleMap_Zoom']-1) 
 			 * */ 
 			?>
 			<img class="staticgmap" width="300" height="400" border="0" src="/googlemap/gstatic.php?address=<?php echo $GLOBALS['Current_Coordinates'].$additional; ?>&zoom=<?php echo $zoomlevel; ?>&size=300x400" />
+			<?php
+			if ( is_user_logged_in() ) {
+				?>
+				<a href="/dashboard/mapupdate.php?post_id=<?php echo get_the_id(); ?>&address=<?php echo $GLOBALS['Current_Coordinates'].$additional; ?>&zoom=<?php echo $zoomlevel; ?>" class="admineditbutton fancybox fancybox.iframe">Re-Position Map</a>
+				<?php
+			}
+			?>
 		</div>
 		<?php 
 			include("sidebarboxad.php");

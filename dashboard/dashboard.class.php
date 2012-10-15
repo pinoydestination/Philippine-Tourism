@@ -26,6 +26,20 @@ function getAmenities($id=0){
 	}
 }
 
+function updateOtherInfo($data){
+	global $wpdb;
+	global $table_prefix;
+	
+	$newdata = array("google_map_coordinate" => $data['coordinates'],
+					 "google_map_zoom_level" => $data['zoomlevel']);
+					 
+	$wheredata = array("post_id" => $data['post_id']);
+	
+	$result = $wpdb->update($table_prefix."other_info",$newdata,$wheredata);
+	
+	return $result;
+
+}
 
 
 class Dashboard{
@@ -33,10 +47,19 @@ class Dashboard{
 	public $table_prefix;
 	public $current_user;
 	
+	
 	public function __construct($wpdb,$table_prefix,$current_user){
 		$this->wpdb = $wpdb;
 		$this->table_prefix = $table_prefix;
 		$this->current_user = $current_user;
+	}
+	
+	public function updateOtherInfo($data){
+	
+		$result = $this->wpdb();
+		echo "hello";
+		return $result;
+	
 	}
 	
 	public function testWPDB(){
