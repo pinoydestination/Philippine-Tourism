@@ -189,11 +189,11 @@ include_once("images.php");
 						</div>
 						
 						<div class="itihead" id="itihead">
-							<h1>My Itinerary</h1> <a href="javascript:;" class="removeallitinerary">Remove All</a><a href="javascript:;" class="showinmap fancybox fancybox.iframe">Show Route Map</a>
+							<h1>My Itinerary</h1> <a href="javascript:;" class="removeallitinerary">Remove All</a><a href="/off-page/showinmap.php" class="showinmap fancybox fancybox.iframe">Show Route Map</a>
 							<br clear="all" />
 							<div class="itiheadcontents">
 								<ol id="olListIti">
-								<?php 
+								<?php
 								if(isset($_SESSION['myItinerary']) && $_SESSION['myItinerary'] != ""){
 									$locationAddressString = "";
 									foreach($_SESSION['myItinerary'] as $iti){

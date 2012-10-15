@@ -83,6 +83,8 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	/*
 	$("a.showinmap").live('click',function(){
 		var stringAddress = "";
 		$("#olListIti").children("li").children("span.itilocationaddress").each(function(){
@@ -97,6 +99,8 @@ $(document).ready(function(){
 		$(this).attr("href",href);
 		return false;
 	});
+	*/
+	
 	$("a#showmyitinerary").live('click',function(){
 		if($(this).hasClass("activemenu")){
 			$(this).removeClass("activemenu");

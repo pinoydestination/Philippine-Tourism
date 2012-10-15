@@ -9,9 +9,12 @@ if(isset($_REQUEST['data']) && $_REQUEST['data'] != ""){
 		$dataCount = count($_SESSION['myItinerary']);
 		$tmpData = $_REQUEST['data'];
 		$tmpData = explode("|",$tmpData);
+		
 		$dataArray = array("location_title"=>$tmpData[1],
 						   "location_address"=>$tmpData[0],
-						   "location_url"=>$tmpData[2]);
+						   "location_url"=>$tmpData[2],
+						   "location_coord" => $tmpData[3]);
+						   
 		$itineraryHash = sha1($tmpData[1]);
 		$_SESSION['myItinerary'][$itineraryHash] = $dataArray;
 		$newDataCount = count($_SESSION['myItinerary']);
@@ -30,9 +33,12 @@ if(isset($_REQUEST['data']) && $_REQUEST['data'] != ""){
 		$dataCount = 0;
 		$tmpData = $_REQUEST['data'];
 		$tmpData = explode("|",$tmpData);
+		
 		$dataArray = array("location_title"=>$tmpData[1],
 						   "location_address"=>$tmpData[0],
-						   "location_url"=>$tmpData[2]);
+						   "location_url"=>$tmpData[2],
+						   "location_coord" => $tmpData[3]);
+						   
 		$itineraryHash = sha1($tmpData[1]);
 		$_SESSION['myItinerary'][$itineraryHash] = $dataArray;
 		$newDataCount = count($_SESSION['myItinerary']);
