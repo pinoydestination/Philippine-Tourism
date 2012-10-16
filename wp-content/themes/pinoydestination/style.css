@@ -1224,9 +1224,16 @@ div.whitespace{
 	padding:3px 0px;
 }
 .admineditbutton{
-	background:silver;
-	display:block;
-	text-align:center;
-	
-	padding:5px 10px;
+    background: none repeat scroll 0 0 #D1D1D1;
+    border-radius: 0 0 5px 5px;
+    color: gray;
+    display: block;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    width: 125px;
 }
