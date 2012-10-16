@@ -17,6 +17,10 @@ if($_POST){
 	if(trim($result) >= 1){
 		?>
 		<h1>Saving Success.</h1>
+		<script type="text/javascript">
+                // Reload the parent window
+                window.top.location.href = window.top.location.href;
+        </script>
 		<?php
 		die();
 	}else{
