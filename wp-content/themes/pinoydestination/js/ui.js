@@ -77,7 +77,7 @@ $(document).ready(function(){
 			url:"/off-page/itinerary.php",
 			data: "request=removeall",
 			success: function(data){
-				$("#olListIti").append(data);
+				$("#olListIti").empty("");
 				$("div#itihead").show();
 				myItineraryReposition();
 			}

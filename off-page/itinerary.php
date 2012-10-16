@@ -2,6 +2,7 @@
 session_start();
 if(isset($_REQUEST['request']) && $_REQUEST['request']=='removeall'){
 	unset($_SESSION['myItinerary']);
+	return "";
 	exit();
 }
 if(isset($_REQUEST['data']) && $_REQUEST['data'] != ""){
