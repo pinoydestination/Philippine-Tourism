@@ -52,7 +52,7 @@ if($_POST){
 	<body>
 		
 		<div>
-		<iframe src="/googlemap/gmapdrag.php?address=Philippines&zoom=5" width="100%" height="480"  frameborder="0" ></iframe><noscript>iFrame Needed to be able to view the map</noscript>
+		<iframe src="/googlemap/gmapdrag.php?address=<?php echo $_GET['address']; ?>&zoom=13" width="100%" height="480"  frameborder="0" ></iframe><noscript>iFrame Needed to be able to view the map</noscript>
 		</div>
 		<div class="savediv">
 			<form method="post">
