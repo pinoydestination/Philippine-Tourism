@@ -43,6 +43,6 @@ if($coordinates){
 	$finalAddress = $address;
 }
 
-header("Location: http://www.pinoydestination.com/googlemap/gmapleg.php?waypoints=".$finalAddress); die();
+header("Location: /googlemap/gmapleg.php?waypoints=".$finalAddress); die();
 
 ?>

@@ -40,7 +40,7 @@ if(isset($_GET['zoom'])){
       #map_canvas { height: 100% }
     </style>
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAWo2NkY1CvmTYlKZRwS0P5ZfMSE5wLiiE&sensor=true"></script>
-    <script src="/wp-content/themes/pinoydestination/js/jquery.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script>
 
 	<?php 

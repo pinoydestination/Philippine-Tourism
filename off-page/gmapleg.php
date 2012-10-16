@@ -28,28 +28,20 @@ if(isset($_GET['zoom'])){
 	$zoomLevel = 11;
 }
 
-if(isset($_GET['detailed']) && $_GET['detailed'] == true){
-	$req = $_SERVER['REQUEST_URI'];
-	$req = str_replace("googlemap","off-page",$req);
-	header("Location: ".$req);
-	die();
-}
-
+require( '../wp-load.php' );
+get_header();
 ?>
-<!DOCTYPE html>
-<html>
-  <head>
-	<title>Google Map Leg | <?php echo $_GET['address']; ?> | Pinoy Destination</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <style type="text/css">
-      html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#4E565C; }
-      #map_canvas { height: 100% }
-    </style>
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAWo2NkY1CvmTYlKZRwS0P5ZfMSE5wLiiE&sensor=true"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    
-    <script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAWo2NkY1CvmTYlKZRwS0P5ZfMSE5wLiiE&sensor=false"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<style>
+span.spandesc{
+	border: 1px solid silver;
+    display: block;
+    margin: 5px 0;
+    padding: 5px 10px;
+}
+</style>
+<script>
 	 $.noConflict();
      	 var directionDisplay;
       var directionsService = new google.maps.DirectionsService();
@@ -105,32 +97,34 @@ if(isset($_GET['detailed']) && $_GET['detailed'] == true){
 			
 			documentURL = jQuery.trim(document.URL);
 			
-            summaryPanel.innerHTML = '<h1>Itinerary Route</h1><p><a target="_top" href="'+documentURL+'&detailed=true">Detailed View</a><br />&nbsp;<br /><strong>Travel Mode:</strong> Driving<br /></p>';
+            summaryPanel.innerHTML = '<h1>Itinerary Route</h1><p><strong>Travel Mode:</strong> Driving<br /></p>';
             // For each route, display summary information.
 			var distance = 0;
 			var time = 0;
             for (var i = 0; i < route.legs.length; i++) {
+			
+			console.log(route.legs);
               var routeSegment = i + 1;
-              summaryPanel.innerHTML += '<b>Route: ' + routeSegment + '</b><br>&nbsp;<br/>';
+              summaryPanel.innerHTML += '<br />&nbsp;<h1>Route: ' + routeSegment + '</h1><br>&nbsp;<br/>';
               summaryPanel.innerHTML += '<strong>FROM: </strong>'+route.legs[i].start_address + '<br /><strong>TO: </strong> ';
               summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
               summaryPanel.innerHTML += '<strong>Distance:</strong> '+route.legs[i].distance.text + '<br>';
               summaryPanel.innerHTML += '<strong>Duration:</strong> '+route.legs[i].duration.text + ' (estimated)<br><br>';
 			  
 			  
-//console.log(route.legs[i].steps[0]);
 			  
-              for( var x = 0; x < route.legs[i].steps; x++){
-				//console.log(route.legs[i].steps[x].instructions.text);
+              for( var x = 0; x < route.legs[i].steps.length; x++){
+				summaryPanel.innerHTML += '<span class="spandesc">'+route.legs[i].steps[x].instructions+ ' <p>Distance: ' + route.legs[i].steps[x].distance.text+'<br />Estimated Time: '+ route.legs[i].steps[x].duration.text +'</p></span>';
 			  }
-			  console.log(route.legs[i].duration);
+			  
+			 
 			  distance = distance+route.legs[i].distance.value;
 			  time = time+(route.legs[i].duration.value/60);
+			 
             }
 			
 			var totalDistance = (distance*0.001);
-			var totalTime     = (time/60)+" Hour";
-			console.log(totalTime);
+			var totalTime     = (time/60);
           }
         });
       }
@@ -141,11 +135,16 @@ if(isset($_GET['detailed']) && $_GET['detailed'] == true){
       });
       
     </script>
-  </head>
-  <body onload="">
-    <div id="map_canvas" style="height:100%; width:70%; float:left;"></div>
-    <div style="float:right; width:30%; overflow:auto; height:100%">
-    	<div id="directions_panel" style="width:90%;height: 100%; padding:10px;">
-    </div>
-  </body>
-</html>
+
+<div class="mainbodycontent" id="mainDocument">
+	
+	<div id="map_canvas" style="height:600px; width:100%;"></div>
+    <div style="width:100%; overflow:auto; height:auto;">
+    	<div id="directions_panel"></div>
+	</div>					
+	<br clear="all" />
+</div>
+<?php
+get_footer();
+?>
+
