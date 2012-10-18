@@ -32,7 +32,6 @@ require( '../wp-load.php' );
 get_header();
 ?>
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAWo2NkY1CvmTYlKZRwS0P5ZfMSE5wLiiE&sensor=false"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <style>
 span.spandesc{
 	border: 1px solid silver;
@@ -42,8 +41,8 @@ span.spandesc{
 }
 </style>
 <script>
-	 $.noConflict();
-     	 var directionDisplay;
+	  $.noConflict();
+      var directionDisplay;
       var directionsService = new google.maps.DirectionsService();
       var map;
 

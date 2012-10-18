@@ -56,7 +56,6 @@ $globalCatType = "";
 		}
 	}
 	/*End of Checking*/
-	
 	$GLOBALS['Current_City'] = $finalCat;
 	global $finalCat;
 	
@@ -191,6 +190,15 @@ $globalCatType = "";
 							</div>
 							
 							<?php 
+								if(!$isBlog){
+								?>
+								<script>
+								$(document).ready(function(){
+									
+								});
+								</script>
+								<?php
+								}
 							}?>
 							
 							
