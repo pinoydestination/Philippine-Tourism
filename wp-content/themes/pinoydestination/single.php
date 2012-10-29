@@ -201,20 +201,22 @@ $globalCatType = "";
 								}
 							}?>
 							
-							
 							<div class="sharecontainer">
 								<div class="googleplus">
-									<!-- Place this tag where you want the +1 button to render. -->
-									<div class="g-plusone" data-size="tall" data-annotation="inline" data-width="190"></div>
-
-									<!-- Place this tag after the last +1 button tag. -->
-									<script type="text/javascript">
-									  (function() {
-										var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-										po.src = 'https://apis.google.com/js/plusone.js';
-										var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-									  })();
-									</script>
+										<div>
+											<!-- Place this tag where you want the +1 button to render. -->
+											<div class="g-plusone" data-size="tall" data-annotation="inline" data-width="190"></div>
+		
+											<!-- Place this tag after the last +1 button tag. -->
+											<script type="text/javascript">
+											  (function() {
+												var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+												po.src = 'https://apis.google.com/js/plusone.js';
+												var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+											  })();
+											</script>
+										</div>
+									<div class="fb-like" data-href="http://www.pinoydestination.com<?php echo $_SERVER['REQUEST_URI']; ?>" data-send="true" data-width="400" data-show-faces="false"></div>
 								</div>
 							</div>
 							

@@ -27,10 +27,7 @@
 						
 						<div class="homepageothers">
 							<div class="homepageothersleft">
-								<h1 class="myriad_pro_bold_condensed blogfontindex">Pinoy Destination Blog</h1>
-								<div class="indexblog">
-									<?php include("index_blog.php"); ?>
-								</div>
+								<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpinoydestination&amp;width=293&amp;height=640&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=true&amp;header=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:293px; height:640px;" allowTransparency="true"></iframe>
 							</div>
 							
 							<div class="homepageothersleft norightmargin">
