@@ -70,7 +70,7 @@ include_once("images.php");
 				$(function(){
 	                $("#heroshot").slides({
 	                	preload: true,
-        				preloadImage: '/images/contribute-hero.jpg',
+        				preloadImage: '/images/loader-hero.jpg',
 	                	container: 'heroshot_container',
 	                	play: 8000,
 	                	effect: 'slide, fade',
