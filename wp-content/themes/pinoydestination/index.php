@@ -1,7 +1,13 @@
 <?php get_header(); ?>
 <div class="mainbodycontent">
 					<div class="left">
+						
+						
+						
 						<?php include("mabuhay.php"); ?>
+						
+						<?php include("heroshot.php"); ?>
+						
 						<div class="homelistcontainer firstlist">
 							<h1 class="myriad_pro_bold_condensed">Where to Go? Explore Philippines!</h1>
 							

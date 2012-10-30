@@ -1237,3 +1237,16 @@ div.whitespace{
     text-transform: uppercase;
     width: 125px;
 }
+.heroshot{
+	width:600px;
+	height:300px;
+	overflow:hidden;
+	margin-bottom:20px;
+	margin-top:20px;
+}
+.heroshot img{
+	border: none;
+}
+.heroshot a img{
+	border: none;
+}

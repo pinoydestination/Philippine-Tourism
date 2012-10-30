@@ -62,6 +62,25 @@ include_once("images.php");
 		<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/fancyboxjs/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
 		<link rel="stylesheet" href="<?php bloginfo("stylesheet_directory"); ?>/fancyboxjs/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" title="main styleguide" charset="utf-8"/>
 		
+		<?php
+		if(is_home()){
+			?>
+			<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/js/slides.min.jquery.js"></script>
+			<script>
+				$(function(){
+	                $("#heroshot").slides({
+	                	container: 'heroshot_container',
+	                	play: 8000,
+	                	effect: 'slide, fade',
+	                	autoHeight: true,
+	                	slideEasing: "easeOutQuad"
+	                });
+	            });
+			</script>
+			<?php
+		}
+		?>
+		
 		<script>
 		$(document).ready(function() {
 			$('.fancybox').fancybox();
