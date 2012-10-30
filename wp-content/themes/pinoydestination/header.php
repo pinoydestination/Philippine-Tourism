@@ -68,9 +68,9 @@ include_once("images.php");
 			<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/js/slides.min.jquery.js"></script>
 			<script>
 				$(function(){
-	                $("#heroshot").slides({,
+	                $("#heroshot").slides({
 	                	preload: true,
-        				preloadImage: '/images/contribute-hero.jpg'
+        				preloadImage: '/images/contribute-hero.jpg',
 	                	container: 'heroshot_container',
 	                	play: 8000,
 	                	effect: 'slide, fade',
