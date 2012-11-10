@@ -154,10 +154,7 @@ include_once("images.php");
 						padding:0 !important;
 					}
 				</style>
-			</body>
-			</html>
 				<?php
-				die();
 			}
 		?>
 		
