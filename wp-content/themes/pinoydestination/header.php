@@ -1,11 +1,28 @@
 <?php session_start(); 
 global $category_base;
-print_r($_SERVER);
 $ad = adListener($_SERVER);
 if(trim($ad) == "ad"){
 	echo getHtml();
 	die();
 }
+
+if(trim($_SERVER['HTTP_REFERER']) == "http://www.pinoydestination.com/pagefile.php"){
+	?>
+	<script type="text/javascript"><!--
+	google_ad_client = "ca-pub-0908617034545427";
+	/* BoxAd */
+	google_ad_slot = "3794932741";
+	google_ad_width = 300;
+	google_ad_height = 250;
+	//-->
+	</script>
+	<script type="text/javascript"
+	src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+	<?php
+	die();
+}
+
 include_once("images.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
