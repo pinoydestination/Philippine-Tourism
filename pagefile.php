@@ -10,6 +10,6 @@
 	</style>
 </head>
 <body>
-	<iframe src="http://www.pinoydestination.com/" width="300" height="300" ></iframe><noscript>iFrame not supported</noscript>
+	<iframe src="http://www.pinoydestination.com/" width="300" height="300" frameborder="0" scrolling="no"></iframe><noscript>iFrame not supported</noscript>
 </body>
 </html>

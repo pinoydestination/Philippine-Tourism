@@ -1,5 +1,6 @@
 <?php session_start(); 
 global $category_base;
+print_r($_SERVER);
 $ad = adListener($_SERVER);
 if(trim($ad) == "ad"){
 	echo getHtml();
