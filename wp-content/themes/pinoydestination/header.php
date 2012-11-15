@@ -92,6 +92,10 @@ include_once("images.php");
 				var scrollAmount = ($(window).scrollTop());
 				$(".firstBackground").css('background-position', "center "+(scrollAmount/1.8)+"px");
 			});
+			
+			var isInIframe = (window.location != window.parent.location) ? true : false;
+			console.log(isInIframe);
+			
 		});
 		</script>
 		
@@ -133,30 +137,6 @@ include_once("images.php");
 		
 </head>
 	<body>
-		
-		<?php
-		    if(trim($_SERVER['HTTP_REFERER']) == "http://www.pinoydestination.com/pagefile.php"){
-				?>
-				<script type="text/javascript"><!--
-				google_ad_client = "ca-pub-0908617034545427";
-				/* BoxAd */
-				google_ad_slot = "3794932741";
-				google_ad_width = 300;
-				google_ad_height = 250;
-				//-->
-				</script>
-				<script type="text/javascript"
-				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-				</script>
-				<style>
-					body{
-						margin:0 !important;
-						padding:0 !important;
-					}
-				</style>
-				<?php
-			}
-		?>
 		
 		<!--//Facebook Plugin//-->
 		<div id="fb-root"></div>
