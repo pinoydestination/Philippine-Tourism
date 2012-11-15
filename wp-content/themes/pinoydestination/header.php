@@ -54,6 +54,8 @@ include_once("images.php");
 		<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/js/ui.js"></script>
 		
 		<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/fancyboxjs/jquery.fancybox.pack.js"></script>
+		<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/scrollto.js"></script>
+		
 		<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/fancyboxjs/mousewheel.js"></script>
 		<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/fancyboxjs/helpers/jquery.fancybox-buttons.js"></script>
 		<script type="text/javascript" src="<?php bloginfo("stylesheet_directory"); ?>/fancyboxjs/helpers/jquery.fancybox-media.js"></script>
@@ -95,6 +97,11 @@ include_once("images.php");
 			
 			var isInIframe = (window.location != window.parent.location) ? true : false;
 			console.log(isInIframe);
+			
+			if( isInIframe ){
+				$(window).stop().scrollTo( {top:'801px',left:'642px'}, 1000 );
+				$("#topcontrol").hide();
+			}
 			
 		});
 		</script>
