@@ -107,7 +107,7 @@ $otherInfo = getOtherInfo($_GET['id']);
 				<div class="inputcontainer" id="articleeditor">
 					
 					<div>
-						<textarea id="postcontent" name="postcontent" style="width:100%;height:350px;"><?php /*echo $postinfo->post_content;*/ ?></textarea>
+						<textarea id="postcontent" name="postcontent" style="width:100%;height:350px;"><?php echo $postinfo->post_content;  ?></textarea>
 					</div>
 					<div class="inputcontainer">
 						<input type="hidden" name="action" value="addnew" />

@@ -150,14 +150,35 @@ class Dashboard{
 		if($current > 1 ){
 			$str .= "<li><a href='?page=".($current-1)."'>Previous</a></li>";
 		}
+		
+		$less5 = $current-5;
+		
+		$limitedNavi=false;
+		$limitNavi = 10;
+		$currentLimitNavi = 1;
+		
 		for($x = 1 ; $x <= $total ; $x++){
-			if($current == $x){
-				$style = "class='active'";
-			}else{
-				$style = "";
+			if($x >= $less5){
+				if($currentLimitNavi <= $limitNavi){
+					if($current == $x){
+						$style = "class='active'";
+					}else{
+						$style = "";
+					}
+					$str .= "<li><a ".$style." href='?page=".$x."'>".$x."</a></li>";
+				}else{
+					$limitedNavi = true;
+				}
+				$currentLimitNavi++;
 			}
-			$str .= "<li><a ".$style." href='?page=".$x."'>".$x."</a></li>";
 		}
+		
+		if($limitedNavi){
+			$style = "";
+			$x=$x-1;
+			$str .= "<li style='padding:0px 10px;'>...</li><li><a ".$style." href='?page=".$x."'>".$x."</a></li>";
+		}
+		
 		if($current <= $total-1 ){
 			$str .= "<li><a href='?page=".($current+1)."'>Next</a></li>";
 		}
