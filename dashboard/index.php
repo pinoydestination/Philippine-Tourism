@@ -10,6 +10,8 @@ if("subscriber" == $userRole){
 }
 include("dashboard.class.php");
 $dashboard = new Dashboard($wpdb,$table_prefix,$current_user);
+
+$userPosts = $dashboard->getUserPosts(0,5,$current_page,"DESC");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" > 
@@ -29,7 +31,9 @@ $dashboard = new Dashboard($wpdb,$table_prefix,$current_user);
 				<?php include("sidebar.php"); ?>
 			</div>
 			<div class="mainStage">
-				
+				<div class="mainstageStyle borderbottomstyle">
+					<span class="arialnarrow"><?php echo $userPosts['total']; ?></span> articles
+				</div>
 			</div>
 			<br clear="all" />
 		</div>

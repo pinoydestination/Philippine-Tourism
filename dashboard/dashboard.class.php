@@ -212,7 +212,7 @@ class Dashboard{
 			$articleID = $resData->post_id;
 			$data[] = $this->getPostDetails($articleID);
 		}
-		$ret = array("data"=>$data,"navi"=>$totalPage);
+		$ret = array("data"=>$data,"navi"=>$totalPage, "total"=>$totalRow);
 		return ($ret);
 	}
 	
