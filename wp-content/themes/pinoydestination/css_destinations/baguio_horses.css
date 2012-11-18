@@ -1,0 +1,73 @@
+body{
+	background:#fac5c3;
+}
+
+
+.firstBackground{
+	background: #fac5c3 url("../images/bgimages/baguio_horses.jpg") no-repeat top center;
+	width:100%;
+	min-height: 800px;
+}
+
+.footer .left ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+	color:#aa6c6a;
+	float:left;
+	margin-right:20px;
+	width:130px;
+}
+.footer .left ul li a{
+	padding:1px 0px;
+	display:block;
+	color:#aa6c6a;
+	text-decoration:none;
+	text-shadow:0 1px 1px rgba(255,255,255,.9);
+}
+.footer .left ul li a:hover{
+	color:#aa6c6a;
+}
+
+
+.footer .left ul li strong,.footertitle{
+	text-shadow:0 1px 0px rgba(255,255,255,.9);
+}
+
+.footer .left ul li a:hover{
+	text-shadow:0 1px 0px rgba(255,255,255,0.8);
+}
+
+
+.footer .right{
+	margin-left:20px;
+	width:333px;
+	height:100%;
+	text-align:right;
+	float: right;
+	color:#aa6c6a;
+}
+.footer .right p, .footer .right p a{
+	color:#aa6c6a;
+	text-decoration:none;
+}
+.footer .right p a{
+	color:#aa6c6a;
+	text-decoration:underline;
+}
+
+div.footer_credit {
+    color: #FFF;
+    font-size: 10px;
+    text-align: center;
+}
+
+.billboardNamePlace{
+	font-size:35px;
+	font-family:"Arial Narrow", Arial, Helvetica;
+	color:#aa6c6a;
+	position:absolute;
+	margin-left:3%;
+	margin-top:20%;
+	text-shadow:0 1px 3px rgba(255,255,255,0.8);
+}
