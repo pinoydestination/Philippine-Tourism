@@ -1,10 +1,10 @@
 body{
-	background:#fac5c3;
+	background:#fe450e;
 }
 
 
 .firstBackground{
-	background: #fac5c3 url("../images/bgimages/baguio_horses.jpg") no-repeat top center;
+	background: #fe450e url("../images/bgimages/guitar.jpg") no-repeat top center;
 	width:100%;
 	min-height: 800px;
 }
@@ -13,7 +13,7 @@ body{
 	list-style:none;
 	margin:0;
 	padding:0;
-	color:#aa6c6a;
+	color:#FFF;
 	float:left;
 	margin-right:20px;
 	width:130px;
@@ -21,21 +21,21 @@ body{
 .footer .left ul li a{
 	padding:1px 0px;
 	display:block;
-	color:#aa6c6a;
+	color:#ffd9ce;
 	text-decoration:none;
-	text-shadow:0 1px 1px rgba(255,255,255,.9);
+	text-shadow:0 1px 1px rgba(0,0,0,.9);
 }
 .footer .left ul li a:hover{
-	color:#aa6c6a;
+	color:#FFF;
 }
 
 
 .footer .left ul li strong,.footertitle{
-	text-shadow:0 1px 0px rgba(255,255,255,.9);
+	text-shadow:0 1px 0px rgba(0,0,0,.9);
 }
 
 .footer .left ul li a:hover{
-	text-shadow:0 1px 0px rgba(255,255,255,0.8);
+	text-shadow:0 1px 0px rgba(0,0,0,0.8);
 }
 
 
@@ -45,14 +45,14 @@ body{
 	height:100%;
 	text-align:right;
 	float: right;
-	color:#aa6c6a;
+	color:#fff;
 }
 .footer .right p, .footer .right p a{
-	color:#aa6c6a;
+	color:#ffd9ce;
 	text-decoration:none;
 }
 .footer .right p a{
-	color:#aa6c6a;
+	color:#fff;
 	text-decoration:underline;
 }
 
@@ -65,9 +65,9 @@ div.footer_credit {
 .billboardNamePlace{
 	font-size:35px;
 	font-family:"Arial Narrow", Arial, Helvetica;
-	color:#aa6c6a;
+	color:#fff;
 	position:absolute;
 	margin-left:3%;
 	margin-top:20%;
-	text-shadow:0 1px 3px rgba(255,255,255,0.8);
+	text-shadow:0 1px 3px rgba(0,0,0,0.8);
 }
