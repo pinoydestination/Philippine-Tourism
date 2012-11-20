@@ -1,0 +1,73 @@
+body{
+	background:#fe450e;
+}
+
+
+.firstBackground{
+	background: #000 url("../images/bgimages/batangas_corals.jpg") no-repeat top center;
+	width:100%;
+	min-height: 800px;
+}
+
+.footer .left ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+	color:#FFF;
+	float:left;
+	margin-right:20px;
+	width:130px;
+}
+.footer .left ul li a{
+	padding:1px 0px;
+	display:block;
+	color:#ffd9ce;
+	text-decoration:none;
+	text-shadow:0 1px 1px rgba(0,0,0,.9);
+}
+.footer .left ul li a:hover{
+	color:#FFF;
+}
+
+
+.footer .left ul li strong,.footertitle{
+	text-shadow:0 1px 0px rgba(0,0,0,.9);
+}
+
+.footer .left ul li a:hover{
+	text-shadow:0 1px 0px rgba(0,0,0,0.8);
+}
+
+
+.footer .right{
+	margin-left:20px;
+	width:333px;
+	height:100%;
+	text-align:right;
+	float: right;
+	color:#fff;
+}
+.footer .right p, .footer .right p a{
+	color:#ffd9ce;
+	text-decoration:none;
+}
+.footer .right p a{
+	color:#fff;
+	text-decoration:underline;
+}
+
+div.footer_credit {
+    color: #FFF;
+    font-size: 10px;
+    text-align: center;
+}
+
+.billboardNamePlace{
+	font-size:35px;
+	font-family:"Arial Narrow", Arial, Helvetica;
+	color:#fff;
+	position:absolute;
+	margin-left:3%;
+	margin-top:20%;
+	text-shadow:0 1px 3px rgba(0,0,0,0.8);
+}
