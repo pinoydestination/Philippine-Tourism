@@ -91,8 +91,8 @@ include_once("images.php");
 			$('.fancybox').fancybox();
 			
 			$(window).scroll(function(){
-				var scrollAmount = ($(window).scrollTop());
-				$(".firstBackground").css('background-position', "center "+(scrollAmount/1.8)+"px");
+				//var scrollAmount = ($(window).scrollTop());
+				//$(".firstBackground").css('background-position', "center "+(scrollAmount/1.8)+"px");
 			});
 			
 			var isInIframe = (window.location != window.parent.location) ? true : false;
