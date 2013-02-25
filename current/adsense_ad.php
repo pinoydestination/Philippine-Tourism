@@ -17,9 +17,9 @@ switch($type){
 	case "300x250":
 		?>
 		<script type="text/javascript"><!--
-		google_ad_client = "ca-pub-0908617034545427";
-		/* BoxAd */
-		google_ad_slot = "3794932741";
+		google_ad_client = "ca-pub-8693059329031559";
+		/* 300x20Ad */
+		google_ad_slot = "3940716627";
 		google_ad_width = 300;
 		google_ad_height = 250;
 		//-->
@@ -32,9 +32,9 @@ switch($type){
 	case "468x60":
 		?>
 		<script type="text/javascript"><!--
-		google_ad_client = "ca-pub-0908617034545427";
-		/* bannerAd */
-		google_ad_slot = "5923837817";
+		google_ad_client = "ca-pub-8693059329031559";
+		/* 468x60Ad */
+		google_ad_slot = "5417449829";
 		google_ad_width = 468;
 		google_ad_height = 60;
 		//-->
@@ -47,9 +47,9 @@ switch($type){
 	case "160x600":
 		?>
 		<script type="text/javascript"><!--
-		google_ad_client = "ca-pub-0908617034545427";
-		/* PD_WideSky160 */
-		google_ad_slot = "7187128516";
+		google_ad_client = "ca-pub-8693059329031559";
+		/* 160x600Ad */
+		google_ad_slot = "6894183025";
 		google_ad_width = 160;
 		google_ad_height = 600;
 		//-->
