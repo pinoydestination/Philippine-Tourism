@@ -2,10 +2,6 @@
 <div class="mainbodycontent">
 					<div class="left">
 						
-						
-						
-						<?php include("mabuhay.php"); ?>
-						
 						<?php include("heroshot.php"); ?>
 						
 						<div class="homelistcontainer firstlist">
