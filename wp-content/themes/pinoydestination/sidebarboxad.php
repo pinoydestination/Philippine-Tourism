@@ -9,9 +9,9 @@
 	?>
 	
 	<script type="text/javascript"><!--
-	google_ad_client = "ca-pub-0908617034545427";
-	/* BoxAd */
-	google_ad_slot = "3794932741";
+	google_ad_client = "ca-pub-8693059329031559";
+	/* PDSidebar300 */
+	google_ad_slot = "7561723820";
 	google_ad_width = 300;
 	google_ad_height = 250;
 	//-->

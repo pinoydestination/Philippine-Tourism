@@ -18,8 +18,8 @@ switch($type){
 		?>
 		<script type="text/javascript"><!--
 		google_ad_client = "ca-pub-8693059329031559";
-		/* 300x20Ad */
-		google_ad_slot = "3940716627";
+		/* PDSidebar300 */
+		google_ad_slot = "7561723820";
 		google_ad_width = 300;
 		google_ad_height = 250;
 		//-->
@@ -33,10 +33,10 @@ switch($type){
 		?>
 		<script type="text/javascript"><!--
 		google_ad_client = "ca-pub-8693059329031559";
-		/* 468x60Ad */
-		google_ad_slot = "5417449829";
+		/* PD468 */
+		google_ad_slot = "3131524225";
 		google_ad_width = 468;
-		google_ad_height = 60;
+		google_ad_height = 15;
 		//-->
 		</script>
 		<script type="text/javascript"

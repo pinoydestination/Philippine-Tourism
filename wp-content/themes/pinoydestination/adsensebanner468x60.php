@@ -8,17 +8,19 @@ if("www.pinoydestination.com" == $servername){
 <!-- End BidVertiser code --> 
 */
 ?>
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0908617034545427";
-/* bannerAd */
-google_ad_slot = "5923837817";
-google_ad_width = 468;
-google_ad_height = 60;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
+
+	<script type="text/javascript"><!--
+	google_ad_client = "ca-pub-8693059329031559";
+	/* PD468 */
+	google_ad_slot = "3131524225";
+	google_ad_width = 468;
+	google_ad_height = 15;
+	//-->
+	</script>
+	<script type="text/javascript"
+	src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+
 <?php
 }else{
 ?>
