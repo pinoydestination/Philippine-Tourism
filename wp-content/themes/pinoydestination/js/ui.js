@@ -52,7 +52,7 @@ $(document).ready(function(){
 	
 	
 	
-	$("#addthistomyitinerary").live("click",function(){
+	$(".addthistomyitinerary").live("click",function(){
 		$(this).slideUp();
 		var data = $(this).attr("inline-data");
 		$.ajax({

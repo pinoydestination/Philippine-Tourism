@@ -96,10 +96,9 @@ include_once("images.php");
 			});
 			
 			var isInIframe = (window.location != window.parent.location) ? true : false;
-			console.log(isInIframe);
 			
 			if( isInIframe ){
-				$(window).stop().scrollTo( {top:'801px',left:'642px'}, 1000 );
+				$(window).stop().scrollTo( {top:'200px',left:'642px'}, 1000 );
 				$("#topcontrol").hide();
 			}
 			
@@ -144,17 +143,6 @@ include_once("images.php");
 		
 </head>
 	<body>
-		
-		<!--//Facebook Plugin//-->
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-		<!--//End of Facebook Plugin//-->
 		
 		<div class="firstBackground">
 			<?php /*include("sideads.php");*/ ?>

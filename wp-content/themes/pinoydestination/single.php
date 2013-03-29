@@ -111,12 +111,12 @@ $globalCatType = "";
 											<?php
 										}else{
 											?>
-											<li class="nomarginright"><span class="gallerySpanHead additinerarybutton" id="addthistomyitinerary" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink();?>|<?php echo $otherInfoData->google_map_coordinate; ?>">Add to Itinerary</span></li>
+											<li class="nomarginright"><span class="gallerySpanHead additinerarybutton addthistomyitinerary" id="" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink();?>|<?php echo $otherInfoData->google_map_coordinate; ?>">Add to Itinerary</span></li>
 											<?php
 										}
 									}else{
 									?>
-										<li class="nomarginright"><span class="gallerySpanHead additinerarybutton" id="addthistomyitinerary" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink();?>|<?php echo $otherInfoData->google_map_coordinate; ?>">Add to Itinerary</span></li>
+										<li class="nomarginright"><span class="gallerySpanHead additinerarybutton addthistomyitinerary" id="" inline-data="<?php echo $otherInfoData->location_address; ?>|<?php the_title(); ?>|<?php echo get_permalink();?>|<?php echo $otherInfoData->google_map_coordinate; ?>">Add to Itinerary</span></li>
 									<?php
 									}
 								}
