@@ -98,7 +98,7 @@ include_once("images.php");
 			var isInIframe = (window.location != window.parent.location) ? true : false;
 			
 			if( isInIframe ){
-				$(window).stop().scrollTo( {top:'470px',left:'642px'}, 1000 );
+				$(window).stop().scrollTo( {top:'460px',left:'642px'}, 100 );
 				$("#topcontrol").hide();
 			}
 			
