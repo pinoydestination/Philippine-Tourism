@@ -1,10 +1,7 @@
 <?php get_header(); ?>
 <div class="mainbodycontent">
 					<div class="left">
-						
-						<?php include("heroshot.php"); ?>
-						
-						<div class="homelistcontainer firstlist">
+						<div class="homelistcontainer nomargintop">
 							<h1 class="myriad_pro_bold_condensed">Where to Go? Explore Philippines!</h1>
 							
 							<div class="tabcontainer">

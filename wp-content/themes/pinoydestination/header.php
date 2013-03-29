@@ -267,12 +267,5 @@ include_once("images.php");
 					<br clear="all" />
 				</div>
 				
-				<?php if(is_home()){ ?>
-				<div class="billboardwindow">
-					<span class="billboardNamePlace"></span>
-				</div>
-				<?php } ?>
-				
-				
 				<div class="cut"></div>
 				
